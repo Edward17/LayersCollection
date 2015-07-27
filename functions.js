@@ -209,6 +209,36 @@ function initLayers() {
     addLayerToLeft(i - 1, 'Alberding (sorbian)');
 
     new_layer = L.tileLayer(
+        'http://{s}.tiles.wmflabs.org/osm/{z}/{x}/{y}.png',
+            {
+                maxZoom: 21,
+                attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>, under ODbL'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OSM standart (wmflabs)');
+
+    new_layer = L.tileLayer(
+        'http://{s}.tiles.wmflabs.org/osm-no-labels/{z}/{x}/{y}.png',
+            {
+                maxZoom: 21,
+                attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>, under ODbL'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OSM no-labels (wmflabs)');
+
+    new_layer = L.tileLayer(
+        'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
+            {
+                maxZoom: 21,
+                attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>, under ODbL'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OSM black & wight (wmflabs)');
+
+    new_layer = L.tileLayer(
         'http://{s}.tiles.maps.sputnik.ru/{z}/{x}/{y}.png',
             {
                 maxZoom: 19,
@@ -691,17 +721,6 @@ function initLayers() {
     addLayerToLeft(i - 1, 'ÖPNV Karte');
 
     new_layer = L.tileLayer(
-        'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
-            {
-                maxZoom: 18,
-                attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>, under ODbL',
-                subdomains: ['a', 'b']
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OpenStreetMap black/white');
-
-    new_layer = L.tileLayer(
         'http://www.openhistoricalmap.org/ohm_tiles/{z}/{x}/{y}.png',
             {
                 maxZoom: 18,
@@ -722,6 +741,16 @@ function initLayers() {
     addLayerToLeft(i - 1, 'FT-Blue');
 
     new_layer = L.tileLayer(
+        'http://{s}.tile.openstreetmap.fr/openriverboatmap/{z}/{x}/{y}.png',
+            {
+                maxZoom: 20,
+                attribution: osm_attribution + 'ybon'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OpenRiverBoatMap');
+
+    new_layer = L.tileLayer(
         'https://www.komoot.de/tiles/{s}/{z}/{x}/{y}.png',
             {
                 maxZoom: 19,
@@ -730,6 +759,27 @@ function initLayers() {
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'Komoot');
+
+    new_layer = L.tileLayer(
+        'http://ec2.cdn.ecmaps.de/WmsGateway.ashx.jpg?TileX={x}&TileY={y}&ZoomLevel={z}&Experience=falk&MapStyle=Falk%20OSM',
+            {
+                maxZoom: 16,
+                attribution: osm_attribution + '2013 <a href="http://www.falk.de/">Falk Verlag</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Falk');
+
+    new_layer = L.tileLayer(
+        'http://tile0{s}.maptoolkit.net/terrain/{z}/{x}/{y}.png',
+            {
+                maxZoom: 17,
+                attribution: osm_attribution + '<a href="http://www.toursprung.com/">Toursprung GmbH</a>',
+                subdomains: ['1', '2', '3']
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Maptoolkit');
 
     new_layer = L.tileLayer(
         '',
