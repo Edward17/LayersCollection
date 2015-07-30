@@ -361,28 +361,6 @@ function initLayers() {
             {
                 maxZoom: 19,
                 attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
-                id: 'mapbox.streets-satellite',
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.streets-satellite');
-
-    new_layer = L.tileLayer(
-        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
-                id: 'mapbox.satellite',
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.satellite');
-
-    new_layer = L.tileLayer(
-        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
                 id: 'mapbox.light',
             }
         );
@@ -780,6 +758,51 @@ function initLayers() {
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'Maptoolkit');
+
+    new_layer = L.tileLayer(
+        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
+                id: 'mapbox.streets-satellite',
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'MapBox.streets-satellite');
+
+    new_layer = L.tileLayer(
+        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
+            {
+                maxZoom: 19,
+                attribution: 'Tiles: &copy; <a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
+                id: 'mapbox.satellite',
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'MapBox.satellite');
+
+    new_layer = L.tileLayer(
+        'http://212.26.144.110/tile2/orto_10000/{z}/{x}/{y}.jpg',
+            {
+                maxZoom: 16,
+                attribution: 'Tiles: &copy; <a href="http://map.land.gov.ua/kadastrova-karta">ЦДЗК</a>',
+                tms: true
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Ортофотоплани');
+
+    new_layer = L.tileLayer(
+        'http://{s}.tiles.mapbox.com/v4/mapbox.landsat-live/{z}/{x}/{y}.png?access_token=' + mapbox_token,
+            {
+                maxZoom: 13,
+                attribution: 'Tiles: &copy; <a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
+                subdomains: ['a', 'b'],
+                minZoom: 7
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'MapBox Live Satellite');
 
     new_layer = L.tileLayer(
         '',
