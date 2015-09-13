@@ -1,6 +1,6 @@
 ﻿var osm_attribution = 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>, under ODbL | Tiles: &copy; ';
-var mapbox_token = '';
-var lyrk_token = '';
+var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlczI3diJ9.eghwjbaS0bJ80bj2Vzd6Ew'; // This is my personal access token. Please don't use it, just register on MapBox for free: https://www.mapbox.com/signup/?plan=starter
+//var lyrk_token = '';
 
 var map;
 var left;
@@ -77,26 +77,27 @@ function initLayers() {
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'MapSurfer.NET gray');
 
-    new_layer = L.tileLayer(
-        'https://tiles.lyrk.org/ls/{z}/{x}/{y}?apikey=' + lyrk_token,
-            {
-                maxZoom: 18,
-                attribution: osm_attribution + '<a href="http://lyrk.de/" target="_blank">Lyrk</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Lyrk');
-
-    new_layer = L.tileLayer(
-        'https://tiles.lyrk.org/lr/{z}/{x}/{y}?apikey=' + lyrk_token,
-            {
-                maxZoom: 18,
-                attribution: osm_attribution + '<a href="http://lyrk.de/" target="_blank">Lyrk</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Lyrk Retina');
-
+//// I don't know how to register on Lyrk and bekome access token. If you know please contact me.
+//    new_layer = L.tileLayer(
+//        'https://tiles.lyrk.org/ls/{z}/{x}/{y}?apikey=' + lyrk_token,
+//            {
+//                maxZoom: 18,
+//                attribution: osm_attribution + '<a href="http://lyrk.de/" target="_blank">Lyrk</a>'
+//            }
+//        );
+//    i = layers.push(new_layer);
+//    addLayerToLeft(i - 1, 'Lyrk');
+//
+//    new_layer = L.tileLayer(
+//        'https://tiles.lyrk.org/lr/{z}/{x}/{y}?apikey=' + lyrk_token,
+//            {
+//                maxZoom: 18,
+//                attribution: osm_attribution + '<a href="http://lyrk.de/" target="_blank">Lyrk</a>'
+//            }
+//        );
+//    i = layers.push(new_layer);
+//    addLayerToLeft(i - 1, 'Lyrk Retina');
+//
 //// don't works
 //    new_layer = L.tileLayer.wms(
 //        'https://maps.omniscale.net/v1/.../tile', // key must be added
@@ -237,6 +238,16 @@ function initLayers() {
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'OSM black & wight (wmflabs)');
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.openstreetmap.pl/osmapa.pl/{z}/{x}/{y}.png',
+            {
+                maxZoom: 20,
+                attribution: osm_attribution + '<a href="http://osmapa.pl/" target="_blank">Osmapa.pl</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Osmapa.pl');
 
     new_layer = L.tileLayer(
         'http://{s}.tiles.maps.sputnik.ru/{z}/{x}/{y}.png',
@@ -760,9 +771,51 @@ function initLayers() {
     addLayerToLeft(i - 1, 'Maptoolkit');
 
     new_layer = L.tileLayer(
+        'http://maps.refuges.info/hiking/{z}/{x}/{y}.png',
+            {
+                maxZoom: 18,
+                attribution: osm_attribution + '<a href="http://maps.refuges.info/" target="_blank">sly</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Refuges.info');
+
+// https://github.com/shramov/leaflet-plugins/blob/master/examples/bing.html
+//
+// Copyright (c) 2011-2015, Pavel Shramov, Bruno Bergot
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+    new_layer = new L.BingLayer(
+        'LfO3DMI9S6GnXD7d0WGs~bq2DRVkmIAzSOFdodzZLvw~Arx8dclDxmZA0Y38tHIJlJfnMbGq5GXeYmrGOUIbS2VLFzRKCK0Yv_bAl6oe-DOc',
+            {
+                maxZoom: 19, // my line
+                type: 'Aerial'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Bing Satellite');
+
+    new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
             {
-                maxZoom: 19,
+                maxZoom: 17,
                 attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
                 id: 'mapbox.streets-satellite',
             }
@@ -773,7 +826,7 @@ function initLayers() {
     new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
             {
-                maxZoom: 19,
+                maxZoom: 17,
                 attribution: 'Tiles: &copy; <a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
                 id: 'mapbox.satellite',
             }
@@ -803,16 +856,6 @@ function initLayers() {
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'MapBox Live Satellite');
-
-    new_layer = L.tileLayer(
-        '',
-            {
-                maxZoom: 1,
-                attribution: osm_attribution + ''
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, '');
 
 //// overlay layers
 //
