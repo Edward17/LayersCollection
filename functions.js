@@ -19,6 +19,8 @@ function load() {
     );
     left = document.getElementById('left');
 
+    addHeaderToLeft("General");
+
     layers[0] = L.tileLayer(
         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
@@ -78,6 +80,7 @@ function initLayers() {
     addLayerToLeft(i - 1, 'MapSurfer.NET gray');
 
 //// I don't know how to register on Lyrk and bekome access token. If you know please contact me.
+//
 //    new_layer = L.tileLayer(
 //        'https://tiles.lyrk.org/ls/{z}/{x}/{y}?apikey=' + lyrk_token,
 //            {
@@ -99,6 +102,7 @@ function initLayers() {
 //    addLayerToLeft(i - 1, 'Lyrk Retina');
 //
 //// don't works
+//
 //    new_layer = L.tileLayer.wms(
 //        'https://maps.omniscale.net/v1/.../tile', // key must be added
 //            {
@@ -108,66 +112,6 @@ function initLayers() {
 //        );
 //    i = layers.push(new_layer);
 //    addLayerToLeft(i - 1, 'Omniscale');
-//
-    new_layer = L.tileLayer(
-        'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Thunderforest Transport');
-
-    new_layer = L.tileLayer(
-        'http://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Thunderforest Transport Dark');
-
-    new_layer = L.tileLayer(
-        'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
-            {
-                maxZoom: 18,
-                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Thunderforest Landscape');
-
-    new_layer = L.tileLayer(
-        'http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
-            {
-                maxZoom: 18,
-                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Thunderforest Outdoors');
-
-    new_layer = L.tileLayer(
-        'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
-            {
-                maxZoom: 18,
-                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Thunderforest OpenCycleMap');
-
-    new_layer = L.tileLayer(
-        'http://tiles-base.openstreetbrowser.org/tiles/basemap_base/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.openstreetbrowser.org/" target="_blank">OpenStreetBrowser</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OpenStreetBrowser');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
@@ -188,26 +132,6 @@ function initLayers() {
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'OpenStreetMap.fr');
-
-    new_layer = L.tileLayer(
-        'http://map.dgpsonline.eu/default/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.alberding.eu/" target="_blank">Alberding GmbH</a>, CC-BY-SA'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Alberding');
-
-    new_layer = L.tileLayer(
-        'http://map.dgpsonline.eu/osmsb/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.alberding.eu/" target="_blank">Alberding GmbH</a>, CC-BY-SA'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Alberding (sorbian)');
 
     new_layer = L.tileLayer(
         'http://{s}.tiles.wmflabs.org/osm/{z}/{x}/{y}.png',
@@ -237,7 +161,37 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OSM black & wight (wmflabs)');
+    addLayerToLeft(i - 1, 'OSM B/W (wmflabs)');
+
+    new_layer = L.tileLayer(
+        'http://map.dgpsonline.eu/default/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.alberding.eu/" target="_blank">Alberding GmbH</a>, CC-BY-SA'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Alberding');
+
+    new_layer = L.tileLayer(
+        'http://map.dgpsonline.eu/osmsb/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.alberding.eu/" target="_blank">Alberding GmbH</a>, CC-BY-SA'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Alberding (sorbian)');
+
+    new_layer = L.tileLayer(
+        'http://4umaps.eu/{z}/{x}/{y}.png',
+            {
+                maxZoom: 15,
+                attribution: osm_attribution + '<a href="http://www.4umaps.eu/">4UMaps</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, '4UMaps');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.openstreetmap.pl/osmapa.pl/{z}/{x}/{y}.png',
@@ -250,6 +204,16 @@ function initLayers() {
     addLayerToLeft(i - 1, 'Osmapa.pl');
 
     new_layer = L.tileLayer(
+        'http://tiles-base.openstreetbrowser.org/tiles/basemap_base/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.openstreetbrowser.org/" target="_blank">OpenStreetBrowser</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OpenStreetBrowser');
+
+    new_layer = L.tileLayer(
         'http://{s}.tiles.maps.sputnik.ru/{z}/{x}/{y}.png',
             {
                 maxZoom: 19,
@@ -258,6 +222,16 @@ function initLayers() {
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'Sputnik');
+
+    new_layer = L.tileLayer(
+        'http://tiles.maps.sputnik.ru/tiles/kmt2/{z}/{x}/{y}.png?tag=retina',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://maps.sputnik.ru/" target="_blank">Sputnik</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Sputnik Retina');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png',
@@ -388,72 +362,6 @@ function initLayers() {
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'MapBox.dark');
-
-    new_layer = L.tileLayer(
-        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
-                id: 'mapbox.wheatpaste',
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.wheatpaste');
-
-    new_layer = L.tileLayer(
-        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
-                id: 'mapbox.comic',
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.comic');
-
-    new_layer = L.tileLayer(
-        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
-                id: 'mapbox.outdoors',
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.outdoors');
-
-    new_layer = L.tileLayer(
-        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
-                id: 'mapbox.run-bike-hike',
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.run-bike-hike');
-
-    new_layer = L.tileLayer(
-        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
-                id: 'mapbox.pencil',
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.pencil');
-
-    new_layer = L.tileLayer(
-        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
-                id: 'mapbox.pirates',
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.pirates');
 
     new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
@@ -628,16 +536,6 @@ function initLayers() {
     addLayerToLeft(i - 1, 'Stamen Toner-lite');
 
     new_layer = L.tileLayer(
-        'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
-            {
-                maxZoom: 20,
-                attribution: osm_attribution + '<a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>.'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Stamen Watercolor');
-
-    new_layer = L.tileLayer(
         'http://tiles{s}-bc7b4da77e971c12cb0e069bffcf2771.skobblermaps.com/TileService/tiles/2.0/01021113210/7/{z}/{x}/{y}.png?traffic=false',
             {
                 maxZoom: 19,
@@ -658,96 +556,6 @@ function initLayers() {
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'Skobbler (with traffic)');
-
-    new_layer = L.tileLayer(
-        'http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-            {
-                maxZoom: 15,
-                attribution: osm_attribution + '<a href="http://opentopomap.org/">OpenTopoMap</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OpenTopoMap');
-
-    new_layer = L.tileLayer(
-        'http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://hikebikemap.de/">Colin Marquardt</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Hike & Bike');
-
-    new_layer = L.tileLayer(
-        'http://78.47.183.107/veloroad/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://osmz.ru/veloroad2.html">Ilya Zverev</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Veloroad 2');
-
-    new_layer = L.tileLayer(
-        'http://4umaps.eu/{z}/{x}/{y}.png',
-            {
-                maxZoom: 15,
-                attribution: osm_attribution + '<a href="http://www.4umaps.eu/">4UMaps</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, '4UMaps');
-
-    new_layer = L.tileLayer(
-        'http://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png',
-            {
-                maxZoom: 18,
-                attribution: osm_attribution + '<a href="http://öpnvkarte.de/">ÖPNV Karte</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'ÖPNV Karte');
-
-    new_layer = L.tileLayer(
-        'http://www.openhistoricalmap.org/ohm_tiles/{z}/{x}/{y}.png',
-            {
-                maxZoom: 18,
-                attribution: osm_attribution + '<a href="http://www.openhistoricalmap.org/">OpenHistoricalMap</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OpenHistoricalMap');
-
-    new_layer = L.tileLayer(
-        'http://www.freietonne.de/osm/{z}/{x}/{y}.png',
-            {
-                maxZoom: 18,
-                attribution: osm_attribution + '<a href="http://www.freietonne.de/">Freie Tonne</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'FT-Blue');
-
-    new_layer = L.tileLayer(
-        'http://{s}.tile.openstreetmap.fr/openriverboatmap/{z}/{x}/{y}.png',
-            {
-                maxZoom: 20,
-                attribution: osm_attribution + 'ybon'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OpenRiverBoatMap');
-
-    new_layer = L.tileLayer(
-        'https://www.komoot.de/tiles/{s}/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="https://www.komoot.de/">Komoot</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Komoot');
 
     new_layer = L.tileLayer(
         'http://ec2.cdn.ecmaps.de/WmsGateway.ashx.jpg?TileX={x}&TileY={y}&ZoomLevel={z}&Experience=falk&MapStyle=Falk%20OSM',
@@ -779,6 +587,222 @@ function initLayers() {
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'Refuges.info');
+
+    new_layer = L.tileLayer(
+        'http://www.openhistoricalmap.org/ohm_tiles/{z}/{x}/{y}.png',
+            {
+                maxZoom: 18,
+                attribution: osm_attribution + '<a href="http://www.openhistoricalmap.org/">OpenHistoricalMap</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OpenHistoricalMap');
+
+    addHeaderToLeft("Public Transport");
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Thunderforest Transport');
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Thunderforest Transport Dark');
+
+    new_layer = L.tileLayer(
+        'http://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png',
+            {
+                maxZoom: 18,
+                attribution: osm_attribution + '<a href="http://öpnvkarte.de/">ÖPNV Karte</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'ÖPNV Karte');
+
+    addHeaderToLeft("Hiking, Cycling, etc.");
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
+            {
+                maxZoom: 18,
+                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Thunderforest Landscape');
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
+            {
+                maxZoom: 18,
+                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Thunderforest Outdoors');
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
+            {
+                maxZoom: 18,
+                attribution: osm_attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Thunderforest OpenCycleMap');
+
+    new_layer = L.tileLayer(
+        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
+                id: 'mapbox.outdoors',
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'MapBox.outdoors');
+
+    new_layer = L.tileLayer(
+        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
+                id: 'mapbox.run-bike-hike',
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'MapBox.run-bike-hike');
+
+    new_layer = L.tileLayer(
+        'http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://hikebikemap.de/">Colin Marquardt</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Hike & Bike');
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+            {
+                maxZoom: 15,
+                attribution: osm_attribution + '<a href="http://opentopomap.org/">OpenTopoMap</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OpenTopoMap');
+
+    new_layer = L.tileLayer(
+        'http://78.47.183.107/veloroad/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://osmz.ru/veloroad2.html">Ilya Zverev</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Veloroad 2');
+
+    new_layer = L.tileLayer(
+        'https://www.komoot.de/tiles/{s}/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="https://www.komoot.de/">Komoot</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Komoot');
+
+    addHeaderToLeft("Boating");
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.openstreetmap.fr/openriverboatmap/{z}/{x}/{y}.png',
+            {
+                maxZoom: 20,
+                attribution: osm_attribution + 'ybon'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OpenRiverBoatMap');
+
+    new_layer = L.tileLayer(
+        'http://www.freietonne.de/osm/{z}/{x}/{y}.png',
+            {
+                maxZoom: 18,
+                attribution: osm_attribution + '<a href="http://www.freietonne.de/">Freie Tonne</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'FT-Blue');
+
+    addHeaderToLeft("Beautiful");
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
+            {
+                maxZoom: 20,
+                attribution: osm_attribution + '<a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>.'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Stamen Watercolor');
+
+    new_layer = L.tileLayer(
+        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
+                id: 'mapbox.wheatpaste',
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'MapBox.wheatpaste');
+
+    new_layer = L.tileLayer(
+        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
+                id: 'mapbox.comic',
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'MapBox.comic');
+
+    new_layer = L.tileLayer(
+        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
+                id: 'mapbox.pencil',
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'MapBox.pencil');
+
+    new_layer = L.tileLayer(
+        'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
+                id: 'mapbox.pirates',
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'MapBox.pirates');
+
+    addHeaderToLeft("Satellite");
 
 // https://github.com/shramov/leaflet-plugins/blob/master/examples/bing.html
 //
@@ -923,6 +947,10 @@ function initLayers() {
 function addLayerToLeft(i, layer_name) {
     left.innerHTML = left.innerHTML + '<button type="button" onclick="showLayer(' + i + ')">Show</button> ' + layer_name + '<br>';
     layer_names.push(layer_name);
+}
+
+function addHeaderToLeft(header_name) {
+    left.innerHTML = left.innerHTML + '<b>' + header_name + '</b><br>';
 }
 
 function showLayer(i) {
