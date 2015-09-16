@@ -214,6 +214,26 @@ function initLayers() {
     addLayerToLeft(i - 1, 'OpenStreetBrowser');
 
     new_layer = L.tileLayer(
+        'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="https://maps.wikimedia.org" target="_blank">Wikimedia maps</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'Wikimedia maps');
+
+    new_layer = L.tileLayer(
+        'http://tile.osmand.net/hd/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: osm_attribution + '<a href="http://osmand.net/" target="_blank">OsmAnd</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OsmAnd Online');
+
+    new_layer = L.tileLayer(
         'http://{s}.tiles.maps.sputnik.ru/{z}/{x}/{y}.png',
             {
                 maxZoom: 19,
