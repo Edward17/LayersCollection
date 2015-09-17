@@ -19,7 +19,7 @@ function load() {
     );
     left = document.getElementById('left');
 
-    addHeaderToLeft("General");
+    addHeaderToLeft('General');
 
     layers[0] = L.tileLayer(
         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -127,11 +127,21 @@ function initLayers() {
         'http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
             {
                 maxZoom: 20,
-                attribution: osm_attribution + 'OpenStreetMap France'
+                attribution: osm_attribution + '<a href="http://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
             }
         );
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'OpenStreetMap.fr');
+
+    new_layer = L.tileLayer(
+        'http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',
+            {
+                maxZoom: 18,
+                attribution: osm_attribution + '<a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a>'
+            }
+        );
+    i = layers.push(new_layer);
+    addLayerToLeft(i - 1, 'OpenStreetMap.se');
 
     new_layer = L.tileLayer(
         'http://{s}.tiles.wmflabs.org/osm/{z}/{x}/{y}.png',
@@ -213,15 +223,17 @@ function initLayers() {
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'OpenStreetBrowser');
 
-    new_layer = L.tileLayer(
-        'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="https://maps.wikimedia.org" target="_blank">Wikimedia maps</a>'
-            }
-        );
-    i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Wikimedia maps');
+//// Don't works with website (GitHub pages also), only with localhost: http://www.gossamer-threads.com/lists/wiki/mediawiki-cvs/625066
+//
+//    new_layer = L.tileLayer(
+//        'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
+//            {
+//                maxZoom: 19,
+//                attribution: osm_attribution + '<a href="https://maps.wikimedia.org" target="_blank">Wikimedia maps</a>'
+//            }
+//        );
+//    i = layers.push(new_layer);
+//    addLayerToLeft(i - 1, 'Wikimedia maps');
 
     new_layer = L.tileLayer(
         'http://tile.osmand.net/hd/{z}/{x}/{y}.png',
@@ -618,7 +630,7 @@ function initLayers() {
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'OpenHistoricalMap');
 
-    addHeaderToLeft("Public Transport");
+    addHeaderToLeft('Public Transport');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
@@ -650,7 +662,7 @@ function initLayers() {
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'ÖPNV Karte');
 
-    addHeaderToLeft("Hiking, Cycling, etc.");
+    addHeaderToLeft('Hiking, Cycling, etc.');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
@@ -744,7 +756,7 @@ function initLayers() {
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'Komoot');
 
-    addHeaderToLeft("Boating");
+    addHeaderToLeft('Boating');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.openstreetmap.fr/openriverboatmap/{z}/{x}/{y}.png',
@@ -766,7 +778,7 @@ function initLayers() {
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'FT-Blue');
 
-    addHeaderToLeft("Beautiful");
+    addHeaderToLeft('Beautiful');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
@@ -822,7 +834,7 @@ function initLayers() {
     i = layers.push(new_layer);
     addLayerToLeft(i - 1, 'MapBox.pirates');
 
-    addHeaderToLeft("Satellite");
+    addHeaderToLeft('Satellite');
 
 // https://github.com/shramov/leaflet-plugins/blob/master/examples/bing.html
 //
