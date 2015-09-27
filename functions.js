@@ -77,7 +77,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapSurfer.NET gray');
+    addLayerWithInformationToLeft(i - 1, 'MapSurfer.NET gray', '<span class="bw">b/w</span>');
 
 //// I don't know how to register on Lyrk and bekome access token. If you know please contact me.
 //
@@ -121,7 +121,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OpenStreetMap.de');
+    addLayerWithInformationToLeft(i - 1, 'OpenStreetMap.de', '<span class="lang">de</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
@@ -131,7 +131,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OpenStreetMap.fr');
+    addLayerWithInformationToLeft(i - 1, 'OpenStreetMap.fr', '<span class="lang">fr</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',
@@ -161,7 +161,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OSM no-labels (wmflabs)');
+    addLayerWithInformationToLeft(i - 1, 'OSM no-labels (wmflabs)', '<span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
@@ -171,7 +171,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'OSM B/W (wmflabs)');
+    addLayerWithInformationToLeft(i - 1, 'OSM B/W (wmflabs)', '<span class="bw">b/w</span>');
 
     new_layer = L.tileLayer(
         'http://map.dgpsonline.eu/default/{z}/{x}/{y}.png',
@@ -191,7 +191,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Alberding (sorbian)');
+    addLayerWithInformationToLeft(i - 1, 'Alberding (sorbian)', '<span class="lang">wen</span>');
 
     new_layer = L.tileLayer(
         'http://4umaps.eu/{z}/{x}/{y}.png',
@@ -211,7 +211,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Osmapa.pl');
+    addLayerWithInformationToLeft(i - 1, 'Osmapa.pl', '<span class="lang">pl</span>');
 
     new_layer = L.tileLayer(
         'http://tiles-base.openstreetbrowser.org/tiles/basemap_base/{z}/{x}/{y}.png',
@@ -253,7 +253,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Sputnik');
+    addLayerWithInformationToLeft(i - 1, 'Sputnik', '<span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'http://tiles.maps.sputnik.ru/tiles/kmt2/{z}/{x}/{y}.png?tag=retina',
@@ -263,7 +263,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Sputnik Retina');
+    addLayerWithInformationToLeft(i - 1, 'Sputnik Retina', '<span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png',
@@ -274,7 +274,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Kosmosnimki');
+    addLayerWithInformationToLeft(i - 1, 'Kosmosnimki', '<span class="old">old</span><span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.osm.kosmosnimki.ru/night/{z}/{x}/{y}.png',
@@ -285,7 +285,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Kosmosnimki Night');
+    addLayerWithInformationToLeft(i - 1, 'Kosmosnimki Night', '<span class="old">old</span><span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.osm.kosmosnimki.ru/spring/{z}/{x}/{y}.png',
@@ -296,7 +296,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Kosmosnimki Spring');
+    addLayerWithInformationToLeft(i - 1, 'Kosmosnimki Spring', '<span class="old">old</span><span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.osm.kosmosnimki.ru/summer/{z}/{x}/{y}.png',
@@ -307,7 +307,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Kosmosnimki Summer');
+    addLayerWithInformationToLeft(i - 1, 'Kosmosnimki Summer', '<span class="old">old</span><span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.osm.kosmosnimki.ru/autumn/{z}/{x}/{y}.png',
@@ -318,7 +318,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Kosmosnimki Autumn');
+    addLayerWithInformationToLeft(i - 1, 'Kosmosnimki Autumn', '<span class="old">old</span><span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.osm.kosmosnimki.ru/winter/{z}/{x}/{y}.png',
@@ -329,7 +329,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Kosmosnimki Winter');
+    addLayerWithInformationToLeft(i - 1, 'Kosmosnimki Winter', '<span class="old">old</span><span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'http://ingreelab.net/C04AF0B62BEC112E8D7242FB848631D12D252728/{z}/{x}/{y}.png',
@@ -339,7 +339,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Чепецк.NET');
+    addLayerWithInformationToLeft(i - 1, 'Чепецк.NET', '<span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'http://ingreelab.net/stranger/{z}/{x}/{y}.png',
@@ -349,7 +349,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'stranger');
+    addLayerWithInformationToLeft(i - 1, 'stranger', '<span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
@@ -382,7 +382,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.light');
+    addLayerWithInformationToLeft(i - 1, 'MapBox.light', '<span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
@@ -393,7 +393,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.dark');
+    addLayerWithInformationToLeft(i - 1, 'MapBox.dark', '<span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
@@ -415,7 +415,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.high-contrast');
+    addLayerWithInformationToLeft(i - 1, 'MapBox.high-contrast', '<span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
@@ -425,7 +425,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB Positron');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB Positron', '<span class="old">old</span><span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
@@ -435,7 +435,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB Dark Matter');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB Dark Matter', '<span class="old">old</span><span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
@@ -445,7 +445,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB Positron (no labels)');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB Positron (no labels)', '<span class="old">old</span><span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png',
@@ -455,7 +455,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB Dark Matter (no labels)');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB Dark Matter (no labels)', '<span class="old">old</span><span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
@@ -465,7 +465,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB Positron Retina');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB Positron Retina', '<span class="old">old</span><span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
@@ -475,7 +475,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB Dark Matter Retina');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB Dark Matter Retina', '<span class="old">old</span><span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png',
@@ -485,7 +485,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB Positron (no labels) Retina');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB Positron (no labels) Retina', '<span class="old">old</span><span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png',
@@ -495,7 +495,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB Dark Matter (no labels) Retina');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB Dark Matter (no labels) Retina', '<span class="old">old</span><span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'https://cartocdn_{s}.global.ssl.fastly.net/base-antique/{z}/{x}/{y}.png',
@@ -505,7 +505,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB World Antique');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB World Antique', '<span class="old">old</span><span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png',
@@ -515,7 +515,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB World Eco');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB World Eco', '<span class="old">old</span><span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png',
@@ -525,7 +525,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB World Flat Blue');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB World Flat Blue', '<span class="old">old</span><span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'https://cartocdn_{s}.global.ssl.fastly.net/base-antique/{z}/{x}/{y}.png',
@@ -535,7 +535,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'CartoDB World Midnight Commander');
+    addLayerWithInformationToLeft(i - 1, 'CartoDB World Midnight Commander', '<span class="old">old</span><span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
@@ -545,7 +545,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Stamen Toner');
+    addLayerWithInformationToLeft(i - 1, 'Stamen Toner', '<span class="old">old</span><span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png',
@@ -555,7 +555,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Stamen Toner-background');
+    addLayerWithInformationToLeft(i - 1, 'Stamen Toner-background', '<span class="old">old</span><span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png',
@@ -565,7 +565,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Stamen Toner-lite');
+    addLayerWithInformationToLeft(i - 1, 'Stamen Toner-lite', '<span class="old">old</span><span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'http://tiles{s}-bc7b4da77e971c12cb0e069bffcf2771.skobblermaps.com/TileService/tiles/2.0/01021113210/7/{z}/{x}/{y}.png?traffic=false',
@@ -714,7 +714,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.run-bike-hike');
+    addLayerWithInformationToLeft(i - 1, 'MapBox.run-bike-hike', '<span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png',
@@ -744,7 +744,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Veloroad 2');
+    addLayerWithInformationToLeft(i - 1, 'Veloroad 2', '<span class="lang">ru</span>');
 
     new_layer = L.tileLayer(
         'https://www.komoot.de/tiles/{s}/{z}/{x}/{y}.png',
@@ -788,7 +788,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'Stamen Watercolor');
+    addLayerWithInformationToLeft(i - 1, 'Stamen Watercolor', '<span class="old">old</span>');
 
     new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
@@ -810,7 +810,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.comic');
+    addLayerWithInformationToLeft(i - 1, 'MapBox.comic', '<span class="lang">en</span>');
 
     new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
@@ -821,7 +821,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.pencil');
+    addLayerWithInformationToLeft(i - 1, 'MapBox.pencil', '<span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
@@ -832,7 +832,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerToLeft(i - 1, 'MapBox.pirates');
+    addLayerWithInformationToLeft(i - 1, 'MapBox.pirates', '<span class="lang">en</span>');
 
     addHeaderToLeft('Satellite');
 
@@ -978,6 +978,11 @@ function initLayers() {
 
 function addLayerToLeft(i, layer_name) {
     left.innerHTML = left.innerHTML + '<button type="button" onclick="showLayer(' + i + ')">Show</button> ' + layer_name + '<br>';
+    layer_names.push(layer_name);
+}
+
+function addLayerWithInformationToLeft(i, layer_name, additional_information) {
+    left.innerHTML = left.innerHTML + '<button type="button" onclick="showLayer(' + i + ')">Show</button> ' + layer_name + additional_information + '<br>';
     layer_names.push(layer_name);
 }
 

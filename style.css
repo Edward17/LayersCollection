@@ -13,3 +13,41 @@
     height: 100%;
     margin-left: 400px;
 }
+
+
+
+.bw {
+    float: right;
+    margin-right: 4px;
+    padding-right: 2px;
+    padding-left: 2px;
+    color: #FFFFFF;
+    background-color: #C0C0C0;
+}
+
+.old {
+    float: right;
+    margin-right: 4px;
+    padding-right: 2px;
+    padding-left: 2px;
+    color: #FFFFFF;
+    background-color: #FF0000;
+}
+
+.lang {
+    float: right;
+    margin-right: 4px;
+    padding-right: 2px;
+    padding-left: 2px;
+    color: #FFFFFF;
+    background-color: #00FF00;
+}
+
+.nl {
+    float: right;
+    margin-right: 4px;
+    padding-right: 2px;
+    padding-left: 2px;
+    color: #FFFFFF;
+    background-color: #0000FF;
+}
