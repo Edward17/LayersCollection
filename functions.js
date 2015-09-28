@@ -788,7 +788,7 @@ function initLayers() {
             }
         );
     i = layers.push(new_layer);
-    addLayerWithInformationToLeft(i - 1, 'Stamen Watercolor', '<span class="old">old</span>');
+    addLayerWithInformationToLeft(i - 1, 'Stamen Watercolor', '<span class="old">old</span><span class="nl">nl</span>');
 
     new_layer = L.tileLayer(
         'https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapbox_token,
