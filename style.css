@@ -1,17 +1,28 @@
+BODY {
+    margin: 0px;
+}
+
+
+
 .left {
+    float: left;
     height: 100%;
     width: 400px;
-
-    position: fixed;
-    left: 0;
-    top: 0;
-
     overflow-y: scroll;
 }
 
 .map {
     height: 100%;
-    margin-left: 400px;
+}
+
+.permalink {
+    position: fixed;
+    bottom: 0px;
+    left: 400px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background: #FFFFFF;
+    z-index: 1;
 }
 
 

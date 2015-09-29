@@ -2,8 +2,9 @@
 var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlczI3diJ9.eghwjbaS0bJ80bj2Vzd6Ew'; // This is my personal access token. Please don't use it, just register on MapBox for free: https://www.mapbox.com/signup/?plan=starter
 //var lyrk_token = '';
 
-var map;
+var permalink;
 var left;
+var map;
 
 var layers = [];
 var layer_names = [];
@@ -18,6 +19,7 @@ function load() {
         }
     );
     left = document.getElementById('left');
+    permalink = document.getElementById('permalink');
 
     addHeaderToLeft('General');
 
@@ -29,9 +31,11 @@ function load() {
         }
     );
     addLayerToLeft(0, 'OpenStreetMap');
-    showLayer(0);
 
     initLayers();
+
+    map.on('move', generatePermalink);
+    checkPermalink();
 }
 
 function initLayers() {
@@ -999,4 +1003,31 @@ function showLayer(i) {
         map.addLayer(layers[i]);
         current_layer_index = i;
     }
+
+    generatePermalink('');
+}
+
+function checkPermalink() {
+    if (window.location.hash.toString().length > 0) {
+        var hash = new String(window.location.hash.toString());
+        hash = hash.replace('#map=', '');
+        var data = hash.split('/');
+        var zoom = data[0];
+        var lat = data[1];
+        var lng_layer = data[2].split('&layer=');
+        var lng = lng_layer[0];
+        var layer = lng_layer[1];
+
+        map.setView(L.latLng(lat, lng), zoom);
+        showLayer(layer);
+    } else {
+        showLayer(0);
+    }
+}
+
+function generatePermalink(e) {
+    var lat_string = map.getCenter().lat + '';
+    lat_string = lat_string.substring(1, 9);
+    var permalink_url = 'http://edward17.github.io/LayersCollection/#map=' + map.getZoom() + '/' + map.getCenter().lat + '/' + map.getCenter().lng + '&layer=' + current_layer_index;
+    permalink.setAttribute('href', permalink_url);
 }
