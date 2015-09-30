@@ -26,6 +26,11 @@ BODY {
 }
 
 
+.selected_layer {
+    background: #E5E5E5;
+}
+
+
 
 .bw {
     float: right;

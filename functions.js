@@ -21,7 +21,8 @@ function initializeLayers() {
 
     for (var i = 0; i < layers_data.length; i++) {
         if (layers_data[i].header) {
-            left.innerHTML = left.innerHTML + '<b>' + layers_data[i].name + '</b><br>';
+            //left.innerHTML = left.innerHTML + '<b>' + layers_data[i].name + '</b><br>';
+            left.innerHTML = left.innerHTML + '<div><b>' + layers_data[i].name + '</b></div>';
         } else {
             if (layers_data[i].bing) {
                 new_layer = new L.BingLayer(
@@ -58,23 +59,23 @@ function initializeLayers() {
                     }
                 );
             }
-            layers_data[i].index = layers.push(new_layer) - 1;
-            left.innerHTML = left.innerHTML + '<button type="button" onclick="showLayer(' + layers_data[i].id + ')">Show</button> ' + layers_data[i].name;
 
+            var additional_information = '';
             if (layers_data[i].old) {
-                left.innerHTML = left.innerHTML + '<span class="old">old</span>';
+                additional_information = additional_information + '<span class="old">old</span>';
             }
             if (layers_data[i].blackwhite) {
-                left.innerHTML = left.innerHTML + '<span class="bw">b/w</span>';
+                additional_information = additional_information + '<span class="bw">b/w</span>';
             }
             if (layers_data[i].nolabels) {
-                left.innerHTML = left.innerHTML + '<span class="nl">nl</span>';
+                additional_information = additional_information + '<span class="nl">nl</span>';
             }
             if (layers_data[i].language) {
-                left.innerHTML = left.innerHTML + '<span class="lang">' + layers_data[i].language + '</span>';
+                additional_information = additional_information + '<span class="lang">' + layers_data[i].language + '</span>';
             }
 
-            left.innerHTML = left.innerHTML + '<br>';
+            layers_data[i].index = layers.push(new_layer) - 1;
+            left.innerHTML = left.innerHTML + '<div id="' + layers_data[i].id + '"><button type="button" onclick="showLayer(' + layers_data[i].id + ')">Show</button> ' + layers_data[i].name + additional_information + '</div>';
         }
     }
 }
@@ -95,9 +96,11 @@ function showLayer(id) {
     if (current_layer_id != id) {
         if(current_layer_id.length > 0) {
             map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
+            document.getElementById(current_layer_id).removeAttribute('class');
         }
 
         map.addLayer(layers[getLayerDataByID(id).index]);
+        document.getElementById(id).setAttribute('class', 'selected_layer');
         current_layer_id = id + '';
     }
 
