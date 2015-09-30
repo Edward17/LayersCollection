@@ -724,6 +724,7 @@ var layers_data = [
         'maxZoom': 13,
         'attribution': tiles_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>',
         'subdomains': ['a', 'b'],
+        'minZoom': 7,
         'id': '1081'
     }
 ];

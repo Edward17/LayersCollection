@@ -21,7 +21,6 @@ function initializeLayers() {
 
     for (var i = 0; i < layers_data.length; i++) {
         if (layers_data[i].header) {
-            //left.innerHTML = left.innerHTML + '<b>' + layers_data[i].name + '</b><br>';
             left.innerHTML = left.innerHTML + '<div><b>' + layers_data[i].name + '</b></div>';
         } else {
             if (layers_data[i].bing) {
@@ -32,32 +31,23 @@ function initializeLayers() {
                         type: layers_data[i].type
                     }
                 );
-            } else if (layers_data[i].tms) {
-                new_layer = L.tileLayer(
-                        layers_data[i].address,
-                    {
-                        maxZoom: layers_data[i].maxZoom,
-                        attribution: layers_data[i].attribution,
-                        tms: true
-                    }
-                );
-            } else if (layers_data[i].subdomains) {
-                new_layer = L.tileLayer(
-                    layers_data[i].address,
-                    {
-                        maxZoom: layers_data[i].maxZoom,
-                        attribution: layers_data[i].attribution,
-                        subdomains: layers_data[i].subdomains,
-                    }
-                );
             } else {
-                new_layer = L.tileLayer(
-                    layers_data[i].address,
-                    {
-                        maxZoom: layers_data[i].maxZoom,
-                        attribution: layers_data[i].attribution,
-                    }
-                );
+                options = {
+                    maxZoom: layers_data[i].maxZoom,
+                    attribution: layers_data[i].attribution
+                };
+
+                if (layers_data[i].tms) {
+                    options.tms = true;
+                }
+                if (layers_data[i].subdomains) {
+                    options.subdomains = layers_data[i].subdomains;
+                }
+                if (layers_data[i].minZoom) {
+                    options.minZoom = layers_data[i].minZoom;
+                }
+
+                new_layer = L.tileLayer(layers_data[i].address,options);
             }
 
             var additional_information = '';
