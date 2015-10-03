@@ -4,11 +4,21 @@ var left;
 var layers = [];
 var current_layer_id = '';
 
+var overlays = [];
+var current_overlays_ids = [];
+
+var new_layer;
+var new_layer_options;
+
 function loaded() {
     initializeElements();
-    initializeLayers();
 
-    registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showLayer);
+    left.innerHTML = left.innerHTML + '<h2 style="margin: 0px;">Layers</h2>';
+    initializeLayers();
+    left.innerHTML = left.innerHTML + '<h2 style="margin: 0px;">Overlays</h2>';
+    initializeOverlays();
+
+    registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showPermalinkLayers);
 }
 
 function initializeElements() {
@@ -17,69 +27,90 @@ function initializeElements() {
 }
 
 function initializeLayers() {
-    var new_layer;
-
     for (var i = 0; i < layers_data.length; i++) {
         if (layers_data[i].header) {
             left.innerHTML = left.innerHTML + '<div><b>' + layers_data[i].name + '</b></div>';
         } else {
-            if (layers_data[i].bing) {
-                new_layer = new L.BingLayer(
-                    layers_data[i].address,
-                    {
-                        maxZoom: layers_data[i].maxZoom,
-                        type: layers_data[i].type
-                    }
-                );
-            } else {
-                options = {
-                    maxZoom: layers_data[i].maxZoom,
-                    attribution: layers_data[i].attribution
-                };
-
-                if (layers_data[i].tms) {
-                    options.tms = true;
-                }
-                if (layers_data[i].subdomains) {
-                    options.subdomains = layers_data[i].subdomains;
-                }
-                if (layers_data[i].minZoom) {
-                    options.minZoom = layers_data[i].minZoom;
-                }
-
-                new_layer = L.tileLayer(layers_data[i].address,options);
-            }
-
-            var additional_information = '';
-            if (layers_data[i].old) {
-                additional_information = additional_information + '<span class="old">old</span>';
-            }
-            if (layers_data[i].blackwhite) {
-                additional_information = additional_information + '<span class="bw">b/w</span>';
-            }
-            if (layers_data[i].nolabels) {
-                additional_information = additional_information + '<span class="nl">nl</span>';
-            }
-            if (layers_data[i].language) {
-                additional_information = additional_information + '<span class="lang">' + layers_data[i].language + '</span>';
-            }
-
-            layers_data[i].index = layers.push(new_layer) - 1;
-            left.innerHTML = left.innerHTML + '<div id="' + layers_data[i].id + '"><button type="button" onclick="showLayer(' + layers_data[i].id + ')">Show</button> ' + layers_data[i].name + additional_information + '</div>';
+            layers_data[i].index = layers.push(createLeafletLayer(layers_data[i])) - 1;
+            left.innerHTML = left.innerHTML + '<div id="' + layers_data[i].id + '"><button type="button" onclick="showLayer(' + layers_data[i].id + ')">Show</button> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
         }
     }
 }
 
-function getLayerDataByID(id) {
-    var layer = layers_data.filter(function(layer_data) {
-        return layer_data.id == id;
-    });
-    return layer[0];
+function initializeOverlays() {
+    for (var i = 0; i < overlays_data.length; i++) {
+        if (overlays_data[i].header) {
+            left.innerHTML = left.innerHTML + '<div><b>' + overlays_data[i].name + '</b></div>';
+        } else {
+            overlays_data[i].index = overlays.push(createLeafletLayer(overlays_data[i])) - 1;
+            left.innerHTML = left.innerHTML + '<div><input id="' + overlays_data[i].id + '" type="checkbox" onchange="onOverlayChanged(' + overlays_data[i].id + ')"> ' + overlays_data[i].name + createAdditionalInformation(overlays_data[i]) + '</div>';
+        }
+    }
+}
+
+function createLeafletLayer(data) {
+    if (data.bing) {
+        new_layer = new L.BingLayer(
+            data.address,
+            {
+                maxZoom: data.maxZoom,
+                type: data.type
+            }
+        );
+    } else {
+        new_layer_options = {
+            maxZoom: data.maxZoom,
+            attribution: data.attribution
+        };
+        if (data.tms) {
+            new_layer_options.tms = true;
+        }
+        if (data.subdomains) {
+            new_layer_options.subdomains = data.subdomains;
+        }
+        if (data.minZoom) {
+            new_layer_options.minZoom = data.minZoom;
+        }
+
+        new_layer = L.tileLayer(data.address, new_layer_options);
+    }
+    return new_layer;
+}
+
+function createAdditionalInformation(data) {
+    var additional_information = '';
+    if (data.old) {
+        additional_information = additional_information + '<span class="old">old</span>';
+    }
+    if (data.blackwhite) {
+        additional_information = additional_information + '<span class="bw">b/w</span>';
+    }
+    if (data.nolabels) {
+        additional_information = additional_information + '<span class="nl">nl</span>';
+    }
+    if (data.language) {
+        additional_information = additional_information + '<span class="lang">' + data.language + '</span>';
+    }
+    return additional_information;
 }
 
 function setDefaultMap() {
     map.setView(L.latLng(49.373, 31.861), 10);
     showLayer('1000');
+}
+
+function showPermalinkLayers(ids) {
+    if (ids.length == 4) {
+        showLayer(ids);
+    } else {
+        showLayer(ids.substring(0, 4));
+
+        var over = ids.substring(5).split(',');
+        for (var i = 0; i < over.length; i++) {
+            showOverlay(over[i]);
+            document.getElementById(over[i]).setAttribute('checked', 'true');
+        }
+    }
 }
 
 function showLayer(id) {
@@ -90,9 +121,67 @@ function showLayer(id) {
         }
 
         map.addLayer(layers[getLayerDataByID(id).index]);
+        if (current_overlays_ids.length > 0) {
+            layers[getLayerDataByID(id).index].bringToBack();
+        }
+        
         document.getElementById(id).setAttribute('class', 'selected_layer');
         current_layer_id = id + '';
     }
 
-    onLayersUpdate(id);
+    updatePermalinkLayers();
+}
+
+function onOverlayChanged(id) {
+    if (document.getElementById(id).checked) {
+        showOverlay(id);
+    } else {
+        map.removeLayer(overlays[getOverlayDataByID(id).index]);
+        current_overlays_ids.splice(getOverlayDataByID(id).index_shown, 1);
+        
+        if (current_overlays_ids.length > 0) {
+            for (var i = 0; i < current_overlays_ids.length; i++) {
+                overlays_data[getOverlayIndexByID(current_overlays_ids[i])].index_shown = i;
+            }
+        }
+    }
+
+    updatePermalinkLayers();
+}
+
+function showOverlay(id) {
+    map.addLayer(overlays[getOverlayDataByID(id).index]);
+    overlays_data[getOverlayIndexByID(id)].index_shown = current_overlays_ids.push(id) - 1;
+}
+
+function updatePermalinkLayers() {
+    if (current_overlays_ids.length > 0) {
+        var layers_txt = current_layer_id;
+
+        for (var i = 0; i < current_overlays_ids.length; i++) {
+            layers_txt = layers_txt + ',' + current_overlays_ids[i];
+        }
+        
+        onLayersUpdate(layers_txt);
+    } else {
+        onLayersUpdate(current_layer_id);
+    }
+}
+
+function getLayerDataByID(id) {
+    var layer = layers_data.filter(function(layer_data) {
+        return layer_data.id == id;
+    });
+    return layer[0];
+}
+
+function getOverlayDataByID(id) {
+    var overlay = overlays_data.filter(function(overlay_data) {
+        return overlay_data.id == id;
+    });
+    return overlay[0];
+}
+
+function getOverlayIndexByID(id) {
+    return overlays_data.indexOf(getOverlayDataByID(id));
 }

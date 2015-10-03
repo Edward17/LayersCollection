@@ -729,8 +729,7 @@ var layers_data = [
     }
 ];
 
-/*
-var overlays = [
+var overlays_data = [
     {
         'name': 'OpenRailwayMap',
         'address': 'http://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png',
@@ -774,4 +773,3 @@ var overlays = [
         'id': '2005'
     }
 ];
-*/
