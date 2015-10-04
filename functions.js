@@ -13,9 +13,9 @@ var new_layer_options;
 function loaded() {
     initializeElements();
 
-    left.innerHTML = left.innerHTML + '<h2 style="margin: 0px;">Layers</h2>';
+    left.innerHTML = left.innerHTML + '<h2 class="header_big">Baselayers</h2>';
     initializeLayers();
-    left.innerHTML = left.innerHTML + '<h2 style="margin: 0px;">Overlays</h2>';
+    left.innerHTML = left.innerHTML + '<h2 class="header_big">Overlays</h2>';
     initializeOverlays();
 
     registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showPermalinkLayers);
@@ -57,6 +57,26 @@ function createLeafletLayer(data) {
                 type: data.type
             }
         );
+    } else if (data.wms) {
+        new_layer_options = {
+            maxZoom: data.maxZoom,
+            attribution: data.attribution,
+            layers: data.layers
+        };
+        if (data.minZoom) {
+            new_layer_options.minZoom = data.minZoom;
+        }
+        if (data.format) {
+            new_layer_options.format = data.format;
+        }
+        if (data.transparent) {
+            new_layer_options.transparent = data.transparent;
+        }
+        if (data.opacity) {
+            new_layer_options.opacity = data.opacity;
+        }
+        
+        new_layer = L.tileLayer.wms(data.address, new_layer_options);
     } else {
         new_layer_options = {
             maxZoom: data.maxZoom,

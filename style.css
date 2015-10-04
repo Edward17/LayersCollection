@@ -26,6 +26,11 @@ BODY {
 }
 
 
+
+.header_big {
+    margin: 0px;
+}
+
 .selected_layer {
     background: #E5E5E5;
 }
