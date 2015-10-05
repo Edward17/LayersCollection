@@ -6,6 +6,7 @@ var osm_attribution = attribution; // must be deleted
 var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlczI3diJ9.eghwjbaS0bJ80bj2Vzd6Ew'; // This is my personal access token. Please don't use it, just register on MapBox for free: https://www.mapbox.com/signup/?plan=starter
 //var lyrk_token = '';
 
+// max layer id = 1085
 var layers_data = [
     {
         'header': 'true',
@@ -81,10 +82,20 @@ var layers_data = [
     {
         'name': 'OpenStreetMap.de',
         'address': 'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
-        'maxZoom': 19,
+        'maxZoom': 18,
         'attribution': attribution + '<a href="http://openstreetmap.de/germanstyle.html" target="_blank">OpenStreetMap - Deutschland</a>',
         'id': '1008',
+        'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'de'
+    },
+    {
+        'name': 'OpenStreetMap.de background',
+        'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/bg//{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': attribution + '<a href="http://openstreetmap.de/germanstyle.html" target="_blank">OpenStreetMap - Deutschland</a>',
+        'id': '1084',
+        'subdomains': ['a', 'b', 'c', 'd'],
+        'nolabels': 'true'
     },
     {
         'name': 'OpenStreetMap.fr',
@@ -102,14 +113,14 @@ var layers_data = [
         'id': '1010'
     },
     {
-        'name': 'wmflabs OSM standart',
+        'name': 'wmflabs standart',
         'address': 'http://{s}.tiles.wmflabs.org/osm/{z}/{x}/{y}.png',
         'maxZoom': 21,
         'attribution': openstreetmap_attribution,
         'id': '1011'
     },
     {
-        'name': 'wmflabs OSM no-labels',
+        'name': 'wmflabs no-labels',
         'address': 'http://{s}.tiles.wmflabs.org/osm-no-labels/{z}/{x}/{y}.png',
         'maxZoom': 21,
         'attribution': openstreetmap_attribution,
@@ -117,7 +128,7 @@ var layers_data = [
         'nolabels': 'true'
     },
     {
-        'name': 'wmflabs OSM B/W',
+        'name': 'wmflabs B/W',
         'address': 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
         'maxZoom': 21,
         'attribution': openstreetmap_attribution,
@@ -493,6 +504,13 @@ var layers_data = [
         'id': '1055'
     },
     {
+        'name': 'Nachtlebenkarte',
+        'address': 'http://sanday.geofabrik.de/test_night/{z}/{x}/{y}.png',
+        'maxZoom': 19,
+        'attribution': attribution + '<a href="http://blog.geofabrik.de/?p=332" target="_blank">Lisa Stolz, Geofabrik</a>',
+        'id': '1085'
+    },
+    {
         'name': 'OpenHistoricalMap',
         'address': 'http://www.openhistoricalmap.org/ohm_tiles/{z}/{x}/{y}.png',
         'maxZoom': 18,
@@ -742,6 +760,7 @@ var layers_data = [
     }
 ];
 
+// max overlay id = 2039
 var overlays_data = [
     {
         'header': 'true',
@@ -781,15 +800,6 @@ var overlays_data = [
         'language': 'en'
     },
     {
-        'name': 'Stamen Toner-labels',
-        'address': 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
-        'maxZoom': 19,
-        'attribution': '<a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
-        'id': '2010',
-        'old': 'true',
-        'language': 'en'
-    },
-    {
         'name': 'Stamen Toner-lines',
         'address': 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png',
         'maxZoom': 19,
@@ -797,6 +807,55 @@ var overlays_data = [
         'id': '2011',
         'old': 'true',
         'nolabels': 'true'
+    },
+    {
+        'header': 'true',
+        'name': 'Labels'
+    },
+    {
+        'name': 'Multilingual map - de',
+        'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/labels/de/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': '<a href="http://mlm.jochentopf.com/" target="_blank">Multilingual Map</a>',
+        'id': '2036',
+        'subdomains': ['a', 'b', 'c', 'd'],
+        'language': 'de'
+    },
+    {
+        'name': 'Multilingual map - en',
+        'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/labels/en/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': '<a href="http://mlm.jochentopf.com/" target="_blank">Multilingual Map</a>',
+        'id': '2037',
+        'subdomains': ['a', 'b', 'c', 'd'],
+        'language': 'en'
+    },
+    {
+        'name': 'Multilingual map - ru',
+        'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/labels/ru/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': '<a href="http://mlm.jochentopf.com/" target="_blank">Multilingual Map</a>',
+        'id': '2038',
+        'subdomains': ['a', 'b', 'c', 'd'],
+        'language': 'ru'
+    },
+    {
+        'name': 'Multilingual map - uk',
+        'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/labels/uk/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': '<a href="http://mlm.jochentopf.com/" target="_blank">Multilingual Map</a>',
+        'id': '2039',
+        'subdomains': ['a', 'b', 'c', 'd'],
+        'language': 'uk'
+    },
+    {
+        'name': 'Stamen Toner-labels',
+        'address': 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
+        'maxZoom': 19,
+        'attribution': '<a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+        'id': '2010',
+        'old': 'true',
+        'language': 'en'
     },
     {
         'header': 'true',
@@ -943,7 +1002,7 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'Administrative structure'
+        'name': 'Administrative boundaries'
     },
     {
         'name': 'Admin Boundaries',
