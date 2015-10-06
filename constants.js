@@ -635,7 +635,8 @@ var layers_data = [
         'address': 'http://www.freietonne.de/osm/{z}/{x}/{y}.png',
         'maxZoom': 18,
         'attribution': attribution + '<a href="http://www.freietonne.de/" target="_blank">Freie Tonne</a>',
-        'id': '1071'
+        'id': '1071',
+        'old': 'true'
     },
     {
         'header': 'true',
