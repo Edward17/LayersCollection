@@ -11,7 +11,7 @@ BODY {
 .left {
     float: left;
     height: 100%;
-    width: 400px;
+    width: 360px;
     overflow-y: scroll;
 }
 
@@ -22,7 +22,7 @@ BODY {
 .permalink {
     position: fixed;
     bottom: 0px;
-    left: 400px;
+    left: 360px;
     padding-left: 4px;
     padding-right: 4px;
     background: #FFFFFF;
@@ -32,10 +32,24 @@ BODY {
 
 
 .header_big {
+    padding-left: 4px;
     margin: 0px;
 }
 
+.header {
+    padding-left: 4px;
+}
+
+.layer {
+    padding-left: 4px;
+    cursor: pointer;
+}
+.layer:hover {
+    background: #E5E5FF;
+}
+
 .selected_layer {
+    padding-left: 4px;
     background: #E5E5E5;
 }
 

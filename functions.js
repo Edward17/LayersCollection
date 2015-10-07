@@ -29,10 +29,10 @@ function initializeElements() {
 function initializeLayers() {
     for (var i = 0; i < layers_data.length; i++) {
         if (layers_data[i].header) {
-            left.innerHTML = left.innerHTML + '<div><b>' + layers_data[i].name + '</b></div>';
+            left.innerHTML = left.innerHTML + '<div class="header"><b>' + layers_data[i].name + '</b></div>';
         } else {
             layers_data[i].index = layers.push(createLeafletLayer(layers_data[i])) - 1;
-            left.innerHTML = left.innerHTML + '<div id="' + layers_data[i].id + '"><button type="button" onclick="showLayer(' + layers_data[i].id + ')">Show</button> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
+            left.innerHTML = left.innerHTML + '<div class="layer" id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
         }
     }
 }
@@ -40,7 +40,7 @@ function initializeLayers() {
 function initializeOverlays() {
     for (var i = 0; i < overlays_data.length; i++) {
         if (overlays_data[i].header) {
-            left.innerHTML = left.innerHTML + '<div><b>' + overlays_data[i].name + '</b></div>';
+            left.innerHTML = left.innerHTML + '<div class="header"><b>' + overlays_data[i].name + '</b></div>';
         } else {
             overlays_data[i].index = overlays.push(createLeafletLayer(overlays_data[i])) - 1;
             left.innerHTML = left.innerHTML + '<div><input id="' + overlays_data[i].id + '" type="checkbox" onchange="onOverlayChanged(' + overlays_data[i].id + ')"> ' + overlays_data[i].name + createAdditionalInformation(overlays_data[i]) + '</div>';
@@ -137,7 +137,7 @@ function showLayer(id) {
     if (current_layer_id != id) {
         if(current_layer_id.length > 0) {
             map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
-            document.getElementById(current_layer_id).removeAttribute('class');
+            document.getElementById(current_layer_id).setAttribute('class', 'layer');
         }
 
         map.addLayer(layers[getLayerDataByID(id).index]);
