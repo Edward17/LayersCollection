@@ -761,7 +761,7 @@ var layers_data = [
     }
 ];
 
-// max overlay id = 2039
+// max overlay id = 2049
 var overlays_data = [
     {
         'header': 'true',
@@ -1074,6 +1074,90 @@ var overlays_data = [
         'maxZoom': 22,
         'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
         'id': '2032'
+    },
+    {
+        'header': 'true',
+        'name': 'Quality Assurance'
+    },
+    {
+        'name': 'Населенные пункты (НП), лежащие в границах другого НП',
+        'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/places.png',
+        'maxZoom': 22, // can be more
+        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'id': '2040',
+        'tms': 'true'
+    },
+    {
+        'name': 'Улицы с подозрительно большими разрывами между сегментами',
+        'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/gaps.png',
+        'maxZoom': 22, // can be more
+        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'id': '2041',
+        'tms': 'true'
+    },
+    {
+        'name': 'Улицы, пересекающие границы НП',
+        'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/inter.png',
+        'maxZoom': 22, // can be more
+        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'id': '2042',
+        'tms': 'true'
+    },
+    {
+        'name': 'Дубли номеров домов',
+        'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/numbers.png',
+        'maxZoom': 22, // can be more
+        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'id': '2043',
+        'tms': 'true'
+    },
+    {
+        'name': 'Улицы за границами НП',
+        'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/streets.png',
+        'maxZoom': 22, // can be more
+        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'id': '2044',
+        'tms': 'true'
+    },
+    {
+        'name': 'Дома без улицы',
+        'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/address.png',
+        'maxZoom': 22, // can be more
+        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'id': '2045',
+        'tms': 'true'
+    },
+    {
+        'name': 'no name',
+        'address': 'http://tile{s}.poole.ch/noname/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>',
+        'id': '2046',
+        'subdomains': ['2', '3']
+    },
+    {
+        'name': 'no address',
+        'address': 'http://tile{s}.poole.ch/noaddress/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>',
+        'id': '2047',
+        'subdomains': ['2', '3']
+    },
+    {
+        'name': 'has address',
+        'address': 'http://tile{s}.poole.ch/has_address/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>',
+        'id': '2048',
+        'subdomains': ['2', '3']
+    },
+    {
+        'name': 'AEYCH',
+        'address': 'http://tile{s}.poole.ch/aeych/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>',
+        'id': '2049',
+        'subdomains': ['2', '3']
     },
     {
         'header': 'true',
