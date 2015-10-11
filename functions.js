@@ -120,16 +120,20 @@ function setDefaultMap() {
 }
 
 function showPermalinkLayers(ids) {
-    if (ids.length == 4) {
-        showLayer(ids);
-    } else {
-        showLayer(ids.substring(0, 4));
+    if (ids) {
+        if (ids.length == 4) {
+            showLayer(ids);
+        } else {
+            showLayer(ids.substring(0, 4));
 
-        var over = ids.substring(5).split(',');
-        for (var i = 0; i < over.length; i++) {
-            showOverlay(over[i]);
-            document.getElementById(over[i]).setAttribute('checked', 'true');
+            var over = ids.substring(5).split(',');
+            for (var i = 0; i < over.length; i++) {
+                showOverlay(over[i]);
+                document.getElementById(over[i]).setAttribute('checked', 'true');
+            }
         }
+    } else {
+        showLayer('1000');
     }
 }
 
