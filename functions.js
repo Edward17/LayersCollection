@@ -18,6 +18,7 @@ function loaded() {
     initializeLayers();
     left.innerHTML = left.innerHTML + '<h2 class="header_big">Overlays</h2>';
     initializeOverlays();
+    onOldCheckboxChanged();
 
     registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showPermalinkLayers);
 }
@@ -246,10 +247,10 @@ function onOldCheckboxChanged() {
     var left_layers = left.childNodes;
     for (var i = 0; i < left_layers.length; i++) {
         if (left_layers[i].innerHTML.search('class="old"') != -1) {
-            if (document.getElementById('noold_selector').checked) {
-                left_layers[i].className = left_layers[i].className + ' old_hidden';
-            } else {
+            if (document.getElementById('old_selector').checked) {
                 left_layers[i].className = left_layers[i].className.replace(' old_hidden', '');
+            } else {
+                left_layers[i].className = left_layers[i].className + ' old_hidden';
             }
         }
     }
