@@ -90,3 +90,19 @@ BODY {
     color: #FFFFFF;
     background-color: #0000FF;
 }
+
+.blackwhite_hidden {
+    display: none;
+}
+
+.nolabels_hidden {
+    display: none;
+}
+
+.old_hidden {
+    display: none;
+}
+
+.language_hidden {
+    display: none;
+}

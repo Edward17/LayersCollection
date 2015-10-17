@@ -1,5 +1,6 @@
 var map;
 var left;
+var language_selector;
 
 var layers = [];
 var current_layer_id = '';
@@ -24,6 +25,7 @@ function loaded() {
 function initializeElements() {
     map = L.map('map');
     left = document.getElementById('left');
+    language_selector = document.getElementById('language_selector');
 }
 
 function initializeLayers() {
@@ -110,6 +112,10 @@ function createAdditionalInformation(data) {
     }
     if (data.language) {
         additional_information = additional_information + '<span class="lang">' + data.language + '</span>';
+        
+        if (language_selector.innerHTML.search('<option>' + data.language +'</option>') == -1) {
+            language_selector.innerHTML = language_selector.innerHTML + '<option>' + data.language +'</option>';
+        }
     }
     return additional_information;
 }
@@ -208,4 +214,61 @@ function getOverlayDataByID(id) {
 
 function getOverlayIndexByID(id) {
     return overlays_data.indexOf(getOverlayDataByID(id));
+}
+
+function onBWCheckboxChanged() {
+    var left_layers = left.childNodes;
+    for (var i = 0; i < left_layers.length; i++) {
+        if (left_layers[i].innerHTML.search('class="bw"') == -1 && left_layers[i].tagName != 'H2') {
+            if (document.getElementById('blackwhite_selector').checked) {
+                left_layers[i].className = left_layers[i].className + ' blackwhite_hidden';
+            } else {
+                left_layers[i].className = left_layers[i].className.replace(' blackwhite_hidden', '');
+            }
+        }
+    }
+}
+
+function onNLCheckboxChanged() {
+    var left_layers = left.childNodes;
+    for (var i = 0; i < left_layers.length; i++) {
+        if (left_layers[i].innerHTML.search('class="nl"') == -1 && left_layers[i].tagName != 'H2') {
+            if (document.getElementById('nolabels_selector').checked) {
+                left_layers[i].className = left_layers[i].className + ' nolabels_hidden';
+            } else {
+                left_layers[i].className = left_layers[i].className.replace(' nolabels_hidden', '');
+            }
+        }
+    }
+}
+
+function onOldCheckboxChanged() {
+    var left_layers = left.childNodes;
+    for (var i = 0; i < left_layers.length; i++) {
+        if (left_layers[i].innerHTML.search('class="old"') != -1) {
+            if (document.getElementById('noold_selector').checked) {
+                left_layers[i].className = left_layers[i].className + ' old_hidden';
+            } else {
+                left_layers[i].className = left_layers[i].className.replace(' old_hidden', '');
+            }
+        }
+    }
+}
+
+function onLanguageChanged() {
+    var language = language_selector.options[language_selector.selectedIndex].text;
+    var left_layers = left.childNodes;
+    for (var i = 0; i < left_layers.length; i++) {
+        if (language == 'any') {
+            left_layers[i].className = left_layers[i].className.replace(' language_hidden', '');
+        } else {
+            if (left_layers[i].className != 'header_big' && left_layers[i].innerHTML.search('>' + language + '<') == -1) {
+                if (left_layers[i].className.search('language_hidden') == -1) {
+                    left_layers[i].className = left_layers[i].className + ' language_hidden';
+                }
+            } else {
+                left_layers[i].className = left_layers[i].className.replace(' language_hidden', '');
+            }
+        }
+    }
 }

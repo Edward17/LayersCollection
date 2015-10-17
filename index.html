@@ -13,5 +13,13 @@
 		<div id="left" class="left"></div>
 		<div id="map" class="map"></div>
 		<a id="permalink" class="permalink">Permalink</a>
+		<div style="position:fixed; left: 400px; top: 0px; background: #FFFFFF;">
+			<input type="checkbox" id="nolabels_selector" onchange="onNLCheckboxChanged()"> Only no-labels<br>
+			<input type="checkbox" id="blackwhite_selector" onchange="onBWCheckboxChanged()"> Only black/white<br>
+			<input type="checkbox" id="noold_selector" onchange="onOldCheckboxChanged()"> Only not old<br>
+			Language: <select id="language_selector" onchange="onLanguageChanged()">
+				<option selected>any</option>
+			</select>
+		</div>
 	</body>
 </html>
