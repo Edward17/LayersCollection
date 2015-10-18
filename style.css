@@ -8,9 +8,26 @@ BODY {
 
 
 
-.left {
-    float: left;
+.padding_text {
+    padding-left: 4px;
+}
+
+
+
+.functions_container {
+    border-bottom: 2px solid;
+}
+
+.left_container {
     height: 100%;
+    width: 360px;
+    float: left;
+}
+
+.left {
+    position: absolute;
+    bottom: 0px;
+    top: 100px;
     width: 360px;
     overflow-y: scroll;
 }
@@ -19,25 +36,11 @@ BODY {
     height: 100%;
 }
 
-.permalink {
-    position: fixed;
-    bottom: 0px;
-    left: 360px;
-    padding-left: 4px;
-    padding-right: 4px;
-    background: #FFFFFF;
-    z-index: 1;
-}
-
 
 
 .header_big {
     padding-left: 4px;
     margin: 0px;
-}
-
-.header {
-    padding-left: 4px;
 }
 
 .layer {
@@ -51,6 +54,24 @@ BODY {
 .selected_layer {
     padding-left: 4px;
     background: #E5E5E5;
+}
+
+
+
+.blackwhite_hidden {
+    display: none;
+}
+
+.nolabels_hidden {
+    display: none;
+}
+
+.old_hidden {
+    display: none;
+}
+
+.language_hidden {
+    display: none;
 }
 
 
@@ -89,20 +110,4 @@ BODY {
     padding-left: 2px;
     color: #FFFFFF;
     background-color: #0000FF;
-}
-
-.blackwhite_hidden {
-    display: none;
-}
-
-.nolabels_hidden {
-    display: none;
-}
-
-.old_hidden {
-    display: none;
-}
-
-.language_hidden {
-    display: none;
 }

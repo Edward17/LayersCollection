@@ -18,7 +18,6 @@ function loaded() {
     initializeLayers();
     left.innerHTML = left.innerHTML + '<h2 class="header_big">Overlays</h2>';
     initializeOverlays();
-    onOldCheckboxChanged();
 
     registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showPermalinkLayers);
 }
@@ -32,10 +31,10 @@ function initializeElements() {
 function initializeLayers() {
     for (var i = 0; i < layers_data.length; i++) {
         if (layers_data[i].header) {
-            left.innerHTML = left.innerHTML + '<div class="header"><b>' + layers_data[i].name + '</b></div>';
+            left.innerHTML = left.innerHTML + '<div class="padding_text"><b>' + layers_data[i].name + '</b></div>';
         } else {
             layers_data[i].index = layers.push(createLeafletLayer(layers_data[i])) - 1;
-            left.innerHTML = left.innerHTML + '<div class="layer" id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
+            left.innerHTML = left.innerHTML + '<div' + createClassAttribute(layers_data[i], 'layer ') + ' id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
         }
     }
 }
@@ -43,10 +42,10 @@ function initializeLayers() {
 function initializeOverlays() {
     for (var i = 0; i < overlays_data.length; i++) {
         if (overlays_data[i].header) {
-            left.innerHTML = left.innerHTML + '<div class="header"><b>' + overlays_data[i].name + '</b></div>';
+            left.innerHTML = left.innerHTML + '<div class="padding_text"><b>' + overlays_data[i].name + '</b></div>';
         } else {
             overlays_data[i].index = overlays.push(createLeafletLayer(overlays_data[i])) - 1;
-            left.innerHTML = left.innerHTML + '<div><input id="' + overlays_data[i].id + '" type="checkbox" onchange="onOverlayChanged(' + overlays_data[i].id + ')"> ' + overlays_data[i].name + createAdditionalInformation(overlays_data[i]) + '</div>';
+            left.innerHTML = left.innerHTML + '<div' + createClassAttribute(overlays_data[i], '') + '><input id="' + overlays_data[i].id + '" type="checkbox" onchange="onOverlayChanged(' + overlays_data[i].id + ')"> ' + overlays_data[i].name + createAdditionalInformation(overlays_data[i]) + '</div>';
         }
     }
 }
@@ -119,6 +118,13 @@ function createAdditionalInformation(data) {
         }
     }
     return additional_information;
+}
+
+function createClassAttribute(data, class_name) {
+    if (data.old) {
+        class_name = class_name + 'old_hidden';
+    }
+    return ' class="' + class_name + '"';
 }
 
 function setDefaultMap() {
