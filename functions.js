@@ -16,12 +16,12 @@ function loaded() {
 
     left.innerHTML = left.innerHTML + '<h2 class="header_big">Baselayers</h2>';
     initializeLayers();
-    left.innerHTML = left.innerHTML + '<div id="-100"><button type=button onclick="showLayer(-100)">Set gray background</button></div>';
-    left.innerHTML = left.innerHTML + '<div id="-101"><button type=button onclick="showLayer(-101)">Set black background</button></div>';
+    left.innerHTML = left.innerHTML + '<div class="padding_text" id="-100"><button type=button onclick="showLayer(-100)">Set gray background</button></div>';
+    left.innerHTML = left.innerHTML + '<div class="padding_text" id="-101"><button type=button onclick="showLayer(-101)">Set black background</button></div>';
 
     left.innerHTML = left.innerHTML + '<h2 class="header_big">Overlays</h2>';
     initializeOverlays();
-    left.innerHTML = left.innerHTML + '<div><button type=button onclick="removeAllOverlays()">Remove all overlays</button></div>';
+    left.innerHTML = left.innerHTML + '<div class="padding_text"><button type=button onclick="removeAllOverlays()">Remove all overlays</button></div>';
 
     registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showPermalinkLayers);
 }
@@ -159,8 +159,8 @@ function showLayer(id) {
         if (current_layer_id.length > 0) {
             if (current_layer_id.search('-') == -1) {
                 map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
-                document.getElementById(current_layer_id).setAttribute('class', 'padding_text layer');
             }
+            document.getElementById(current_layer_id).setAttribute('class', 'padding_text layer');
         }
 
         if (id.toString().search('-') == -1)  {
