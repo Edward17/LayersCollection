@@ -226,7 +226,7 @@ function getOverlayIndexByID(id) {
 function onBWCheckboxChanged() {
     var left_layers = left.childNodes;
     for (var i = 0; i < left_layers.length; i++) {
-        if (left_layers[i].innerHTML.search('class="bw"') == -1 && left_layers[i].tagName != 'H2') {
+        if (left_layers[i].innerHTML.search('class="additional_information bw"') == -1 && left_layers[i].tagName != 'H2') {
             if (document.getElementById('blackwhite_selector').checked) {
                 left_layers[i].className = left_layers[i].className + ' blackwhite_hidden';
             } else {
@@ -239,7 +239,7 @@ function onBWCheckboxChanged() {
 function onNLCheckboxChanged() {
     var left_layers = left.childNodes;
     for (var i = 0; i < left_layers.length; i++) {
-        if (left_layers[i].innerHTML.search('class="nl"') == -1 && left_layers[i].tagName != 'H2') {
+        if (left_layers[i].innerHTML.search('class="additional_information nl"') == -1 && left_layers[i].tagName != 'H2') {
             if (document.getElementById('nolabels_selector').checked) {
                 left_layers[i].className = left_layers[i].className + ' nolabels_hidden';
             } else {
@@ -252,7 +252,7 @@ function onNLCheckboxChanged() {
 function onOldCheckboxChanged() {
     var left_layers = left.childNodes;
     for (var i = 0; i < left_layers.length; i++) {
-        if (left_layers[i].innerHTML.search('class="old"') != -1) {
+        if (left_layers[i].innerHTML.search('class="additional_information old"') != -1) {
             if (document.getElementById('old_selector').checked) {
                 left_layers[i].className = left_layers[i].className.replace(' old_hidden', '');
             } else {
