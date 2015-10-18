@@ -202,6 +202,7 @@ function removeAllOverlays() {
     if (current_overlays_ids.length > 0) {
         for (var i = 0; i < current_overlays_ids.length; i++) {
             map.removeLayer(overlays[getOverlayDataByID(current_overlays_ids[i]).index]);
+            document.getElementById(current_overlays_ids[i]).checked = false;
         }
         current_overlays_ids = [];
         
