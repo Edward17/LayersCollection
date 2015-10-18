@@ -34,7 +34,7 @@ function initializeLayers() {
             left.innerHTML = left.innerHTML + '<div class="padding_text"><b>' + layers_data[i].name + '</b></div>';
         } else {
             layers_data[i].index = layers.push(createLeafletLayer(layers_data[i])) - 1;
-            left.innerHTML = left.innerHTML + '<div' + createClassAttribute(layers_data[i], 'layer ') + ' id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
+            left.innerHTML = left.innerHTML + '<div' + createClassAttribute(layers_data[i], 'padding_text layer ') + ' id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
         }
     }
 }
@@ -102,16 +102,16 @@ function createLeafletLayer(data) {
 function createAdditionalInformation(data) {
     var additional_information = '';
     if (data.old) {
-        additional_information = additional_information + '<span class="old">old</span>';
+        additional_information = additional_information + '<span class="additional_information old">old</span>';
     }
     if (data.blackwhite) {
-        additional_information = additional_information + '<span class="bw">b/w</span>';
+        additional_information = additional_information + '<span class="additional_information bw">b/w</span>';
     }
     if (data.nolabels) {
-        additional_information = additional_information + '<span class="nl">nl</span>';
+        additional_information = additional_information + '<span class="additional_information nl">nl</span>';
     }
     if (data.language) {
-        additional_information = additional_information + '<span class="lang">' + data.language + '</span>';
+        additional_information = additional_information + '<span class="additional_information lang">' + data.language + '</span>';
         
         if (language_selector.innerHTML.search('<option>' + data.language +'</option>') == -1) {
             language_selector.innerHTML = language_selector.innerHTML + '<option>' + data.language +'</option>';
@@ -154,7 +154,7 @@ function showLayer(id) {
     if (current_layer_id != id) {
         if(current_layer_id.length > 0) {
             map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
-            document.getElementById(current_layer_id).setAttribute('class', 'layer');
+            document.getElementById(current_layer_id).setAttribute('class', 'padding_text layer');
         }
 
         map.addLayer(layers[getLayerDataByID(id).index]);
@@ -162,7 +162,7 @@ function showLayer(id) {
             layers[getLayerDataByID(id).index].bringToBack();
         }
         
-        document.getElementById(id).setAttribute('class', 'selected_layer');
+        document.getElementById(id).setAttribute('class', 'padding_text selected_layer');
         current_layer_id = id + '';
     }
 

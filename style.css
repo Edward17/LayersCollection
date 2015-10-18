@@ -1,7 +1,3 @@
-HTML {
-    height: 100%;
-}
-
 BODY {
     margin: 0px;
 }
@@ -44,7 +40,6 @@ BODY {
 }
 
 .layer {
-    padding-left: 4px;
     cursor: pointer;
 }
 .layer:hover {
@@ -52,7 +47,6 @@ BODY {
 }
 
 .selected_layer {
-    padding-left: 4px;
     background: #E5E5E5;
 }
 
@@ -76,38 +70,26 @@ BODY {
 
 
 
-.bw {
+.additional_information {
     float: right;
     margin-right: 4px;
     padding-right: 2px;
     padding-left: 2px;
     color: #FFFFFF;
+}
+
+.bw {
     background-color: #C0C0C0;
 }
 
 .old {
-    float: right;
-    margin-right: 4px;
-    padding-right: 2px;
-    padding-left: 2px;
-    color: #FFFFFF;
     background-color: #FF0000;
 }
 
 .lang {
-    float: right;
-    margin-right: 4px;
-    padding-right: 2px;
-    padding-left: 2px;
-    color: #FFFFFF;
     background-color: #00FF00;
 }
 
 .nl {
-    float: right;
-    margin-right: 4px;
-    padding-right: 2px;
-    padding-left: 2px;
-    color: #FFFFFF;
     background-color: #0000FF;
 }
