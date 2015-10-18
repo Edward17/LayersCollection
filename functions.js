@@ -16,8 +16,12 @@ function loaded() {
 
     left.innerHTML = left.innerHTML + '<h2 class="header_big">Baselayers</h2>';
     initializeLayers();
+    left.innerHTML = left.innerHTML + '<div id="-100"><button type=button onclick="showLayer(-100)">Set gray background</button></div>';
+    left.innerHTML = left.innerHTML + '<div id="-101"><button type=button onclick="showLayer(-101)">Set black background</button></div>';
+
     left.innerHTML = left.innerHTML + '<h2 class="header_big">Overlays</h2>';
     initializeOverlays();
+    left.innerHTML = left.innerHTML + '<div><button type=button onclick="removeAllOverlays()">Remove all overlays</button></div>';
 
     registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showPermalinkLayers);
 }
@@ -152,14 +156,22 @@ function showPermalinkLayers(ids) {
 
 function showLayer(id) {
     if (current_layer_id != id) {
-        if(current_layer_id.length > 0) {
-            map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
-            document.getElementById(current_layer_id).setAttribute('class', 'padding_text layer');
+        if (current_layer_id.length > 0) {
+            if (current_layer_id.search('-') == -1) {
+                map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
+                document.getElementById(current_layer_id).setAttribute('class', 'padding_text layer');
+            }
         }
 
-        map.addLayer(layers[getLayerDataByID(id).index]);
-        if (current_overlays_ids.length > 0) {
-            layers[getLayerDataByID(id).index].bringToBack();
+        if (id.toString().search('-') == -1)  {
+            map.addLayer(layers[getLayerDataByID(id).index]);
+            if (current_overlays_ids.length > 0) {
+                layers[getLayerDataByID(id).index].bringToBack();
+            }
+        } else if (id == '-100') {
+            document.getElementById('map').style.backgroundColor = 'rgb(221,221,221)';
+        } else if (id == '-101') {
+            document.getElementById('map').style.backgroundColor = 'rgb(0,0,0)';
         }
         
         document.getElementById(id).setAttribute('class', 'padding_text selected_layer');
@@ -184,6 +196,17 @@ function onOverlayChanged(id) {
     }
 
     updatePermalinkLayers();
+}
+
+function removeAllOverlays() {
+    if (current_overlays_ids.length > 0) {
+        for (var i = 0; i < current_overlays_ids.length; i++) {
+            map.removeLayer(overlays[getOverlayDataByID(current_overlays_ids[i]).index]);
+        }
+        current_overlays_ids = [];
+        
+        updatePermalinkLayers();
+    }
 }
 
 function showOverlay(id) {
