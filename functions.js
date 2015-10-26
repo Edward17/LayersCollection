@@ -38,7 +38,7 @@ function initializeLayers() {
             left.innerHTML = left.innerHTML + '<div class="padding_text"><b>' + layers_data[i].name + '</b></div>';
         } else {
             layers_data[i].index = layers.push(createLeafletLayer(layers_data[i])) - 1;
-            left.innerHTML = left.innerHTML + '<div' + createClassAttribute(layers_data[i], 'padding_text layer ') + ' id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
+            left.innerHTML = left.innerHTML + '<div' + createClassAttribute(layers_data[i], 'padding_text layer') + ' id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
         }
     }
 }
@@ -126,7 +126,7 @@ function createAdditionalInformation(data) {
 
 function createClassAttribute(data, class_name) {
     if (data.old) {
-        class_name = class_name + 'old_hidden';
+        class_name = class_name + ' old_hidden';
     }
     return ' class="' + class_name + '"';
 }

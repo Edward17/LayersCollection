@@ -6,7 +6,7 @@ var osm_attribution = attribution; // must be deleted
 var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlczI3diJ9.eghwjbaS0bJ80bj2Vzd6Ew'; // This is my personal access token. Please don't use it, just register on MapBox for free: https://www.mapbox.com/signup/?plan=starter
 //var lyrk_token = '';
 
-// max layer id = 1085
+// max layer id = 1086
 var layers_data = [
     {
         'header': 'true',
@@ -173,6 +173,8 @@ var layers_data = [
         'id': '1018'
     },
 
+/*
+// don't works with websites (GitHub Pages also), only with localhost: http://www.gossamer-threads.com/lists/wiki/mediawiki-cvs/625066
     {
         'name': 'Wikimedia maps',
         'address': 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
@@ -180,6 +182,7 @@ var layers_data = [
         'attribution': attribution + '<a href="https://maps.wikimedia.org" target="_blank">Wikimedia maps</a>',
         'id': '1019'
     },
+*/
 
     {
         'name': 'OsmAnd Online',
@@ -283,6 +286,14 @@ var layers_data = [
         'attribution': attribution + '<a href="http://чепецк.net/" target="_blank">ST-GIS</a>, <a href="http://www.openstreetmap.org/user/Max%20Vasilev" target="_blank">Max Vasilev</a>',
         'id': '1030',
         'nolabels': 'true'
+    },
+    {
+        'name': 'Mail.Ru',
+        'address': 'https://news.mail.ru/mailosm/{z}/{x}/{y}.png',
+        'maxZoom': 10,
+        'attribution': attribution + '<a href="https://mail.ru/" target="_blank">Mail.Ru</a>',
+        'id': '1086',
+        'language': 'ru'
     },
     {
         'name': 'MapBox.streets',
@@ -758,7 +769,7 @@ var layers_data = [
     }
 ];
 
-// max overlay id = 2049
+// max overlay id = 2051
 var overlays_data = [
     {
         'header': 'true',
@@ -1161,11 +1172,26 @@ var overlays_data = [
         'name': 'GPS, Relief'
     },
     {
-        'name': 'GPS Tracks',
+        'name': 'GPS Traces',
         'address': 'http://{s}.gps-tile.openstreetmap.org/lines/{z}/{x}/{y}.png',
         'maxZoom': 19,
         'attribution': 'Traces: &copy; <a href="http://www.openstreetmap.org/traces" target="_blank">OpenStreetMap</a> contributors',
         'id': '2033'
+    },
+    {
+        'name': 'GPS Points, 9.04.2013',
+        'address': 'http://zverik.osm.rambler.ru/gps/tiles/{z}/{x}/{y}.png',
+        'maxZoom': 11,
+        'attribution': 'Traces: &copy; <a href="http://www.openstreetmap.org/traces" target="_blank">OpenStreetMap</a> contributors | ' + tiles_attribution + '<a href="http://zverik.osm.rambler.ru/gps/" target="_blank">Ilya Zverev</a>',
+        'id': '2050'
+    },
+    {
+        'name': 'GPS Points, 4.06.2012 (with private traces)',
+        'address': 'http://zverik.osm.rambler.ru/gps/tiles/{z}/{x}/{y}.png',
+        'maxZoom': 11,
+        'attribution': 'Traces: &copy; <a href="http://www.openstreetmap.org/traces" target="_blank">OpenStreetMap</a> contributors | ' + tiles_attribution + '<a href="http://zverik.osm.rambler.ru/gps/" target="_blank">Ilya Zverev</a>',
+        'id': '2051',
+        'old': 'true'
     },
     {
         'name': 'ASTER GDEM & SRTM Hillshade',
