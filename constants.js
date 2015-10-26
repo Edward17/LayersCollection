@@ -173,8 +173,6 @@ var layers_data = [
         'id': '1018'
     },
 
-/*
-// don't works with websites (GitHub Pages also), only with localhost: http://www.gossamer-threads.com/lists/wiki/mediawiki-cvs/625066
     {
         'name': 'Wikimedia maps',
         'address': 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
@@ -182,7 +180,6 @@ var layers_data = [
         'attribution': attribution + '<a href="https://maps.wikimedia.org" target="_blank">Wikimedia maps</a>',
         'id': '1019'
     },
-*/
 
     {
         'name': 'OsmAnd Online',
