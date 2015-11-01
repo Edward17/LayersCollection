@@ -731,14 +731,14 @@ var layers_data = [
     {
         'name': 'MapBox.streets-satellite',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-        'maxZoom': 17,
+        'maxZoom': 18,
         'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
         'id': '1078'
     },
     {
         'name': 'MapBox.satellite',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-        'maxZoom': 17,
+        'maxZoom': 18,
         'attribution': tiles_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
         'id': '1079'
     },
