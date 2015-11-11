@@ -769,7 +769,7 @@ var layers_data = [
     }
 ];
 
-// max overlay id = 2051
+// max overlay id = 2072
 var overlays_data = [
     {
         'header': 'true',
@@ -1169,7 +1169,7 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'GPS, Relief'
+        'name': 'GPS Traces'
     },
     {
         'name': 'GPS Traces',
@@ -1192,6 +1192,157 @@ var overlays_data = [
         'attribution': 'Traces: &copy; <a href="http://www.openstreetmap.org/traces" target="_blank">OpenStreetMap</a> contributors | ' + tiles_attribution + '<a href="http://zverik.osm.rambler.ru/gps/" target="_blank">Ilya Zverev</a>',
         'id': '2051',
         'old': 'true'
+    },
+    {
+        'name': 'Strava Heatmap cycling color1',
+        'address': 'http://globalheat.strava.com/tiles/cycling/color1/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2052'
+    },
+    {
+        'name': 'Strava Heatmap cycling color2',
+        'address': 'http://globalheat.strava.com/tiles/cycling/color2/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2053'
+    },
+    {
+        'name': 'Strava Heatmap cycling color3',
+        'address': 'http://globalheat.strava.com/tiles/cycling/color3/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2054'
+    },
+    {
+        'name': 'Strava Heatmap cycling color4',
+        'address': 'http://globalheat.strava.com/tiles/cycling/color4/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2055'
+    },
+    {
+        'name': 'Strava Heatmap cycling color5',
+        'address': 'http://globalheat.strava.com/tiles/cycling/color5/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2056'
+    },
+    {
+        'name': 'Strava Heatmap cycling color6',
+        'address': 'http://globalheat.strava.com/tiles/cycling/color6/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2057'
+    },
+    {
+        'name': 'Strava Heatmap cycling color7',
+        'address': 'http://globalheat.strava.com/tiles/cycling/color7/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2058'
+    },
+    {
+        'name': 'Strava Heatmap running color1',
+        'address': 'http://globalheat.strava.com/tiles/running/color1/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2059'
+    },
+    {
+        'name': 'Strava Heatmap running color2',
+        'address': 'http://globalheat.strava.com/tiles/running/color2/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2060'
+    },
+    {
+        'name': 'Strava Heatmap running color3',
+        'address': 'http://globalheat.strava.com/tiles/running/color3/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2061'
+    },
+    {
+        'name': 'Strava Heatmap running color4',
+        'address': 'http://globalheat.strava.com/tiles/running/color4/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2062'
+    },
+    {
+        'name': 'Strava Heatmap running color5',
+        'address': 'http://globalheat.strava.com/tiles/running/color5/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2063'
+    },
+    {
+        'name': 'Strava Heatmap running color6',
+        'address': 'http://globalheat.strava.com/tiles/running/color6/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2064'
+    },
+    {
+        'name': 'Strava Heatmap running color7',
+        'address': 'http://globalheat.strava.com/tiles/running/color7/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2065'
+    },
+    {
+        'name': 'Strava Heatmap both color1',
+        'address': 'http://globalheat.strava.com/tiles/both/color1/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2066'
+    },
+    {
+        'name': 'Strava Heatmap both color2',
+        'address': 'http://globalheat.strava.com/tiles/both/color2/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2067'
+    },
+    {
+        'name': 'Strava Heatmap both color3',
+        'address': 'http://globalheat.strava.com/tiles/both/color3/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2068'
+    },
+    {
+        'name': 'Strava Heatmap both color4',
+        'address': 'http://globalheat.strava.com/tiles/both/color4/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2069'
+    },
+    {
+        'name': 'Strava Heatmap both color5',
+        'address': 'http://globalheat.strava.com/tiles/both/color5/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2070'
+    },
+    {
+        'name': 'Strava Heatmap both color6',
+        'address': 'http://globalheat.strava.com/tiles/both/color6/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2071'
+    },
+    {
+        'name': 'Strava Heatmap both color7',
+        'address': 'http://globalheat.strava.com/tiles/both/color7/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'id': '2072'
+    },
+    {
+        'header': 'true',
+        'name': 'Relief'
     },
     {
         'name': 'ASTER GDEM & SRTM Hillshade',
