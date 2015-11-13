@@ -6,7 +6,7 @@ var osm_attribution = attribution; // must be deleted
 var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlczI3diJ9.eghwjbaS0bJ80bj2Vzd6Ew'; // This is my personal access token. Please don't use it, just register on MapBox for free: https://www.mapbox.com/signup/?plan=starter
 //var lyrk_token = '';
 
-// max layer id = 1086
+// max layer id = 1087
 var layers_data = [
     {
         'header': 'true',
@@ -649,6 +649,13 @@ var layers_data = [
     {
         'header': 'true',
         'name': 'Beautiful'
+    },
+    {
+        'name': 'Thunderforest Spinal',
+        'address': 'https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png',
+        'maxZoom': 22,
+        'attribution': attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>',
+        'id': '1087'
     },
     {
         'name': 'MapBox.wheatpaste',
