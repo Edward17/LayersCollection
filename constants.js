@@ -993,7 +993,7 @@ var overlays_data = [
     {
         'wms': 'true',
         'name': 'Street areas',
-        'address': 'http://osmapa.pl/ua',
+        'address': 'http://osmapa.pl/de',
         'maxZoom': 20,
         'attribution': '<a href="http://osmapa.pl/w/areaua/" target="_blank">Osmapa.pl</a>',
         'id': '2021',
@@ -1005,8 +1005,8 @@ var overlays_data = [
     },
     {
         'wms': 'true',
-        'name': 'Street crossings',
-        'address': 'http://osmapa.pl/ua',
+        'name': 'Pedestrian crossings',
+        'address': 'http://osmapa.pl/de',
         'maxZoom': 20,
         'attribution': '<a href="http://osmapa.pl/w/areaua/" target="_blank">Osmapa.pl</a>',
         'id': '2022',
