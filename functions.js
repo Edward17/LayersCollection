@@ -160,7 +160,7 @@ function showLayer(id) {
             if (current_layer_id.search('-') == -1) {
                 map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
             }
-            document.getElementById(current_layer_id).setAttribute('class', 'padding_text layer');
+            document.getElementById(current_layer_id).className = document.getElementById(current_layer_id).className.replace('selected_layer', 'layer');
         }
 
         if (id.toString().search('-') == -1)  {
