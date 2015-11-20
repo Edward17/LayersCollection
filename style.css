@@ -40,6 +40,7 @@ BODY {
 }
 
 .layer {
+    padding-left: 4px;
     cursor: pointer;
 }
 .layer:hover {
@@ -47,6 +48,7 @@ BODY {
 }
 
 .selected_layer {
+    padding-left: 4px;
     background: #E5E5E5;
 }
 
@@ -65,6 +67,10 @@ BODY {
 }
 
 .language_hidden {
+    display: none;
+}
+
+.header_hidden {
     display: none;
 }
 

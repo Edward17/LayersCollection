@@ -6,11 +6,14 @@ var osm_attribution = attribution; // must be deleted
 var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlczI3diJ9.eghwjbaS0bJ80bj2Vzd6Ew'; // This is my personal access token. Please don't use it, just register on MapBox for free: https://www.mapbox.com/signup/?plan=starter
 //var lyrk_token = '';
 
+// max header id = 3013
+
 // max layer id = 1087
 var layers_data = [
     {
         'header': 'true',
-        'name': 'General'
+        'name': 'General',
+        'id': '3000'
     },
     {
         'name': 'OpenStreetMap',
@@ -527,7 +530,8 @@ var layers_data = [
     },
     {
         'header': 'true',
-        'name': 'Public Transport'
+        'name': 'Public Transport',
+        'id': '3001'
     },
     {
         'name': 'Thunderforest Transport',
@@ -552,7 +556,8 @@ var layers_data = [
     },
     {
         'header': 'true',
-        'name': 'Hiking, Cycling, etc.'
+        'name': 'Hiking, Cycling, etc.',
+        'id': '3002'
     },
     {
         'name': 'Thunderforest Landskape',
@@ -629,7 +634,8 @@ var layers_data = [
     },
     {
         'header': 'true',
-        'name': 'Boating'
+        'name': 'Boating',
+        'id': '3003'
     },
     {
         'name': 'OpenRiverBoatMap',
@@ -700,7 +706,8 @@ var layers_data = [
     },
     {
         'header': 'true',
-        'name': 'Satellite'
+        'name': 'Satellite',
+        'id': '3004'
     },
 
 /*
@@ -780,7 +787,8 @@ var layers_data = [
 var overlays_data = [
     {
         'header': 'true',
-        'name': 'General'
+        'name': 'General',
+        'id': '3005'
     },
     {
         'name': 'Semitransparent',
@@ -826,7 +834,8 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'Labels'
+        'name': 'Labels',
+        'id': '3006'
     },
     {
         'name': 'Multilingual map - de',
@@ -875,7 +884,8 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'Public Transport'
+        'name': 'Public Transport',
+        'id': '3007'
     },
     {
         'name': 'OpenMap.lt Public transport',
@@ -893,7 +903,8 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'Hiking, Cycling, Boating, etc.'
+        'name': 'Hiking, Cycling, Boating, etc.',
+        'id': '3008'
     },
     {
         'name': 'Waymarked Trails: Hiking',
@@ -946,7 +957,8 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'Thematic'
+        'name': 'Thematic',
+        'id': '3009'
     },
     {
         'name': 'Lights',
@@ -1018,7 +1030,8 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'Administrative boundaries'
+        'name': 'Administrative boundaries',
+        'id': '3010'
     },
     {
         'name': 'Admin Boundaries',
@@ -1092,7 +1105,8 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'Quality Assurance'
+        'name': 'Quality Assurance',
+        'id': '3011'
     },
     {
         'name': 'Населенные пункты (НП), лежащие в границах другого НП',
@@ -1176,7 +1190,8 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'GPS Traces'
+        'name': 'GPS Traces',
+        'id': '3012'
     },
     {
         'name': 'GPS Traces',
@@ -1349,7 +1364,8 @@ var overlays_data = [
     },
     {
         'header': 'true',
-        'name': 'Relief'
+        'name': 'Relief',
+        'id': '3013'
     },
     {
         'name': 'ASTER GDEM & SRTM Hillshade',

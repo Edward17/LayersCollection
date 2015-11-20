@@ -35,10 +35,10 @@ function initializeElements() {
 function initializeLayers() {
     for (var i = 0; i < layers_data.length; i++) {
         if (layers_data[i].header) {
-            left.innerHTML = left.innerHTML + '<div class="padding_text"><b>' + layers_data[i].name + '</b></div>';
+            left.innerHTML = left.innerHTML + '<div id="' + layers_data[i].id + '" class="padding_text layer" onclick="onHeaderClick(' + layers_data[i].id + ')"><b>' + layers_data[i].name + '</b></div>';
         } else {
             layers_data[i].index = layers.push(createLeafletLayer(layers_data[i])) - 1;
-            left.innerHTML = left.innerHTML + '<div' + createClassAttribute(layers_data[i], 'padding_text layer') + ' id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
+            left.innerHTML = left.innerHTML + '<div' + createClassAttribute(layers_data[i], 'layer') + ' id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
         }
     }
 }
@@ -46,7 +46,7 @@ function initializeLayers() {
 function initializeOverlays() {
     for (var i = 0; i < overlays_data.length; i++) {
         if (overlays_data[i].header) {
-            left.innerHTML = left.innerHTML + '<div class="padding_text"><b>' + overlays_data[i].name + '</b></div>';
+            left.innerHTML = left.innerHTML + '<div id="' + overlays_data[i].id + '" class="padding_text layer" onclick="onHeaderClick(' + overlays_data[i].id + ')"><b>' + overlays_data[i].name + '</b></div>';
         } else {
             overlays_data[i].index = overlays.push(createLeafletLayer(overlays_data[i])) - 1;
             left.innerHTML = left.innerHTML + '<div' + createClassAttribute(overlays_data[i], '') + '><input id="' + overlays_data[i].id + '" type="checkbox" onchange="onOverlayChanged(' + overlays_data[i].id + ')"> ' + overlays_data[i].name + createAdditionalInformation(overlays_data[i]) + '</div>';
@@ -174,7 +174,7 @@ function showLayer(id) {
             document.getElementById('map').style.backgroundColor = 'rgb(0,0,0)';
         }
         
-        document.getElementById(id).setAttribute('class', 'padding_text selected_layer');
+        document.getElementById(id).className = document.getElementById(id).className.replace('layer', 'selected_layer');
         current_layer_id = id + '';
     }
 
@@ -300,6 +300,29 @@ function onLanguageChanged() {
             } else {
                 left_layers[i].className = left_layers[i].className.replace(' language_hidden', '');
             }
+        }
+    }
+}
+
+function onHeaderClick(id) {
+    var header = document.getElementById(id);
+    if (header.innerHTML.charAt(3) == '-') {
+        //alert('show header #' + id);
+        document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace('- ', '');
+
+        var current_element = document.getElementById(id).nextElementSibling;
+        while (current_element.className.search('padding_text') == -1) {
+            current_element.className = current_element.className.replace(' header_hidden', '');
+            current_element = current_element.nextElementSibling;
+        }
+    } else {
+        //alert('hide header #' + id);
+        document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.substring(0,3) + '- ' + document.getElementById(id).innerHTML.substring(3);
+
+        var current_element = document.getElementById(id).nextElementSibling;
+        while (current_element.className.search('padding_text') == -1) {
+            current_element.className = current_element.className + ' header_hidden';
+            current_element = current_element.nextElementSibling;
         }
     }
 }
