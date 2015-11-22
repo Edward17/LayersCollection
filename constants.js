@@ -783,7 +783,7 @@ var layers_data = [
     }
 ];
 
-// max overlay id = 2072
+// max overlay id = 2076
 var overlays_data = [
     {
         'header': 'true',
@@ -872,6 +872,42 @@ var overlays_data = [
         'id': '2039',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'uk'
+    },
+    {
+        'name': 'CartoDB Positron (only labels)',
+        'address': 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+        'maxZoom': 22, // can be more
+        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'id': '2073',
+        'old': 'true',
+        'language': 'en'
+    },
+    {
+        'name': 'CartoDB Positron (only labels) Retina',
+        'address': 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}@2x.png',
+        'maxZoom': 22, // can be more
+        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'id': '2074',
+        'old': 'true',
+        'language': 'en'
+    },
+    {
+        'name': 'CartoDB Dark Matter (only labels)',
+        'address': 'http://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png',
+        'maxZoom': 22, // can be more
+        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'id': '2075',
+        'old': 'true',
+        'language': 'en'
+    },
+    {
+        'name': 'CartoDB Dark Matter (only labels) Retina',
+        'address': 'http://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png',
+        'maxZoom': 22, // can be more
+        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'id': '2076',
+        'old': 'true',
+        'language': 'en'
     },
     {
         'name': 'Stamen Toner-labels',
