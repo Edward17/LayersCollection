@@ -23,7 +23,7 @@ BODY {
 .left {
     position: absolute;
     bottom: 0px;
-    top: 100px;
+    top: 140px;
     width: 360px;
     overflow-y: scroll;
 }
@@ -54,6 +54,14 @@ BODY {
 
 
 
+.old_hidden {
+    display: none;
+}
+
+.ua_hidden {
+    display: none;
+}
+
 .blackwhite_hidden {
     display: none;
 }
@@ -62,7 +70,7 @@ BODY {
     display: none;
 }
 
-.old_hidden {
+.retina_hidden {
     display: none;
 }
 
@@ -84,18 +92,26 @@ BODY {
     color: #FFFFFF;
 }
 
-.bw {
-    background-color: #C0C0C0;
-}
-
 .old {
     background-color: #FF0000;
 }
 
-.lang {
-    background-color: #00FF00;
+.ua {
+    background-color: #FFFF00;
+}
+
+.bw {
+    background-color: #C0C0C0;
 }
 
 .nl {
     background-color: #0000FF;
+}
+
+.rtn {
+    background-color: #FF6A00;
+}
+
+.lang {
+    background-color: #00FF00;
 }

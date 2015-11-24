@@ -192,7 +192,8 @@ var layers_data = [
         'address': 'http://tile.osmand.net/hd/{z}/{x}/{y}.png',
         'maxZoom': 19,
         'attribution': attribution + '<a href="<a href="http://osmand.net/" target="_blank">OsmAnd</a>',
-        'id': '1020'
+        'id': '1020',
+        'retina': true
     },
     {
         'name': 'Спутник',
@@ -203,12 +204,13 @@ var layers_data = [
         'language': 'ru'
     },
     {
-        'name': 'Спутник Retina',
+        'name': 'Спутник',
         'address': 'http://tiles.maps.sputnik.ru/tiles/kmt2/{z}/{x}/{y}.png?tag=retina',
         'maxZoom': 19,
         'attribution': attribution + '<a href="http://maps.sputnik.ru/" target="_blank">Спутник</a>',
         'id': '1022',
-        'language': 'ru'
+        'language': 'ru',
+        'retina': true
     },
     {
         'name': 'Космоснимки',
@@ -381,40 +383,44 @@ var layers_data = [
         'nolabels': 'true'
     },
     {
-        'name': 'CartoDB Positron Retina',
+        'name': 'CartoDB Positron',
         'address': 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
         'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
         'id': '1041',
         'old': 'true',
-        'language': 'en'
+        'language': 'en',
+        'retina': true
     },
     {
-        'name': 'CartoDB Dark Matter Retina',
+        'name': 'CartoDB Dark Matter',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
         'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
         'id': '1042',
         'old': 'true',
-        'language': 'en'
+        'language': 'en',
+        'retina': true
     },
     {
-        'name': 'CartoDB Positron (no labels) Retina',
+        'name': 'CartoDB Positron (no labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
         'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
         'id': '1043',
         'old': 'true',
-        'nolabels': 'true'
+        'nolabels': 'true',
+        'retina': true
     },
     {
-        'name': 'CartoDB Dark Matter (no labels) Retina',
+        'name': 'CartoDB Dark Matter (no labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
         'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
         'id': '1044',
         'old': 'true',
-        'nolabels': 'true'
+        'nolabels': 'true',
+        'retina': true
     },
     {
         'name': 'CartoDB World Antique',
@@ -762,7 +768,8 @@ var layers_data = [
         'address': 'http://212.26.144.110/tile2/orto_10000/{z}/{x}/{y}.jpg',
         'maxZoom': 16,
         'attribution': tiles_attribution + '<a href="http://map.land.gov.ua/kadastrova-karta">ЦДЗК</a>',
-        'id': '1080'
+        'id': '1080',
+        'ua': true
     },
     {
         'name': 'MapBox Live Satellite',
@@ -883,15 +890,6 @@ var overlays_data = [
         'language': 'en'
     },
     {
-        'name': 'CartoDB Positron (only labels) Retina',
-        'address': 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}@2x.png',
-        'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
-        'id': '2074',
-        'old': 'true',
-        'language': 'en'
-    },
-    {
         'name': 'CartoDB Dark Matter (only labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
@@ -901,13 +899,24 @@ var overlays_data = [
         'language': 'en'
     },
     {
-        'name': 'CartoDB Dark Matter (only labels) Retina',
+        'name': 'CartoDB Positron (only labels)',
+        'address': 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}@2x.png',
+        'maxZoom': 22, // can be more
+        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'id': '2074',
+        'old': 'true',
+        'language': 'en',
+        'retina': true
+    },
+    {
+        'name': 'CartoDB Dark Matter (only labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
         'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
         'id': '2076',
         'old': 'true',
-        'language': 'en'
+        'language': 'en',
+        'retina': true
     },
     {
         'name': 'Stamen Toner-labels',
@@ -1050,6 +1059,7 @@ var overlays_data = [
         'format': 'image/png',
         'transparent': true,
         'opacity': 1,
+        'ua': true
     },
     {
         'wms': 'true',
@@ -1063,6 +1073,7 @@ var overlays_data = [
         'format': 'image/png',
         'transparent': true,
         'opacity': 1,
+        'ua': true
     },
     {
         'header': 'true',

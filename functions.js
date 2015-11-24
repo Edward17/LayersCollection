@@ -110,6 +110,12 @@ function createAdditionalInformation(data) {
     if (data.old) {
         additional_information = additional_information + '<span class="additional_information old">old</span>';
     }
+    if (data.retina) {
+        additional_information = additional_information + '<span class="additional_information rtn">rtn</span>';
+    }
+    if (data.ua) {
+        additional_information = additional_information + '<span class="additional_information ua">ua</span>';
+    }
     if (data.blackwhite) {
         additional_information = additional_information + '<span class="additional_information bw">b/w</span>';
     }
@@ -129,6 +135,9 @@ function createAdditionalInformation(data) {
 function createClassAttribute(data, class_name) {
     if (data.old) {
         class_name = class_name + ' old_hidden';
+    }
+    if (data.ua) {
+        class_name = class_name + ' ua_hidden';
     }
     return ' class="' + class_name + '"';
 }
@@ -249,6 +258,32 @@ function getOverlayIndexByID(id) {
     return overlays_data.indexOf(getOverlayDataByID(id));
 }
 
+function onOldCheckboxChanged() {
+    var left_layers = left.childNodes;
+    for (var i = 0; i < left_layers.length; i++) {
+        if (left_layers[i].innerHTML.search('class="additional_information old"') != -1) {
+            if (document.getElementById('old_selector').checked) {
+                left_layers[i].className = left_layers[i].className.replace(' old_hidden', '');
+            } else {
+                left_layers[i].className = left_layers[i].className + ' old_hidden';
+            }
+        }
+    }
+}
+
+function onUACheckboxChanged() {
+    var left_layers = left.childNodes;
+    for (var i = 0; i < left_layers.length; i++) {
+        if (left_layers[i].innerHTML.search('class="additional_information ua"') != -1) {
+            if (document.getElementById('ua_selector').checked) {
+                left_layers[i].className = left_layers[i].className.replace(' ua_hidden', '');
+            } else {
+                left_layers[i].className = left_layers[i].className + ' ua_hidden';
+            }
+        }
+    }
+}
+
 function onBWCheckboxChanged() {
     var left_layers = left.childNodes;
 
@@ -293,14 +328,23 @@ function onNLCheckboxChanged() {
     }
 }
 
-function onOldCheckboxChanged() {
+function onRetinaCheckboxChanged() {
     var left_layers = left.childNodes;
-    for (var i = 0; i < left_layers.length; i++) {
-        if (left_layers[i].innerHTML.search('class="additional_information old"') != -1) {
-            if (document.getElementById('old_selector').checked) {
-                left_layers[i].className = left_layers[i].className.replace(' old_hidden', '');
-            } else {
-                left_layers[i].className = left_layers[i].className + ' old_hidden';
+
+    if (document.getElementById('retina_selector').checked) {
+        increaseHidingFiltersCount();
+        
+        for (var i = 0; i < left_layers.length; i++) {
+            if (left_layers[i].innerHTML.search('class="additional_information rtn"') == -1 && left_layers[i].tagName != 'H2') {
+                left_layers[i].className = left_layers[i].className + ' retina_hidden';
+            }
+        }
+    } else {
+        decreaseHidingFiltersCount();
+        
+        for (var i = 0; i < left_layers.length; i++) {
+            if (left_layers[i].innerHTML.search('class="additional_information rtn"') == -1 && left_layers[i].tagName != 'H2') {
+                left_layers[i].className = left_layers[i].className.replace(' retina_hidden', '');
             }
         }
     }
