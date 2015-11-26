@@ -14,6 +14,8 @@ var new_layer_options;
 var hiding_filters_count = 0;
 var headers_count = 0;
 
+/* INITIALIZATION */
+
 function loaded() {
     initializeElements();
 
@@ -26,7 +28,7 @@ function loaded() {
     initializeOverlays();
     left.innerHTML = left.innerHTML + '<div class="padding_text"><button type=button onclick="removeAllOverlays()">Remove all overlays</button></div>';
 
-    registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showPermalinkLayers);
+    registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showSavedLayers);
     map.on('move', saveMapPosition);
     
     initializeFilters();
@@ -38,41 +40,10 @@ function initializeElements() {
     language_selector = document.getElementById('language_selector');
 }
 
-function initializeFilters() {
-    document.getElementById('old_selector').checked = (localStorage.getItem('old_selector') == 'true');
-    onOldCheckboxChanged();
-
-    document.getElementById('ua_selector').checked = (localStorage.getItem('ua_selector') == 'true');
-    onUACheckboxChanged();
-    
-    document.getElementById('blackwhite_selector').checked = (localStorage.getItem('blackwhite_selector') == 'true');
-    onBWCheckboxChanged();
-
-    document.getElementById('nolabels_selector').checked = (localStorage.getItem('nolabels_selector') == 'true');
-    onNLCheckboxChanged();
-
-    document.getElementById('retina_selector').checked = (localStorage.getItem('retina_selector') == 'true');
-    onRetinaCheckboxChanged();
-
-    if (localStorage.getItem('language_selector')) {
-        document.getElementById('language_selector').value = localStorage.getItem('language_selector');
-        onLanguageChanged();
-    }
-
-    for (i = 0; i < headers_count; i++) {
-        header_id = 3000 + i;
-        if (localStorage.getItem('header_' + header_id)) {
-            document.getElementById(header_id).checked = (localStorage.getItem('header_' + header_id) == 'true');
-            onHeaderChanged(header_id);
-        }
-    }
-}
-
 function initializeLayers() {
     for (var i = 0; i < layers_data.length; i++) {
         if (layers_data[i].header) {
-            left.innerHTML = left.innerHTML + '<div class="padding_text"><input id="' + layers_data[i].id + '" type="checkbox" checked="true" onchange="onHeaderChanged(' + layers_data[i].id + ')"> <b>' + layers_data[i].name + '</b></div>';
-            headers_count = headers_count + 1;
+            createHeader(layers_data[i].id, layers_data[i].name);
         } else {
             layers_data[i].index = layers.push(createLeafletLayer(layers_data[i])) - 1;
             left.innerHTML = left.innerHTML + '<div class="layer" id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
@@ -83,14 +54,67 @@ function initializeLayers() {
 function initializeOverlays() {
     for (var i = 0; i < overlays_data.length; i++) {
         if (overlays_data[i].header) {
-            left.innerHTML = left.innerHTML + '<div class="padding_text"><input id="' + overlays_data[i].id + '" type="checkbox" checked="true" onchange="onHeaderChanged(' + overlays_data[i].id + ')"> <b>' + overlays_data[i].name + '</b></div>';
-            headers_count = headers_count + 1;
+            createHeader(overlays_data[i].id, overlays_data[i].name);
         } else {
             overlays_data[i].index = overlays.push(createLeafletLayer(overlays_data[i])) - 1;
             left.innerHTML = left.innerHTML + '<div><input id="' + overlays_data[i].id + '" type="checkbox" onchange="onOverlayChanged(' + overlays_data[i].id + ')"> ' + overlays_data[i].name + createAdditionalInformation(overlays_data[i]) + '</div>';
         }
     }
 }
+
+function initializeFilters() {
+    if (localStorage.getItem('old_selector') != null) {
+        document.getElementById('old_selector').checked = (localStorage.getItem('old_selector') == 'true');
+        if (localStorage.getItem('old_selector') == 'false') {
+            onOldCheckboxChanged();
+        }
+    } else {
+        document.getElementById('old_selector').checked = true;
+    }
+
+    if (localStorage.getItem('ua_selector') != null) {
+        document.getElementById('ua_selector').checked = (localStorage.getItem('ua_selector') == 'true');
+        if (localStorage.getItem('ua_selector') == 'false') {
+            onUACheckboxChanged();
+        }
+    } else {
+        document.getElementById('ua_selector').checked = true;
+    }
+
+    document.getElementById('blackwhite_selector').checked = (localStorage.getItem('blackwhite_selector') == 'true');
+    if (localStorage.getItem('blackwhite_selector') == 'true') {
+        onBWCheckboxChanged();
+    }
+
+    document.getElementById('nolabels_selector').checked = (localStorage.getItem('nolabels_selector') == 'true');
+    if (localStorage.getItem('nolabels_selector') == 'true') {
+        onNLCheckboxChanged();
+    }
+
+    document.getElementById('retina_selector').checked = (localStorage.getItem('retina_selector') == 'true');
+    if (localStorage.getItem('nolabels_selector') == 'true') {
+        onRetinaCheckboxChanged();
+    }
+
+    if (localStorage.getItem('language_selector')) {
+        document.getElementById('language_selector').value = localStorage.getItem('language_selector');
+        if (localStorage.getItem('language_selector') != 'any') {
+            onLanguageChanged();
+        }
+    }
+
+    for (i = 0; i < headers_count; i++) {
+        header_id = 3000 + i;
+        if (localStorage.getItem('header_' + header_id)) {
+            document.getElementById(header_id).checked = (localStorage.getItem('header_' + header_id) == 'true');
+            if (localStorage.getItem('header_' + header_id) == 'false') {
+                onHeaderChanged(header_id);
+            }
+        }
+    }
+}
+
+/* LAYERS */
 
 function createLeafletLayer(data) {
     if (data.bing) {
@@ -144,22 +168,22 @@ function createLeafletLayer(data) {
 function createAdditionalInformation(data) {
     var additional_information = '';
     if (data.old) {
-        additional_information = additional_information + '<span class="additional_information old">old</span>';
+        additional_information = additional_information + '<span class="old">old</span>';
     }
     if (data.retina) {
-        additional_information = additional_information + '<span class="additional_information rtn">rtn</span>';
+        additional_information = additional_information + '<span class="rtn">rtn</span>';
     }
     if (data.ua) {
-        additional_information = additional_information + '<span class="additional_information ua">ua</span>';
+        additional_information = additional_information + '<span class="ua">ua</span>';
     }
     if (data.blackwhite) {
-        additional_information = additional_information + '<span class="additional_information bw">b/w</span>';
+        additional_information = additional_information + '<span class="bw">b/w</span>';
     }
     if (data.nolabels) {
-        additional_information = additional_information + '<span class="additional_information nl">nl</span>';
+        additional_information = additional_information + '<span class="nl">nl</span>';
     }
     if (data.language) {
-        additional_information = additional_information + '<span class="additional_information lang">' + data.language + '</span>';
+        additional_information = additional_information + '<span class="lg">' + data.language + '</span>';
         
         if (language_selector.innerHTML.search('<option>' + data.language +'</option>') == -1) {
             language_selector.innerHTML = language_selector.innerHTML + '<option>' + data.language +'</option>';
@@ -168,52 +192,9 @@ function createAdditionalInformation(data) {
     return additional_information;
 }
 
-function createClassAttribute(data, class_name) {
-    if (data.old && document.getElementById('old_selector').checked == false) {
-        class_name = class_name + ' old_hidden';
-    }
-    if (data.ua && document.getElementById('ua_selector').checked == false) {
-        class_name = class_name + ' ua_hidden';
-    }
-    if (!data.blackwhite && document.getElementById('blackwhite_selector').checked == true) {
-        class_name = class_name + ' blackwhite_hidden';
-    }
-    if (!data.nolabels && document.getElementById('nolabels_selector').checked == true) {
-        class_name = class_name + ' nolabels_hidden';
-    }
-    if (!data.retina && document.getElementById('retina_selector').checked == true) {
-        class_name = class_name + ' retina_hidden';
-    }
-    return ' class="' + class_name + '"';
-}
-
-function setDefaultMap() {
-    var zoom = localStorage.getItem('zoom');
-    if (zoom != null) {
-        map.setView(L.latLng(localStorage.getItem('lat'), localStorage.getItem('lng')), zoom);
-        showPermalinkLayers(localStorage.getItem('layers'));
-    } else {
-        map.setView(L.latLng(49.373, 31.861), 10);
-        showLayer('1000');
-    }
-}
-
-function showPermalinkLayers(ids) {
-    if (ids) {
-        if (ids.length == 4) {
-            showLayer(ids);
-        } else {
-            showLayer(ids.substring(0, 4));
-
-            var over = ids.substring(5).split(',');
-            for (var i = 0; i < over.length; i++) {
-                showOverlay(over[i]);
-                document.getElementById(over[i]).setAttribute('checked', 'true');
-            }
-        }
-    } else {
-        showLayer('1000');
-    }
+function createHeader(id, name) {
+    left.innerHTML = left.innerHTML + '<div class="padding_text"><input id="' + id + '" type="checkbox" checked="true" onchange="onHeaderChanged(' + id + ')"> <b>' + name + '</b></div>';
+    headers_count = headers_count + 1;
 }
 
 function showLayer(id) {
@@ -240,7 +221,7 @@ function showLayer(id) {
         current_layer_id = id + '';
     }
 
-    updatePermalinkLayers();
+    saveLayers();
 }
 
 function onOverlayChanged(id) {
@@ -257,7 +238,12 @@ function onOverlayChanged(id) {
         }
     }
 
-    updatePermalinkLayers();
+    saveLayers();
+}
+
+function showOverlay(id) {
+    map.addLayer(overlays[getOverlayDataByID(id).index]);
+    overlays_data[getOverlayIndexByID(id)].index_shown = current_overlays_ids.push(id) - 1;
 }
 
 function removeAllOverlays() {
@@ -268,58 +254,49 @@ function removeAllOverlays() {
         }
         current_overlays_ids = [];
         
-        updatePermalinkLayers();
+        saveLayers();
     }
 }
 
-function showOverlay(id) {
-    map.addLayer(overlays[getOverlayDataByID(id).index]);
-    overlays_data[getOverlayIndexByID(id)].index_shown = current_overlays_ids.push(id) - 1;
-}
-
-function updatePermalinkLayers() {
-    if (current_overlays_ids.length > 0) {
-        var layers_txt = current_layer_id;
-
-        for (var i = 0; i < current_overlays_ids.length; i++) {
-            layers_txt = layers_txt + ',' + current_overlays_ids[i];
-        }
-        
-        onLayersUpdate(layers_txt);
-        localStorage.setItem('layers', layers_txt);
-    } else {
-        onLayersUpdate(current_layer_id);
-        localStorage.setItem('layers', current_layer_id);
-    }
-}
+/* LAYERS - UTILS */
 
 function getLayerDataByID(id) {
-    var layer = layers_data.filter(function(layer_data) {
-        return layer_data.id == id;
-    });
-    return layer[0];
+    for (i = 0; i < layers_data.length; i++) {
+        if (layers_data[i].id == id) {
+            return layers_data[i];
+        }
+    }
+    return null;
 }
 
 function getOverlayDataByID(id) {
-    var overlay = overlays_data.filter(function(overlay_data) {
-        return overlay_data.id == id;
-    });
-    return overlay[0];
+    for (i = 0; i < overlays_data.length; i++) {
+        if (overlays_data[i].id == id) {
+            return overlays_data[i];
+        }
+    }
+    return null;
 }
 
 function getOverlayIndexByID(id) {
     return overlays_data.indexOf(getOverlayDataByID(id));
 }
 
+/* FILTERS */
+
 function onOldCheckboxChanged() {
     localStorage.setItem('old_selector', document.getElementById('old_selector').checked);
 
     var left_layers = left.childNodes;
-    for (var i = 0; i < left_layers.length; i++) {
-        if (left_layers[i].innerHTML.search('class="additional_information old"') != -1) {
-            if (document.getElementById('old_selector').checked) {
+    if (document.getElementById('old_selector').checked) {
+        for (var i = 0; i < left_layers.length; i++) {
+            if (left_layers[i].innerHTML.search('class="old"') != -1) {
                 left_layers[i].className = left_layers[i].className.replace(' old_hidden', '');
-            } else {
+            }
+        }
+    } else {
+        for (var i = 0; i < left_layers.length; i++) {
+            if (left_layers[i].innerHTML.search('class="old"') != -1) {
                 left_layers[i].className = left_layers[i].className + ' old_hidden';
             }
         }
@@ -330,11 +307,15 @@ function onUACheckboxChanged() {
     localStorage.setItem('ua_selector', document.getElementById('ua_selector').checked);
 
     var left_layers = left.childNodes;
-    for (var i = 0; i < left_layers.length; i++) {
-        if (left_layers[i].innerHTML.search('class="additional_information ua"') != -1) {
-            if (document.getElementById('ua_selector').checked) {
+    if (document.getElementById('ua_selector').checked) {
+        for (var i = 0; i < left_layers.length; i++) {
+            if (left_layers[i].innerHTML.search('class="ua"') != -1) {
                 left_layers[i].className = left_layers[i].className.replace(' ua_hidden', '');
-            } else {
+            }
+        }
+    } else {
+        for (var i = 0; i < left_layers.length; i++) {
+            if (left_layers[i].innerHTML.search('class="ua"') != -1) {
                 left_layers[i].className = left_layers[i].className + ' ua_hidden';
             }
         }
@@ -349,7 +330,7 @@ function onBWCheckboxChanged() {
         increaseHidingFiltersCount();
         
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="additional_information bw"') == -1 && left_layers[i].tagName != 'H2') {
+            if (left_layers[i].innerHTML.search('class="bw"') == -1 && left_layers[i].tagName != 'H2') {
                 left_layers[i].className = left_layers[i].className + ' blackwhite_hidden';
             }
         }
@@ -357,7 +338,7 @@ function onBWCheckboxChanged() {
         decreaseHidingFiltersCount();
         
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="additional_information bw"') == -1 && left_layers[i].tagName != 'H2') {
+            if (left_layers[i].innerHTML.search('class="bw"') == -1 && left_layers[i].tagName != 'H2') {
                 left_layers[i].className = left_layers[i].className.replace(' blackwhite_hidden', '');
             }
         }
@@ -372,7 +353,7 @@ function onNLCheckboxChanged() {
         increaseHidingFiltersCount();
         
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="additional_information nl"') == -1 && left_layers[i].tagName != 'H2') {
+            if (left_layers[i].innerHTML.search('class="nl"') == -1 && left_layers[i].tagName != 'H2') {
                 left_layers[i].className = left_layers[i].className + ' nolabels_hidden';
             }
         }
@@ -380,7 +361,7 @@ function onNLCheckboxChanged() {
         decreaseHidingFiltersCount();
         
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="additional_information nl"') == -1 && left_layers[i].tagName != 'H2') {
+            if (left_layers[i].innerHTML.search('class="nl"') == -1 && left_layers[i].tagName != 'H2') {
                 left_layers[i].className = left_layers[i].className.replace(' nolabels_hidden', '');
             }
         }
@@ -395,7 +376,7 @@ function onRetinaCheckboxChanged() {
         increaseHidingFiltersCount();
         
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="additional_information rtn"') == -1 && left_layers[i].tagName != 'H2') {
+            if (left_layers[i].innerHTML.search('class="rtn"') == -1 && left_layers[i].tagName != 'H2') {
                 left_layers[i].className = left_layers[i].className + ' retina_hidden';
             }
         }
@@ -403,7 +384,7 @@ function onRetinaCheckboxChanged() {
         decreaseHidingFiltersCount();
         
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="additional_information rtn"') == -1 && left_layers[i].tagName != 'H2') {
+            if (left_layers[i].innerHTML.search('class="rtn"') == -1 && left_layers[i].tagName != 'H2') {
                 left_layers[i].className = left_layers[i].className.replace(' retina_hidden', '');
             }
         }
@@ -476,8 +457,55 @@ function decreaseHidingFiltersCount() {
     }
 }
 
+/* SAVING SITE STATE*/
+
 function saveMapPosition() {
     localStorage.setItem('zoom', map.getZoom());
     localStorage.setItem('lat', map.getCenter().lat);
     localStorage.setItem('lng', map.getCenter().lng);
+}
+
+function saveLayers() {
+    if (current_overlays_ids.length > 0) {
+        var layers_txt = current_layer_id;
+
+        for (var i = 0; i < current_overlays_ids.length; i++) {
+            layers_txt = layers_txt + ',' + current_overlays_ids[i];
+        }
+        
+        onLayersUpdate(layers_txt);
+        localStorage.setItem('layers', layers_txt);
+    } else {
+        onLayersUpdate(current_layer_id);
+        localStorage.setItem('layers', current_layer_id);
+    }
+}
+
+function setDefaultMap() {
+    var zoom = localStorage.getItem('zoom');
+    if (zoom != null) {
+        map.setView(L.latLng(localStorage.getItem('lat'), localStorage.getItem('lng')), zoom);
+        showSavedLayers(localStorage.getItem('layers'));
+    } else {
+        map.setView(L.latLng(49.373, 31.861), 10);
+        showLayer('1000');
+    }
+}
+
+function showSavedLayers(ids) {
+    if (ids) {
+        if (ids.length == 4) {
+            showLayer(ids);
+        } else {
+            showLayer(ids.substring(0, 4));
+
+            var over = ids.substring(5).split(',');
+            for (var i = 0; i < over.length; i++) {
+                showOverlay(over[i]);
+                document.getElementById(over[i]).setAttribute('checked', 'true');
+            }
+        }
+    } else {
+        showLayer('1000');
+    }
 }

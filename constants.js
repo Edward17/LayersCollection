@@ -1,7 +1,45 @@
 var openstreetmap_attribution = 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors, under ODbL';
+var traces_attribution = 'Traces: &copy; <a href="http://www.openstreetmap.org/traces" target="_blank">OpenStreetMap</a> contributors';
+
 var tiles_attribution = 'Tiles: &copy; ';
 var attribution = openstreetmap_attribution + ' | ' + tiles_attribution;
-var osm_attribution = attribution; // must be deleted
+
+var mapquest_attribution = '<a href="http://www.mapquest.com/" target="_blank">MapQuest</a>';
+var openstreetmap_mapquest_attribution = attribution + mapquest_attribution;
+
+var unihd_attribution = '<a href="http://giscience.uni-hd.de/" target="_blank">GIScience Research Group @ Heidelberg University</a>';
+var openstreetmap_unihd_attribution = attribution + unihd_attribution;
+
+var kosmosnimki_attribution = '<a href="http://osm.kosmosnimki.ru/" target="_blank">ScanEx</a>'
+var openstreetmap_kosmosnimki_attribution = attribution + kosmosnimki_attribution;
+
+var mapbox_attribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>';
+var openstreetmap_mapbox_attribution = attribution + mapbox_attribution;
+
+var cartodb_attribution = 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>';
+var openstreetmap_cartodb_attribution = openstreetmap_attribution + ' | ' + cartodb_attribution;
+
+var stamen_attribution = '<a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>';
+var openstreetmap_stamen_attribution = attribution + stamen_attribution;
+
+var sputnik_attribution = attribution + '<a href="http://maps.sputnik.ru/" target="_blank">Спутник</a>';
+var thunderforest_attribution = attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>';
+
+var openstreetmap_osmde_attribution = attribution + '<a href="http://openstreetmap.de/germanstyle.html" target="_blank">OpenStreetMap - Deutschland</a>';
+var openstreetmap_alberding_attribution = attribution + '<a href="http://www.alberding.eu/" target="_blank">Alberding GmbH</a>, CC-BY-SA';
+var openstreetmap_chepetsk_attribution = attribution + '<a href="http://чепецк.net/" target="_blank">ST-GIS</a>, <a href="http://www.openstreetmap.org/user/Max%20Vasilev" target="_blank">Max Vasilev</a>';
+var openstreetmap_skobbler_attribution = attribution + '<a href="http://www.skobbler.com/">Skobbler</a>';
+
+var multilingualmap_attribution ='<a href="http://mlm.jochentopf.com/" target="_blank">Multilingual Map</a>';
+var openrailwaymap_attribution = '<a href="http://www.openrailwaymap.org/" target="_blank">OpenRailwayMap</a>';
+var openfiremap_attribution = '<a href="http://openfiremap.org/" target="_blank">OpenFireMap</a>';
+var areaua_attribution = '<a href="http://osmapa.pl/w/areaua/" target="_blank">Osmapa.pl</a>';
+var sly_attribution = '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>';
+var nadoloni_attribution = '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>';
+var pooleqa = '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>';
+var zverikgps_attribution = '<a href="http://zverik.osm.rambler.ru/gps/" target="_blank">Ilya Zverev</a>';
+var strava_attribution = 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>';
+var astergdem_attribution = 'ASTER GDEM is a product of <a href="http://www.meti.go.jp/english/press/data/20090626_03.html" target="_blank">METI</a> and <a href="https://lpdaac.usgs.gov/products/aster_policies" target="_blank">NASA</a>';
 
 var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlczI3diJ9.eghwjbaS0bJ80bj2Vzd6Ew'; // This is my personal access token. Please don't use it, just register on MapBox for free: https://www.mapbox.com/signup/?plan=starter
 //var lyrk_token = '';
@@ -33,7 +71,7 @@ var layers_data = [
         'name': 'MapQuest Open',
         'address': 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://www.mapquest.com/" target="_blank">MapQuest</a>',
+        'attribution': openstreetmap_mapquest_attribution,
         'subdomains': ['1', '2', '3', '4'],
         'id': '1002'
     },
@@ -41,14 +79,14 @@ var layers_data = [
         'name': 'MapSurfer.NET',
         'address': 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://giscience.uni-hd.de/" target="_blank">GIScience Research Group @ Heidelberg University</a>',
+        'attribution': openstreetmap_unihd_attribution,
         'id': '1003'
     },
     {
         'name': 'MapSurfer.NET gray',
         'address': 'http://korona.geog.uni-heidelberg.de/tiles/roadsg/x={x}&y={y}&z={z}',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://giscience.uni-hd.de/" target="_blank">GIScience Research Group @ Heidelberg University</a>',
+        'attribution': openstreetmap_unihd_attribution,
         'blackwhite': 'true',
         'id': '1004'
     },
@@ -86,7 +124,7 @@ var layers_data = [
         'name': 'OpenStreetMap.de',
         'address': 'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://openstreetmap.de/germanstyle.html" target="_blank">OpenStreetMap - Deutschland</a>',
+        'attribution': openstreetmap_osmde_attribution,
         'id': '1008',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'de'
@@ -95,7 +133,7 @@ var layers_data = [
         'name': 'OpenStreetMap.de background',
         'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/bg//{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://openstreetmap.de/germanstyle.html" target="_blank">OpenStreetMap - Deutschland</a>',
+        'attribution': openstreetmap_osmde_attribution,
         'id': '1084',
         'subdomains': ['a', 'b', 'c', 'd'],
         'nolabels': 'true'
@@ -142,14 +180,14 @@ var layers_data = [
         'name': 'Alberding',
         'address': 'http://map.dgpsonline.eu/default/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.alberding.eu/" target="_blank">Alberding GmbH</a>, CC-BY-SA',
+        'attribution': openstreetmap_alberding_attribution,
         'id': '1014'
     },
     {
         'name': 'Alberding (sorbian)',
         'address': 'http://map.dgpsonline.eu/osmsb/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.alberding.eu/" target="_blank">Alberding GmbH</a>, CC-BY-SA',
+        'attribution': openstreetmap_alberding_attribution,
         'id': '1015',
         'language': 'wen'
     },
@@ -199,7 +237,7 @@ var layers_data = [
         'name': 'Спутник',
         'address': 'http://{s}.tiles.maps.sputnik.ru/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://maps.sputnik.ru/" target="_blank">Спутник</a>',
+        'attribution': sputnik_attribution,
         'id': '1021',
         'language': 'ru'
     },
@@ -207,7 +245,7 @@ var layers_data = [
         'name': 'Спутник',
         'address': 'http://tiles.maps.sputnik.ru/tiles/kmt2/{z}/{x}/{y}.png?tag=retina',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://maps.sputnik.ru/" target="_blank">Спутник</a>',
+        'attribution': sputnik_attribution,
         'id': '1022',
         'language': 'ru',
         'retina': true
@@ -216,7 +254,7 @@ var layers_data = [
         'name': 'Космоснимки',
         'address': 'http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://osm.kosmosnimki.ru/" target="_blank">ScanEx</a>',
+        'attribution': openstreetmap_kosmosnimki_attribution,
         'id': '1023',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'ru'
@@ -225,7 +263,7 @@ var layers_data = [
         'name': 'Космоснимки Ночь',
         'address': 'http://{s}.tile.osm.kosmosnimki.ru/night/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://osm.kosmosnimki.ru/" target="_blank">ScanEx</a>',
+        'attribution': openstreetmap_kosmosnimki_attribution,
         'id': '1024',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'ru'
@@ -234,7 +272,7 @@ var layers_data = [
         'name': 'Космоснимки Весна',
         'address': 'http://{s}.tile.osm.kosmosnimki.ru/spring/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://osm.kosmosnimki.ru/" target="_blank">ScanEx</a>',
+        'attribution': openstreetmap_kosmosnimki_attribution,
         'id': '1025',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'ru'
@@ -243,7 +281,7 @@ var layers_data = [
         'name': 'Космоснимки Лето',
         'address': 'http://{s}.tile.osm.kosmosnimki.ru/summer/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://osm.kosmosnimki.ru/" target="_blank">ScanEx</a>',
+        'attribution': openstreetmap_kosmosnimki_attribution,
         'id': '1026',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'ru'
@@ -252,7 +290,7 @@ var layers_data = [
         'name': 'Космоснимки Осень',
         'address': 'http://{s}.tile.osm.kosmosnimki.ru/autumn/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://osm.kosmosnimki.ru/" target="_blank">ScanEx</a>',
+        'attribution': openstreetmap_kosmosnimki_attribution,
         'id': '1027',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'ru'
@@ -261,7 +299,7 @@ var layers_data = [
         'name': 'Космоснимки Зима',
         'address': 'http://{s}.tile.osm.kosmosnimki.ru/winter/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://osm.kosmosnimki.ru/" target="_blank">ScanEx</a>',
+        'attribution': openstreetmap_kosmosnimki_attribution,
         'id': '1028',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'ru'
@@ -270,7 +308,7 @@ var layers_data = [
         'name': 'Космоснимки Печать',
         'address': 'http://{s}.tile.osm.kosmosnimki.ru/bw/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://osm.kosmosnimki.ru/" target="_blank">ScanEx</a>',
+        'attribution': openstreetmap_kosmosnimki_attribution,
         'id': '1082',
         'subdomains': ['a', 'b', 'c', 'd'],
         'blackwhite': 'true',
@@ -280,7 +318,7 @@ var layers_data = [
         'name': 'Чепецк.NET',
         'address': 'http://ingreelab.net/C04AF0B62BEC112E8D7242FB848631D12D252728/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://чепецк.net/" target="_blank">ST-GIS</a>, <a href="http://www.openstreetmap.org/user/Max%20Vasilev" target="_blank">Max Vasilev</a>',
+        'attribution': openstreetmap_chepetsk_attribution,
         'id': '1029',
         'language': 'ru'
     },
@@ -288,7 +326,7 @@ var layers_data = [
         'name': 'stranger',
         'address': 'http://ingreelab.net/stranger/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://чепецк.net/" target="_blank">ST-GIS</a>, <a href="http://www.openstreetmap.org/user/Max%20Vasilev" target="_blank">Max Vasilev</a>',
+        'attribution': openstreetmap_chepetsk_attribution,
         'id': '1030',
         'nolabels': 'true'
     },
@@ -304,21 +342,21 @@ var layers_data = [
         'name': 'MapBox.streets',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1031'
     },
     {
         'name': 'MapBox.streets-basic',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.streets-basic/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1032'
     },
     {
         'name': 'MapBox.light',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1033',
         'blackwhite': 'true',
         'language': 'en'
@@ -327,7 +365,7 @@ var layers_data = [
         'name': 'MapBox.dark',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1034',
         'language': 'en'
     },
@@ -335,14 +373,14 @@ var layers_data = [
         'name': 'MapBox.emerald',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1035'
     },
     {
         'name': 'MapBox.high-contrast',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.high-contrast/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1036',
         'language': 'en'
     },
@@ -350,7 +388,7 @@ var layers_data = [
         'name': 'CartoDB Positron',
         'address': 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1037',
         'old': 'true',
         'language': 'en'
@@ -359,7 +397,7 @@ var layers_data = [
         'name': 'CartoDB Dark Matter',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1038',
         'old': 'true',
         'language': 'en'
@@ -368,7 +406,7 @@ var layers_data = [
         'name': 'CartoDB Positron (no labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1039',
         'old': 'true',
         'nolabels': 'true'
@@ -377,7 +415,7 @@ var layers_data = [
         'name': 'CartoDB Dark Matter (no labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1040',
         'old': 'true',
         'nolabels': 'true'
@@ -386,7 +424,7 @@ var layers_data = [
         'name': 'CartoDB Positron',
         'address': 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1041',
         'old': 'true',
         'language': 'en',
@@ -396,7 +434,7 @@ var layers_data = [
         'name': 'CartoDB Dark Matter',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1042',
         'old': 'true',
         'language': 'en',
@@ -406,7 +444,7 @@ var layers_data = [
         'name': 'CartoDB Positron (no labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1043',
         'old': 'true',
         'nolabels': 'true',
@@ -416,7 +454,7 @@ var layers_data = [
         'name': 'CartoDB Dark Matter (no labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1044',
         'old': 'true',
         'nolabels': 'true',
@@ -426,7 +464,7 @@ var layers_data = [
         'name': 'CartoDB World Antique',
         'address': 'https://cartocdn_{s}.global.ssl.fastly.net/base-antique/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1045',
         'old': 'true',
         'language': 'en'
@@ -435,7 +473,7 @@ var layers_data = [
         'name': 'CartoDB World Eco',
         'address': 'https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1046',
         'old': 'true',
         'language': 'en'
@@ -444,7 +482,7 @@ var layers_data = [
         'name': 'CartoDB World Flat Blue',
         'address': 'https://cartocdn_{s}.global.ssl.fastly.net/base-flatblue/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1047',
         'old': 'true',
         'nolabels': 'true'
@@ -453,7 +491,7 @@ var layers_data = [
         'name': 'CartoDB World Midnight Commander',
         'address': 'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '1048',
         'old': 'true',
         'nolabels': 'true'
@@ -462,7 +500,7 @@ var layers_data = [
         'name': 'Stamen Toner',
         'address': 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
         'maxZoom': 20,
-        'attribution': attribution + '<a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+        'attribution': openstreetmap_stamen_attribution,
         'id': '1049',
         'old': 'true',
         'blackwhite': 'true',
@@ -472,7 +510,7 @@ var layers_data = [
         'name': 'Stamen Toner-background',
         'address': 'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png',
         'maxZoom': 20,
-        'attribution': attribution + '<a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+        'attribution': openstreetmap_stamen_attribution,
         'id': '1050',
         'old': 'true',
         'blackwhite': 'true',
@@ -482,7 +520,7 @@ var layers_data = [
         'name': 'Stamen Toner-lite',
         'address': 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png',
         'maxZoom': 20,
-        'attribution': attribution + '<a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+        'attribution': openstreetmap_stamen_attribution,
         'id': '1051',
         'old': 'true',
         'blackwhite': 'true',
@@ -492,7 +530,7 @@ var layers_data = [
         'name': 'Skobbler',
         'address': 'http://tiles{s}-bc7b4da77e971c12cb0e069bffcf2771.skobblermaps.com/TileService/tiles/2.0/01021113210/7/{z}/{x}/{y}.png?traffic=false',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.skobbler.com/">Skobbler</a>',
+        'attribution': openstreetmap_skobbler_attribution,
         'subdomains': ['1', '2', '3'],
         'id': '1052'
     },
@@ -500,7 +538,7 @@ var layers_data = [
         'name': 'Skobbler (with traffic)',
         'address': 'http://tiles{s}-bc7b4da77e971c12cb0e069bffcf2771.skobblermaps.com/TileService/tiles/2.0/01021113210/7/{z}/{x}/{y}.png?traffic=true',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.skobbler.com/">Skobbler</a>',
+        'attribution': openstreetmap_skobbler_attribution,
         'subdomains': ['1', '2', '3'],
         'id': '1053'
     },
@@ -543,14 +581,14 @@ var layers_data = [
         'name': 'Thunderforest Transport',
         'address': 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>',
+        'attribution': thunderforest_attribution,
         'id': '1057'
     },
     {
         'name': 'Thunderforest Transport Dark',
         'address': 'http://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>',
+        'attribution': thunderforest_attribution,
         'id': '1058'
     },
     {
@@ -569,35 +607,35 @@ var layers_data = [
         'name': 'Thunderforest Landskape',
         'address': 'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>',
+        'attribution': thunderforest_attribution,
         'id': '1060'
     },
     {
         'name': 'Thunderforest Outdoors',
         'address': 'http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>',
+        'attribution': thunderforest_attribution,
         'id': '1061'
     },
     {
         'name': 'Thunderforest OpenCycleMap',
         'address': 'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>',
+        'attribution': thunderforest_attribution,
         'id': '1062'
     },
     {
         'name': 'MapBox.outdoors',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.outdoors/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1063'
     },
     {
         'name': 'MapBox.run-bike-hike',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.run-bike-hike/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1064',
         'language': 'en'
     },
@@ -666,21 +704,21 @@ var layers_data = [
         'name': 'Thunderforest Spinal',
         'address': 'https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>',
+        'attribution': thunderforest_attribution,
         'id': '1087'
     },
     {
         'name': 'MapBox.wheatpaste',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.wheatpaste/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1072'
     },
     {
         'name': 'MapBox.comic',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.comic/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1073',
         'language': 'en'
     },
@@ -688,7 +726,7 @@ var layers_data = [
         'name': 'MapBox.pencil',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.pencil/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1074',
         'blackwhite': 'true',
         'nolabels': 'true'
@@ -697,7 +735,7 @@ var layers_data = [
         'name': 'MapBox.pirates',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.pirates/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 19,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1075',
         'language': 'en'
     },
@@ -705,7 +743,7 @@ var layers_data = [
         'name': 'Stamen Watercolor',
         'address': 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
         'maxZoom': 20,
-        'attribution': attribution + '<a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+        'attribution': openstreetmap_stamen_attribution,
         'id': '1076',
         'old': 'true',
         'nolabels': 'true'
@@ -752,14 +790,14 @@ var layers_data = [
         'name': 'MapBox.streets-satellite',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': openstreetmap_mapbox_attribution,
         'id': '1078'
     },
     {
         'name': 'MapBox.satellite',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 18,
-        'attribution': tiles_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': tiles_attribution + mapbox_attribution,
         'id': '1079'
     },
     {
@@ -775,7 +813,7 @@ var layers_data = [
         'name': 'MapBox Live Satellite',
         'address': 'http://{s}.tiles.mapbox.com/v4/mapbox.landsat-live/{z}/{x}/{y}.png?access_token=' + mapbox_token,
         'maxZoom': 13,
-        'attribution': tiles_attribution + '<a href="http://www.mapbox.com/about/maps/" target="_blank">MapBox</a>',
+        'attribution': tiles_attribution + mapbox_attribution,
         'subdomains': ['a', 'b'],
         'minZoom': 7,
         'id': '1081'
@@ -784,7 +822,7 @@ var layers_data = [
         'name': 'MapQuest Aerial',
         'address': 'http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
         'maxZoom': 18,
-        'attribution': tiles_attribution + '<a href="http://www.mapquest.com/" target="_blank">MapQuest</a>',
+        'attribution': tiles_attribution + mapquest_attribution,
         'subdomains': ['1', '2', '3', '4'],
         'id': '1083'
     }
@@ -801,14 +839,14 @@ var overlays_data = [
         'name': 'Semitransparent',
         'address': 'http://korona.geog.uni-heidelberg.de/tiles/hybrid/x={x}&y={y}&z={z}',
         'maxZoom': 19,
-        'attribution': '<a href="http://giscience.uni-hd.de/" target="_blank">GIScience Research Group @ Heidelberg University</a>',
+        'attribution': unihd_attribution,
         'id': '2006'
     },
     {
         'name': 'MapQuest Hybrid',
         'address': 'http://ttiles0{s}.mqcdn.com/tiles/1.0.0/vy/hyb/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': '<a href="http://www.mapquest.com/" target="_blank">MapQuest</a>',
+        'attribution': mapquest_attribution,
         'subdomains': ['1', '2', '3', '4'],
         'id': '2007'
     },
@@ -816,7 +854,7 @@ var overlays_data = [
         'name': 'Космоснимки Гибрид',
         'address': 'http://{s}.tile.osm.kosmosnimki.ru/kosmohyb/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': '<a href="http://osm.kosmosnimki.ru/" target="_blank">ScanEx</a>',
+        'attribution': kosmosnimki_attribution,
         'subdomains': ['a', 'b', 'c', 'd'],
         'id': '2008',
         'language': 'ru'
@@ -825,7 +863,7 @@ var overlays_data = [
         'name': 'Stamen Toner-hybrid',
         'address': 'http://{s}.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': '<a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+        'attribution': stamen_attribution,
         'id': '2009',
         'old': 'true',
         'language': 'en'
@@ -834,7 +872,7 @@ var overlays_data = [
         'name': 'Stamen Toner-lines',
         'address': 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': '<a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+        'attribution': stamen_attribution,
         'id': '2011',
         'old': 'true',
         'nolabels': 'true'
@@ -848,7 +886,7 @@ var overlays_data = [
         'name': 'Multilingual map - de',
         'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/labels/de/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': '<a href="http://mlm.jochentopf.com/" target="_blank">Multilingual Map</a>',
+        'attribution': multilingualmap_attribution,
         'id': '2036',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'de'
@@ -857,7 +895,7 @@ var overlays_data = [
         'name': 'Multilingual map - en',
         'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/labels/en/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': '<a href="http://mlm.jochentopf.com/" target="_blank">Multilingual Map</a>',
+        'attribution': multilingualmap_attribution,
         'id': '2037',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'en'
@@ -866,7 +904,7 @@ var overlays_data = [
         'name': 'Multilingual map - ru',
         'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/labels/ru/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': '<a href="http://mlm.jochentopf.com/" target="_blank">Multilingual Map</a>',
+        'attribution': multilingualmap_attribution,
         'id': '2038',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'ru'
@@ -875,7 +913,7 @@ var overlays_data = [
         'name': 'Multilingual map - uk',
         'address': 'http://{s}.tile.openstreetmap.de:8002/tiles/1.0.0/labels/uk/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': '<a href="http://mlm.jochentopf.com/" target="_blank">Multilingual Map</a>',
+        'attribution': multilingualmap_attribution,
         'id': '2039',
         'subdomains': ['a', 'b', 'c', 'd'],
         'language': 'uk'
@@ -884,7 +922,7 @@ var overlays_data = [
         'name': 'CartoDB Positron (only labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': cartodb_attribution,
         'id': '2073',
         'old': 'true',
         'language': 'en'
@@ -893,7 +931,7 @@ var overlays_data = [
         'name': 'CartoDB Dark Matter (only labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': cartodb_attribution,
         'id': '2075',
         'old': 'true',
         'language': 'en'
@@ -902,7 +940,7 @@ var overlays_data = [
         'name': 'CartoDB Positron (only labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '2074',
         'old': 'true',
         'language': 'en',
@@ -912,7 +950,7 @@ var overlays_data = [
         'name': 'CartoDB Dark Matter (only labels)',
         'address': 'http://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png',
         'maxZoom': 22, // can be more
-        'attribution': openstreetmap_attribution + ' | ' + 'Map tiles by <a href="http://cartodb.com/attributions#basemaps">CartoDB</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
+        'attribution': openstreetmap_cartodb_attribution,
         'id': '2076',
         'old': 'true',
         'language': 'en',
@@ -922,7 +960,7 @@ var overlays_data = [
         'name': 'Stamen Toner-labels',
         'address': 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': '<a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+        'attribution': stamen_attribution,
         'id': '2010',
         'old': 'true',
         'language': 'en'
@@ -1009,42 +1047,42 @@ var overlays_data = [
         'name': 'Lights',
         'address': 'http://129.206.74.245:8005/tms_lt.ashx?x={x}&y={y}&z={z}',
         'maxZoom': 19,
-        'attribution': '<a href="http://giscience.uni-hd.de/" target="_blank">GIScience Research Group @ Heidelberg University</a>',
+        'attribution': unihd_attribution,
         'id': '2020'
     },
     {
         'name': 'OpenRailwayMap',
         'address': 'http://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': '<a href="http://www.openrailwaymap.org/" target="_blank">OpenRailwayMap</a>',
+        'attribution': openrailwaymap_attribution,
         'id': '2000'
     },
     {
         'name': 'OpenRailwayMap Maxspeed',
         'address': 'http://{s}.tiles.openrailwaymap.org/maxspeed/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': '<a href="http://www.openrailwaymap.org/" target="_blank">OpenRailwayMap</a>',
+        'attribution': openrailwaymap_attribution,
         'id': '2001'
     },
     {
         'name': 'OpenRailwayMap Signals',
         'address': 'http://{s}.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': '<a href="http://www.openrailwaymap.org/" target="_blank">OpenRailwayMap</a>',
+        'attribution': openrailwaymap_attribution,
         'id': '2002'
     },
     {
         'name': 'OpenFireMap - Fire hydrants',
         'address': 'http://openfiremap.org/hytiles/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': '<a href="http://openfiremap.org/" target="_blank">OpenFireMap</a>',
+        'attribution': openfiremap_attribution,
         'id': '2004'
     },
     {
         'name': 'OpenFireMap - Emergency rooms',
         'address': 'http://openfiremap.org/eytiles/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': '<a href="http://openfiremap.org/" target="_blank">OpenFireMap</a>',
+        'attribution': openfiremap_attribution,
         'id': '2005'
     },
     {
@@ -1052,7 +1090,7 @@ var overlays_data = [
         'name': 'Street areas',
         'address': 'http://osmapa.pl/de',
         'maxZoom': 20,
-        'attribution': '<a href="http://osmapa.pl/w/areaua/" target="_blank">Osmapa.pl</a>',
+        'attribution': areaua_attribution,
         'id': '2021',
         'minZoom': 6,
         'layers': ['areahighwaylow','areahighwaysurf','areanamesurf'],
@@ -1066,7 +1104,7 @@ var overlays_data = [
         'name': 'Pedestrian crossings',
         'address': 'http://osmapa.pl/de',
         'maxZoom': 20,
-        'attribution': '<a href="http://osmapa.pl/w/areaua/" target="_blank">Osmapa.pl</a>',
+        'attribution': areaua_attribution,
         'id': '2022',
         'minZoom': 16,
         'layers': ['pasy_mr'],
@@ -1084,70 +1122,70 @@ var overlays_data = [
         'name': 'Admin Boundaries',
         'address': 'http://korona.geog.uni-heidelberg.de/tiles/adminb/x={x}&y={y}&z={z}',
         'maxZoom': 18,
-        'attribution': '<a href="http://giscience.uni-hd.de/" target="_blank">GIScience Research Group @ Heidelberg University</a>',
+        'attribution': unihd_attribution,
         'id': '2023'
     },
     {
         'name': 'admin_level=2',
         'address': 'http://{s}.layers.openstreetmap.fr/admin2/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
+        'attribution': sly_attribution,
         'id': '2024'
     },
     {
         'name': 'admin_level=3',
         'address': 'http://{s}.layers.openstreetmap.fr/admin3/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
+        'attribution': sly_attribution,
         'id': '2025'
     },
     {
         'name': 'admin_level=4',
         'address': 'http://{s}.layers.openstreetmap.fr/admin4/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
+        'attribution': sly_attribution,
         'id': '2026'
     },
     {
         'name': 'admin_level=5',
         'address': 'http://{s}.layers.openstreetmap.fr/admin5/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
+        'attribution': sly_attribution,
         'id': '2027'
     },
     {
         'name': 'admin_level=6',
         'address': 'http://{s}.layers.openstreetmap.fr/admin6/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
+        'attribution': sly_attribution,
         'id': '2028'
     },
     {
         'name': 'admin_level=7',
         'address': 'http://{s}.layers.openstreetmap.fr/admin7/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
+        'attribution': sly_attribution,
         'id': '2029'
     },
     {
         'name': 'admin_level=8',
         'address': 'http://{s}.layers.openstreetmap.fr/admin8/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
+        'attribution': sly_attribution,
         'id': '2030'
     },
     {
         'name': 'admin_level=9',
         'address': 'http://{s}.layers.openstreetmap.fr/admin9/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
+        'attribution': sly_attribution,
         'id': '2031'
     },
     {
         'name': 'admin_level=10',
         'address': 'http://{s}.layers.openstreetmap.fr/admin10/{z}/{x}/{y}.png',
         'maxZoom': 22,
-        'attribution': '<a href="http://wiki.openstreetmap.org/wiki/User:Sletuffe" target="_blank">sly</a>',
+        'attribution': sly_attribution,
         'id': '2032'
     },
     {
@@ -1159,7 +1197,7 @@ var overlays_data = [
         'name': 'Населенные пункты (НП), лежащие в границах другого НП',
         'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/places.png',
         'maxZoom': 22, // can be more
-        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'attribution': nadoloni_attribution,
         'id': '2040',
         'tms': 'true'
     },
@@ -1167,7 +1205,7 @@ var overlays_data = [
         'name': 'Улицы с подозрительно большими разрывами между сегментами',
         'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/gaps.png',
         'maxZoom': 22, // can be more
-        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'attribution': nadoloni_attribution,
         'id': '2041',
         'tms': 'true'
     },
@@ -1175,7 +1213,7 @@ var overlays_data = [
         'name': 'Улицы, пересекающие границы НП',
         'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/inter.png',
         'maxZoom': 22, // can be more
-        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'attribution': nadoloni_attribution,
         'id': '2042',
         'tms': 'true'
     },
@@ -1183,7 +1221,7 @@ var overlays_data = [
         'name': 'Дубли номеров домов',
         'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/numbers.png',
         'maxZoom': 22, // can be more
-        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'attribution': nadoloni_attribution,
         'id': '2043',
         'tms': 'true'
     },
@@ -1191,7 +1229,7 @@ var overlays_data = [
         'name': 'Улицы за границами НП',
         'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/streets.png',
         'maxZoom': 22, // can be more
-        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'attribution': nadoloni_attribution,
         'id': '2044',
         'tms': 'true'
     },
@@ -1199,7 +1237,7 @@ var overlays_data = [
         'name': 'Дома без улицы',
         'address': 'http://nadoloni.com/errors/tile/{z}/{x}/{y}/address.png',
         'maxZoom': 22, // can be more
-        'attribution': '<a href="http://nadoloni.com/" target="_blank">nadoloni.com</a>',
+        'attribution': nadoloni_attribution,
         'id': '2045',
         'tms': 'true'
     },
@@ -1207,7 +1245,7 @@ var overlays_data = [
         'name': 'no name',
         'address': 'http://tile{s}.poole.ch/noname/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>',
+        'attribution': pooleqa,
         'id': '2046',
         'subdomains': ['2', '3']
     },
@@ -1215,7 +1253,7 @@ var overlays_data = [
         'name': 'no address',
         'address': 'http://tile{s}.poole.ch/noaddress/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>',
+        'attribution': pooleqa,
         'id': '2047',
         'subdomains': ['2', '3']
     },
@@ -1223,7 +1261,7 @@ var overlays_data = [
         'name': 'has address',
         'address': 'http://tile{s}.poole.ch/has_address/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>',
+        'attribution': pooleqa,
         'id': '2048',
         'subdomains': ['2', '3']
     },
@@ -1231,7 +1269,7 @@ var overlays_data = [
         'name': 'AEYCH',
         'address': 'http://tile{s}.poole.ch/aeych/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>',
+        'attribution': pooleqa,
         'id': '2049',
         'subdomains': ['2', '3']
     },
@@ -1244,21 +1282,21 @@ var overlays_data = [
         'name': 'GPS Traces',
         'address': 'http://{s}.gps-tile.openstreetmap.org/lines/{z}/{x}/{y}.png',
         'maxZoom': 19,
-        'attribution': 'Traces: &copy; <a href="http://www.openstreetmap.org/traces" target="_blank">OpenStreetMap</a> contributors',
+        'attribution': traces_attribution,
         'id': '2033'
     },
     {
         'name': 'GPS Points, 9.04.2013',
         'address': 'http://zverik.osm.rambler.ru/gps/tiles/{z}/{x}/{y}.png',
         'maxZoom': 11,
-        'attribution': 'Traces: &copy; <a href="http://www.openstreetmap.org/traces" target="_blank">OpenStreetMap</a> contributors | ' + tiles_attribution + '<a href="http://zverik.osm.rambler.ru/gps/" target="_blank">Ilya Zverev</a>',
+        'attribution': traces_attribution + ' | ' + tiles_attribution + zverikgps_attribution,
         'id': '2050'
     },
     {
         'name': 'GPS Points, 4.06.2012 (with private traces)',
         'address': 'http://zverik.osm.rambler.ru/gps/tiles/{z}/{x}/{y}.png',
         'maxZoom': 11,
-        'attribution': 'Traces: &copy; <a href="http://www.openstreetmap.org/traces" target="_blank">OpenStreetMap</a> contributors | ' + tiles_attribution + '<a href="http://zverik.osm.rambler.ru/gps/" target="_blank">Ilya Zverev</a>',
+        'attribution': traces_attribution + ' | ' + tiles_attribution + zverikgps_attribution,
         'id': '2051',
         'old': 'true'
     },
@@ -1266,147 +1304,147 @@ var overlays_data = [
         'name': 'Strava Heatmap cycling color1',
         'address': 'http://globalheat.strava.com/tiles/cycling/color1/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2052'
     },
     {
         'name': 'Strava Heatmap cycling color2',
         'address': 'http://globalheat.strava.com/tiles/cycling/color2/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2053'
     },
     {
         'name': 'Strava Heatmap cycling color3',
         'address': 'http://globalheat.strava.com/tiles/cycling/color3/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2054'
     },
     {
         'name': 'Strava Heatmap cycling color4',
         'address': 'http://globalheat.strava.com/tiles/cycling/color4/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2055'
     },
     {
         'name': 'Strava Heatmap cycling color5',
         'address': 'http://globalheat.strava.com/tiles/cycling/color5/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2056'
     },
     {
         'name': 'Strava Heatmap cycling color6',
         'address': 'http://globalheat.strava.com/tiles/cycling/color6/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2057'
     },
     {
         'name': 'Strava Heatmap cycling color7',
         'address': 'http://globalheat.strava.com/tiles/cycling/color7/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2058'
     },
     {
         'name': 'Strava Heatmap running color1',
         'address': 'http://globalheat.strava.com/tiles/running/color1/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2059'
     },
     {
         'name': 'Strava Heatmap running color2',
         'address': 'http://globalheat.strava.com/tiles/running/color2/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2060'
     },
     {
         'name': 'Strava Heatmap running color3',
         'address': 'http://globalheat.strava.com/tiles/running/color3/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2061'
     },
     {
         'name': 'Strava Heatmap running color4',
         'address': 'http://globalheat.strava.com/tiles/running/color4/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2062'
     },
     {
         'name': 'Strava Heatmap running color5',
         'address': 'http://globalheat.strava.com/tiles/running/color5/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2063'
     },
     {
         'name': 'Strava Heatmap running color6',
         'address': 'http://globalheat.strava.com/tiles/running/color6/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2064'
     },
     {
         'name': 'Strava Heatmap running color7',
         'address': 'http://globalheat.strava.com/tiles/running/color7/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2065'
     },
     {
         'name': 'Strava Heatmap both color1',
         'address': 'http://globalheat.strava.com/tiles/both/color1/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2066'
     },
     {
         'name': 'Strava Heatmap both color2',
         'address': 'http://globalheat.strava.com/tiles/both/color2/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2067'
     },
     {
         'name': 'Strava Heatmap both color3',
         'address': 'http://globalheat.strava.com/tiles/both/color3/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2068'
     },
     {
         'name': 'Strava Heatmap both color4',
         'address': 'http://globalheat.strava.com/tiles/both/color4/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2069'
     },
     {
         'name': 'Strava Heatmap both color5',
         'address': 'http://globalheat.strava.com/tiles/both/color5/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2070'
     },
     {
         'name': 'Strava Heatmap both color6',
         'address': 'http://globalheat.strava.com/tiles/both/color6/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2071'
     },
     {
         'name': 'Strava Heatmap both color7',
         'address': 'http://globalheat.strava.com/tiles/both/color7/{z}/{x}/{y}.png',
         'maxZoom': 17,
-        'attribution': 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>',
+        'attribution': strava_attribution,
         'id': '2072'
     },
     {
@@ -1418,14 +1456,14 @@ var overlays_data = [
         'name': 'ASTER GDEM & SRTM Hillshade',
         'address': 'http://korona.geog.uni-heidelberg.de/tiles/asterh/x={x}&y={y}&z={z}',
         'maxZoom': 18,
-        'attribution': 'ASTER GDEM is a product of <a href="http://www.meti.go.jp/english/press/data/20090626_03.html" target="_blank">METI</a> and <a href="https://lpdaac.usgs.gov/products/aster_policies" target="_blank">NASA</a> | ' + tiles_attribution + '<a href="http://giscience.uni-hd.de/" target="_blank">GIScience Research Group @ Heidelberg University</a>',
+        'attribution': astergdem_attribution + ' | ' + tiles_attribution + unihd_attribution,
         'id': '2034'
     },
     {
         'name': 'ASTER GDEM Contour lines',
         'address': 'http://korona.geog.uni-heidelberg.de/tiles/asterc/x={x}&y={y}&z={z}',
         'maxZoom': 17,
-        'attribution': 'ASTER GDEM is a product of <a href="http://www.meti.go.jp/english/press/data/20090626_03.html" target="_blank">METI</a> and <a href="https://lpdaac.usgs.gov/products/aster_policies" target="_blank">NASA</a> | ' + tiles_attribution + '<a href="http://giscience.uni-hd.de/" target="_blank">GIScience Research Group @ Heidelberg University</a>',
+        'attribution': astergdem_attribution + ' | ' + tiles_attribution + unihd_attribution,
         'id': '2035',
         'minZoom': 13
     }

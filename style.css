@@ -4,23 +4,17 @@ BODY {
 
 
 
-.padding_text {
-    padding-left: 4px;
-}
-
-
-
-.functions_container {
+#functions_container {
     border-bottom: 2px solid;
 }
 
-.left_container {
+#left_container {
     height: 100%;
     width: 360px;
     float: left;
 }
 
-.left {
+#left {
     position: absolute;
     bottom: 0px;
     top: 140px;
@@ -28,19 +22,21 @@ BODY {
     overflow-y: scroll;
 }
 
-.map {
+#map {
     height: 100%;
 }
 
 
 
-.header_big {
+.padding_text, .header_big, .layer, .selected_layer {
     padding-left: 4px;
+}
+
+.header_big {
     margin: 0px;
 }
 
 .layer {
-    padding-left: 4px;
     cursor: pointer;
 }
 .layer:hover {
@@ -48,43 +44,18 @@ BODY {
 }
 
 .selected_layer {
-    padding-left: 4px;
     background: #E5E5E5;
 }
 
 
 
-.old_hidden {
-    display: none;
-}
-
-.ua_hidden {
-    display: none;
-}
-
-.blackwhite_hidden {
-    display: none;
-}
-
-.nolabels_hidden {
-    display: none;
-}
-
-.retina_hidden {
-    display: none;
-}
-
-.language_hidden {
-    display: none;
-}
-
-.header_hidden {
+.old_hidden, .ua_hidden, .blackwhite_hidden, .nolabels_hidden, .retina_hidden, .language_hidden, .header_hidden  {
     display: none;
 }
 
 
 
-.additional_information {
+.old, .ua, .bw, .nl, .rtn, .lg { 
     float: right;
     margin-right: 4px;
     padding-right: 2px;
@@ -112,6 +83,6 @@ BODY {
     background-color: #FF6A00;
 }
 
-.lang {
+.lg {
     background-color: #00FF00;
 }
