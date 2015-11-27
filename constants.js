@@ -698,7 +698,8 @@ var layers_data = [
     },
     {
         'header': 'true',
-        'name': 'Beautiful'
+        'name': 'Beautiful',
+        'id': '3003'
     },
     {
         'name': 'Thunderforest Spinal',

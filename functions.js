@@ -203,7 +203,7 @@ function showLayer(id) {
             if (current_layer_id.search('-') == -1) {
                 map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
             }
-            document.getElementById(current_layer_id).className = document.getElementById(current_layer_id).className.replace('selected_layer', 'layer');
+            replaceInClassName(document.getElementById(current_layer_id), 'selected_layer', 'layer');
         }
 
         if (id.toString().search('-') == -1)  {
@@ -217,7 +217,7 @@ function showLayer(id) {
             document.getElementById('map').style.backgroundColor = 'rgb(0,0,0)';
         }
         
-        document.getElementById(id).className = document.getElementById(id).className.replace('layer', 'selected_layer');
+        replaceInClassName(document.getElementById(id), 'layer', 'selected_layer');
         current_layer_id = id + '';
     }
 
@@ -291,13 +291,13 @@ function onOldCheckboxChanged() {
     if (document.getElementById('old_selector').checked) {
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="old"') != -1) {
-                left_layers[i].className = left_layers[i].className.replace(' old_hidden', '');
+                removeFromClassName(left_layers[i], ' old_hidden');
             }
         }
     } else {
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="old"') != -1) {
-                left_layers[i].className = left_layers[i].className + ' old_hidden';
+                addToClassName(left_layers[i], ' old_hidden');
             }
         }
     }
@@ -310,13 +310,13 @@ function onUACheckboxChanged() {
     if (document.getElementById('ua_selector').checked) {
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="ua"') != -1) {
-                left_layers[i].className = left_layers[i].className.replace(' ua_hidden', '');
+                removeFromClassName(left_layers[i], ' ua_hidden');
             }
         }
     } else {
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="ua"') != -1) {
-                left_layers[i].className = left_layers[i].className + ' ua_hidden';
+                addToClassName(left_layers[i], ' ua_hidden');
             }
         }
     }
@@ -331,7 +331,7 @@ function onBWCheckboxChanged() {
         
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="bw"') == -1 && left_layers[i].tagName != 'H2') {
-                left_layers[i].className = left_layers[i].className + ' blackwhite_hidden';
+                addToClassName(left_layers[i], ' blackwhite_hidden');
             }
         }
     } else {
@@ -339,7 +339,7 @@ function onBWCheckboxChanged() {
         
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="bw"') == -1 && left_layers[i].tagName != 'H2') {
-                left_layers[i].className = left_layers[i].className.replace(' blackwhite_hidden', '');
+                removeFromClassName(left_layers[i], ' blackwhite_hidden');
             }
         }
     }
@@ -354,7 +354,7 @@ function onNLCheckboxChanged() {
         
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="nl"') == -1 && left_layers[i].tagName != 'H2') {
-                left_layers[i].className = left_layers[i].className + ' nolabels_hidden';
+                addToClassName(left_layers[i], ' nolabels_hidden');
             }
         }
     } else {
@@ -362,7 +362,7 @@ function onNLCheckboxChanged() {
         
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="nl"') == -1 && left_layers[i].tagName != 'H2') {
-                left_layers[i].className = left_layers[i].className.replace(' nolabels_hidden', '');
+                removeFromClassName(left_layers[i], ' nolabels_hidden');
             }
         }
     }
@@ -377,7 +377,7 @@ function onRetinaCheckboxChanged() {
         
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="rtn"') == -1 && left_layers[i].tagName != 'H2') {
-                left_layers[i].className = left_layers[i].className + ' retina_hidden';
+                addToClassName(left_layers[i], ' retina_hidden');
             }
         }
     } else {
@@ -385,7 +385,7 @@ function onRetinaCheckboxChanged() {
         
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="rtn"') == -1 && left_layers[i].tagName != 'H2') {
-                left_layers[i].className = left_layers[i].className.replace(' retina_hidden', '');
+                removeFromClassName(left_layers[i], ' retina_hidden');
             }
         }
     }
@@ -401,7 +401,7 @@ function onLanguageChanged() {
         decreaseHidingFiltersCount();
         
         for (var i = 0; i < left_layers.length; i++) {
-            left_layers[i].className = left_layers[i].className.replace(' language_hidden', '');
+             removeFromClassName(left_layers[i], ' language_hidden');
         }
     } else {
         increaseHidingFiltersCount();
@@ -409,10 +409,10 @@ function onLanguageChanged() {
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].className != 'header_big' && left_layers[i].innerHTML.search('>' + language + '<') == -1) {
                 if (left_layers[i].className.search('language_hidden') == -1) {
-                    left_layers[i].className = left_layers[i].className + ' language_hidden';
+                    addToClassName(left_layers[i], ' language_hidden');
                 }
             } else {
-                left_layers[i].className = left_layers[i].className.replace(' language_hidden', '');
+                removeFromClassName(left_layers[i], ' language_hidden');
             }
         }
     }
@@ -423,13 +423,13 @@ function onHeaderChanged(id) {
     if (document.getElementById(id).checked) {
         var current_element = document.getElementById(id).parentNode.nextElementSibling;
         while (current_element.className.search('padding_text') == -1) {
-            current_element.className = current_element.className.replace(' header_hidden', '');
+            removeFromClassName(current_element, ' header_hidden');
             current_element = current_element.nextElementSibling;
         }
     } else {
         var current_element = document.getElementById(id).parentNode.nextElementSibling;
         while (current_element.className.search('padding_text') == -1) {
-            current_element.className = current_element.className + ' header_hidden';
+            addToClassName(current_element, ' header_hidden');
             current_element = current_element.nextElementSibling;
         }
     }
@@ -441,7 +441,7 @@ function increaseHidingFiltersCount() {
     if (hiding_filters_count == 1) {
         var left_layers = left.childNodes;
         for (var i = 0; i < left_layers.length; i++) {
-            left_layers[i].className = left_layers[i].className.replace('header_hidden', 'h_hidden');
+            replaceInClassName(left_layers[i], 'header_hidden', 'h_hidden');
         }
     }
 }
@@ -452,7 +452,7 @@ function decreaseHidingFiltersCount() {
     if (hiding_filters_count == 0) {
         var left_layers = left.childNodes;
         for (var i = 0; i < left_layers.length; i++) {
-            left_layers[i].className = left_layers[i].className.replace('h_hidden', 'header_hidden');
+            replaceInClassName(left_layers[i], 'h_hidden', 'header_hidden');
         }
     }
 }
@@ -508,4 +508,18 @@ function showSavedLayers(ids) {
     } else {
         showLayer('1000');
     }
+}
+
+/* UTILS */
+
+function addToClassName(element, value) {
+    element.className = element.className + value;
+}
+
+function removeFromClassName(element, value) {
+    element.className = element.className.replace(value, '');
+}
+
+function replaceInClassName(element, old_value, new_value) {
+    element.className = element.className.replace(old_value, new_value);
 }
