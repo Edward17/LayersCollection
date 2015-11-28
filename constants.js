@@ -699,7 +699,7 @@ var layers_data = [
     {
         'header': 'true',
         'name': 'Beautiful',
-        'id': '3003'
+        'id': '3004'
     },
     {
         'name': 'Thunderforest Spinal',
@@ -752,7 +752,7 @@ var layers_data = [
     {
         'header': 'true',
         'name': 'Satellite',
-        'id': '3004'
+        'id': '3005'
     },
 
 /*
@@ -834,7 +834,7 @@ var overlays_data = [
     {
         'header': 'true',
         'name': 'General',
-        'id': '3005'
+        'id': '3006'
     },
     {
         'name': 'Semitransparent',
@@ -881,7 +881,7 @@ var overlays_data = [
     {
         'header': 'true',
         'name': 'Labels',
-        'id': '3006'
+        'id': '3007'
     },
     {
         'name': 'Multilingual map - de',
@@ -969,7 +969,7 @@ var overlays_data = [
     {
         'header': 'true',
         'name': 'Public Transport',
-        'id': '3007'
+        'id': '3008'
     },
     {
         'name': 'OpenMap.lt Public transport',
@@ -988,7 +988,7 @@ var overlays_data = [
     {
         'header': 'true',
         'name': 'Hiking, Cycling, Boating, etc.',
-        'id': '3008'
+        'id': '3009'
     },
     {
         'name': 'Waymarked Trails: Hiking',
@@ -1042,7 +1042,7 @@ var overlays_data = [
     {
         'header': 'true',
         'name': 'Thematic',
-        'id': '3009'
+        'id': '3010'
     },
     {
         'name': 'Lights',
@@ -1117,7 +1117,7 @@ var overlays_data = [
     {
         'header': 'true',
         'name': 'Administrative boundaries',
-        'id': '3010'
+        'id': '3011'
     },
     {
         'name': 'Admin Boundaries',
@@ -1192,7 +1192,7 @@ var overlays_data = [
     {
         'header': 'true',
         'name': 'Quality Assurance',
-        'id': '3011'
+        'id': '3012'
     },
     {
         'name': 'Населенные пункты (НП), лежащие в границах другого НП',
@@ -1277,7 +1277,7 @@ var overlays_data = [
     {
         'header': 'true',
         'name': 'GPS Traces',
-        'id': '3012'
+        'id': '3013'
     },
     {
         'name': 'GPS Traces',
@@ -1451,7 +1451,7 @@ var overlays_data = [
     {
         'header': 'true',
         'name': 'Relief',
-        'id': '3013'
+        'id': '3014'
     },
     {
         'name': 'ASTER GDEM & SRTM Hillshade',
