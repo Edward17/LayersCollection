@@ -13,11 +13,11 @@
 		<div id="left_container">
 			<div id="functions_container">
 				<div>
-					<input type="checkbox" id="old_selector" onchange="onOldCheckboxChanged()">Show outdated layers<br>
-					<input type="checkbox" id="ua_selector" onchange="onUACheckboxChanged()">Show Ukraine-only layers<br>
-					<input type="checkbox" id="blackwhite_selector" onchange="onBWCheckboxChanged()">Show only black/white layers<br>
-					<input type="checkbox" id="nolabels_selector" onchange="onNLCheckboxChanged()">Show only no-labels layers<br>
-					<input type="checkbox" id="retina_selector" onchange="onRetinaCheckboxChanged()">Show only Retina layers<br>
+					<input type="checkbox" id="old_selector" onchange="onShowingFilterChanged('old')">Show outdated layers<br>
+					<input type="checkbox" id="ua_selector" onchange="onShowingFilterChanged('ua')">Show Ukraine-only layers<br>
+					<input type="checkbox" id="blackwhite_selector" onchange="onHidingFilterChanged('blackwhite')">Show only black/white layers<br>
+					<input type="checkbox" id="nolabels_selector" onchange="onHidingFilterChanged('nolabels')">Show only no-labels layers<br>
+					<input type="checkbox" id="retina_selector" onchange="onHidingFilterChanged('retina')">Show only Retina layers<br>
 					<span class="padding_text">Language:</span>
 					<select id="language_selector" onchange="onLanguageChanged()">
 						<option selected>any</option>

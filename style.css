@@ -55,7 +55,7 @@ BODY {
 
 
 
-.old, .ua, .bw, .nl, .rtn, .lg { 
+.old, .ua, .blackwhite, .nolabels, .retina, .lg { 
     float: right;
     margin-right: 4px;
     padding-right: 2px;
@@ -71,15 +71,15 @@ BODY {
     background-color: #FFFF00;
 }
 
-.bw {
+.blackwhite {
     background-color: #C0C0C0;
 }
 
-.nl {
+.nolabels {
     background-color: #0000FF;
 }
 
-.rtn {
+.retina {
     background-color: #FF6A00;
 }
 

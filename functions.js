@@ -171,16 +171,16 @@ function createAdditionalInformation(data) {
         additional_information = additional_information + '<span class="old">old</span>';
     }
     if (data.retina) {
-        additional_information = additional_information + '<span class="rtn">rtn</span>';
+        additional_information = additional_information + '<span class="retina">rtn</span>';
     }
     if (data.ua) {
         additional_information = additional_information + '<span class="ua">ua</span>';
     }
     if (data.blackwhite) {
-        additional_information = additional_information + '<span class="bw">b/w</span>';
+        additional_information = additional_information + '<span class="blackwhite">b/w</span>';
     }
     if (data.nolabels) {
-        additional_information = additional_information + '<span class="nl">nl</span>';
+        additional_information = additional_information + '<span class="nolabels">nl</span>';
     }
     if (data.language) {
         additional_information = additional_information + '<span class="lg">' + data.language + '</span>';
@@ -284,108 +284,43 @@ function getOverlayIndexByID(id) {
 
 /* FILTERS */
 
-function onOldCheckboxChanged() {
-    localStorage.setItem('old_selector', document.getElementById('old_selector').checked);
+function onShowingFilterChanged(id) {
+    localStorage.setItem(id + '_selector', document.getElementById(id + '_selector').checked);
 
     var left_layers = left.childNodes;
-    if (document.getElementById('old_selector').checked) {
+    if (document.getElementById(id + '_selector').checked) {
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="old"') != -1) {
-                removeFromClassName(left_layers[i], ' old_hidden');
+            if (left_layers[i].innerHTML.search('class="'+ id + '"') != -1) {
+                removeFromClassName(left_layers[i], ' ' + id + '_hidden');
             }
         }
     } else {
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="old"') != -1) {
-                addToClassName(left_layers[i], ' old_hidden');
+            if (left_layers[i].innerHTML.search('class="'+ id + '"') != -1) {
+                addToClassName(left_layers[i], ' ' + id + '_hidden');
             }
         }
     }
 }
 
-function onUACheckboxChanged() {
-    localStorage.setItem('ua_selector', document.getElementById('ua_selector').checked);
+function onHidingFilterChanged(id) {
+    localStorage.setItem(id + '_selector', document.getElementById(id + '_selector').checked);
 
     var left_layers = left.childNodes;
-    if (document.getElementById('ua_selector').checked) {
-        for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="ua"') != -1) {
-                removeFromClassName(left_layers[i], ' ua_hidden');
-            }
-        }
-    } else {
-        for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="ua"') != -1) {
-                addToClassName(left_layers[i], ' ua_hidden');
-            }
-        }
-    }
-}
-
-function onBWCheckboxChanged() {
-    localStorage.setItem('blackwhite_selector', document.getElementById('blackwhite_selector').checked);
-
-    var left_layers = left.childNodes;
-    if (document.getElementById('blackwhite_selector').checked) {
+    if (document.getElementById(id + '_selector').checked) {
         increaseHidingFiltersCount();
         
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="bw"') == -1 && left_layers[i].tagName != 'H2') {
-                addToClassName(left_layers[i], ' blackwhite_hidden');
+            if (left_layers[i].innerHTML.search('class="'+ id + '"') == -1 && left_layers[i].tagName != 'H2') {
+                addToClassName(left_layers[i], ' ' + id + '_hidden');
             }
         }
     } else {
         decreaseHidingFiltersCount();
         
         for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="bw"') == -1 && left_layers[i].tagName != 'H2') {
-                removeFromClassName(left_layers[i], ' blackwhite_hidden');
-            }
-        }
-    }
-}
-
-function onNLCheckboxChanged() {
-    localStorage.setItem('nolabels_selector', document.getElementById('nolabels_selector').checked);
-
-    var left_layers = left.childNodes;
-    if (document.getElementById('nolabels_selector').checked) {
-        increaseHidingFiltersCount();
-        
-        for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="nl"') == -1 && left_layers[i].tagName != 'H2') {
-                addToClassName(left_layers[i], ' nolabels_hidden');
-            }
-        }
-    } else {
-        decreaseHidingFiltersCount();
-        
-        for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="nl"') == -1 && left_layers[i].tagName != 'H2') {
-                removeFromClassName(left_layers[i], ' nolabels_hidden');
-            }
-        }
-    }
-}
-
-function onRetinaCheckboxChanged() {
-    localStorage.setItem('retina_selector', document.getElementById('retina_selector').checked);
-
-    var left_layers = left.childNodes;
-    if (document.getElementById('retina_selector').checked) {
-        increaseHidingFiltersCount();
-        
-        for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="rtn"') == -1 && left_layers[i].tagName != 'H2') {
-                addToClassName(left_layers[i], ' retina_hidden');
-            }
-        }
-    } else {
-        decreaseHidingFiltersCount();
-        
-        for (var i = 0; i < left_layers.length; i++) {
-            if (left_layers[i].innerHTML.search('class="rtn"') == -1 && left_layers[i].tagName != 'H2') {
-                removeFromClassName(left_layers[i], ' retina_hidden');
+            if (left_layers[i].innerHTML.search('class="'+ id + '"') == -1 && left_layers[i].tagName != 'H2') {
+                removeFromClassName(left_layers[i], ' ' + id + '_hidden');
             }
         }
     }
