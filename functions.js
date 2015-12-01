@@ -168,22 +168,22 @@ function createLeafletLayer(data) {
 function createAdditionalInformation(data) {
     var additional_information = '';
     if (data.old) {
-        additional_information = additional_information + '<span class="old">old</span>';
+        additional_information = additional_information + '<span title="outdated layer" class="old">old</span>';
     }
     if (data.retina) {
-        additional_information = additional_information + '<span class="retina">rtn</span>';
+        additional_information = additional_information + '<span title="Retina layer" class="retina">rtn</span>';
     }
     if (data.ua) {
-        additional_information = additional_information + '<span class="ua">ua</span>';
+        additional_information = additional_information + '<span title="Ukraine-only layer" class="ua">ua</span>';
     }
     if (data.blackwhite) {
-        additional_information = additional_information + '<span class="blackwhite">b/w</span>';
+        additional_information = additional_information + '<span title="black/white layer" class="blackwhite">b/w</span>';
     }
     if (data.nolabels) {
-        additional_information = additional_information + '<span class="nolabels">nl</span>';
+        additional_information = additional_information + '<span title="no-labels layer" class="nolabels">nl</span>';
     }
     if (data.language) {
-        additional_information = additional_information + '<span class="lg">' + data.language + '</span>';
+        additional_information = additional_information + '<span title="labels language: ' + data.language + '" class="lg">' + data.language + '</span>';
         
         if (language_selector.innerHTML.search('<option>' + data.language +'</option>') == -1) {
             language_selector.innerHTML = language_selector.innerHTML + '<option>' + data.language +'</option>';
