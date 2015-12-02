@@ -46,7 +46,7 @@ var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlc
 
 // max header id = 3013
 
-// max layer id = 1087
+// max layer id = 1088
 var layers_data = [
     {
         'header': 'true',
@@ -707,6 +707,13 @@ var layers_data = [
         'maxZoom': 22,
         'attribution': thunderforest_attribution,
         'id': '1087'
+    },
+    {
+        'name': 'Thunderforest Pioneer',
+        'address': 'https://{s}.tile.thunderforest.com/pioneer/{z}/{x}/{y}.png',
+        'maxZoom': 22,
+        'attribution': thunderforest_attribution,
+        'id': '1088'
     },
     {
         'name': 'MapBox.wheatpaste',
