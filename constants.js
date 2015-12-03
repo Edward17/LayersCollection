@@ -713,7 +713,8 @@ var layers_data = [
         'address': 'https://{s}.tile.thunderforest.com/pioneer/{z}/{x}/{y}.png',
         'maxZoom': 22,
         'attribution': thunderforest_attribution,
-        'id': '1088'
+        'id': '1088',
+        'language': 'en'
     },
     {
         'name': 'MapBox.wheatpaste',
