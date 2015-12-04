@@ -837,7 +837,7 @@ var layers_data = [
     }
 ];
 
-// max overlay id = 2076
+// max overlay id = 2077
 var overlays_data = [
     {
         'header': 'true',
@@ -1475,5 +1475,17 @@ var overlays_data = [
         'attribution': astergdem_attribution + ' | ' + tiles_attribution + unihd_attribution,
         'id': '2035',
         'minZoom': 13
-    }
+    },
+    {
+        'header': 'true',
+        'name': 'Other',
+        'id': '3015'
+    },
+    {
+        'name': 'Mapillary coverage',
+        'address': 'http://{s}.tiles.mapillary.com/{z}/{x}/{y}',
+        'maxZoom': 14,
+        'attribution': tiles_attribution + '<a href="http://www.mapillary.com/map" target="_blank">Mapillary</a>',
+        'id': '2077'
+    },
 ];
