@@ -23,7 +23,20 @@
 						<option selected>any</option>
 					</select>
 				</div>
-				<a id="permalink" class="padding_text">Permalink</a>
+				<a id="permalink" class="padding_text">Permalink</a><br>
+				<button type=button id="custom_layer_form_opening" onclick="showCustomLayerForm()">Add custom layer</button>
+			</div>
+			<div id="custom_layer_container" style="display: none;">
+				<span>* - required fields<span><button type=button id="custom_layer_form_closing" onclick="hideCustomLayerForm()" style="float: right;">Close</button>
+				<input type="text" class="custom_layer_field" id="custom_layer_address" placeholder="Tiles address (e.g. 'http://{s}.tile.site.com/{z}/{x}/{y}.png') *"><br>
+				<input type="text" class="custom_layer_field" id="custom_layer_subdomains" placeholder="Subdomains (e.g. 'abcd', only if address contains '{s}')"><br>
+				<input type="text" class="custom_layer_field" id="custom_layer_attribution" placeholder="Attribution (HTML works) *"><br>
+				<input type="text" class="custom_layer_field" id="custom_layer_maxzoom" pattern="[0-9]{1,2}" placeholder="Maximum Zoom (only number) *"><br>
+				<input type="text" class="custom_layer_field" id="custom_layer_minzoom" pattern="[0-9]{1,2}" placeholder="Minimum Zoom (only number)"><br>
+				<input type="checkbox" id="custom_layer_tms">TMS?<br>
+				<button type=button id="-102" onclick="showCustomLayerAsBaselayer()">Show as baselayer</button>
+				<button type=button id="custom_overlay_showing" onclick="showCustomLayerAsOverlay()">Show as overlay</button>
+				<button type=button id="custom_overlay_hiding" onclick="hideCustomLayerOverlay()" style="display: none;">Hide this overlay</button>
 			</div>
 			<div id="left"></div>
 		</div>

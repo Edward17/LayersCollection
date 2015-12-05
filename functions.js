@@ -14,6 +14,8 @@ var new_layer_options;
 var hiding_filters_count = 0;
 var headers_count = 0;
 
+var custom_layer;
+
 /* INITIALIZATION */
 
 function loaded() {
@@ -202,6 +204,8 @@ function showLayer(id) {
         if (current_layer_id.length > 0) {
             if (current_layer_id.search('-') == -1) {
                 map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
+            } else if (current_layer_id == '-102') {
+                map.removeLayer(custom_layer);
             }
             replaceInClassName(document.getElementById(current_layer_id), 'selected_layer', 'layer');
         }
@@ -390,6 +394,75 @@ function decreaseHidingFiltersCount() {
             replaceInClassName(left_layers[i], 'h_hidden', 'header_hidden');
         }
     }
+}
+
+/* CUSTOM LAYER */
+
+function showCustomLayerForm() {
+    left.style.top = '308px';
+    document.getElementById('custom_layer_form_opening').style.display = 'none';
+    document.getElementById('custom_layer_container').style.display = 'block';
+}
+
+function hideCustomLayerForm() {
+    document.getElementById('custom_layer_container').style.display = 'none';
+    document.getElementById('custom_layer_form_opening').style.display = 'inline';
+    left.style.top = '160px';
+}
+
+function showCustomLayerAsBaselayer() {
+    createCustomLayer();
+    
+    if (current_layer_id.length > 0) {
+        if (current_layer_id.search('-') == -1) {
+            map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
+        }
+        replaceInClassName(document.getElementById(current_layer_id), 'selected_layer', 'layer');
+    }
+
+    map.addLayer(custom_layer);
+    if (current_overlays_ids.length > 0) {
+        custom_layer.bringToBack();
+    }
+
+    current_layer_id = '-102';
+}
+
+function showCustomLayerAsOverlay() {
+    createCustomLayer();
+    map.addLayer(custom_layer);
+
+    document.getElementById('custom_overlay_showing').style.display = 'none';
+    document.getElementById('custom_overlay_hiding').style.display = 'inline';
+}
+
+function hideCustomLayerOverlay() {
+    map.removeLayer(custom_layer);
+
+    document.getElementById('custom_overlay_hiding').style.display = 'none';
+    document.getElementById('custom_overlay_showing').style.display = 'inline';
+}
+
+function createCustomLayer() {
+    var custom_layer_data = {};
+
+    custom_layer_data.address = document.getElementById('custom_layer_address').value;
+    custom_layer_data.maxZoom = document.getElementById('custom_layer_maxzoom').value;
+    custom_layer_data.attribution = document.getElementById('custom_layer_attribution').value;
+
+    if (document.getElementById('custom_layer_tms').checked) {
+        custom_layer_data.tms = 'true';
+    }
+
+    if (document.getElementById('custom_layer_subdomains').value.length > 0) {
+        custom_layer_data.subdomains = document.getElementById('custom_layer_subdomains').value;
+    }
+
+    if (document.getElementById('custom_layer_minzoom').value.length > 0) {
+        custom_layer_data.minZoom = document.getElementById('custom_layer_minzoom').value;
+    }
+
+    custom_layer = createLeafletLayer(custom_layer_data);
 }
 
 /* SAVING SITE STATE*/

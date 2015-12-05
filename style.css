@@ -8,6 +8,14 @@ BODY {
     border-bottom: 2px solid;
 }
 
+#custom_layer_container {
+    border-bottom: 2px solid;
+}
+
+.custom_layer_field {
+    width: 360px;
+}
+
 #left_container {
     height: 100%;
     width: 360px;
@@ -17,7 +25,7 @@ BODY {
 #left {
     position: absolute;
     bottom: 0px;
-    top: 140px;
+    top: 160px;
     width: 360px;
     overflow-y: scroll;
 }
