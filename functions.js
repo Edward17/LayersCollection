@@ -33,6 +33,7 @@ function loaded() {
     registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showSavedLayers);
     map.on('move', saveMapPosition);
     
+    initializeLeftPanelVisibility();
     initializeFilters();
 }
 
@@ -463,6 +464,40 @@ function createCustomLayer() {
     }
 
     custom_layer = createLeafletLayer(custom_layer_data);
+}
+
+/* LEFT PANEL VISIBILITY CONTROL */
+
+function initializeLeftPanelVisibility() {
+    if (localStorage.getItem('left_panel_visibility') == 'false') {
+        hideLeftPanel();
+    }
+}
+
+function onLeftPanelVisibilityChanged() {    
+    if (document.getElementById('left_container').style.display == 'none') {
+        showLeftPanel();
+    } else {
+        hideLeftPanel();
+    }
+}
+
+function showLeftPanel() {
+    document.getElementById('left_container').style.display = 'block';
+    map.invalidateSize();
+
+    document.getElementById('left_panel_showing_controller').innerHTML = '&#8592;';
+    document.getElementById('left_panel_showing_controller').className = 'left_panel_hide_controller';
+    localStorage.setItem('left_panel_visibility', true);
+}
+
+function hideLeftPanel() {
+    document.getElementById('left_container').style.display = 'none';
+    map.invalidateSize();
+
+    document.getElementById('left_panel_showing_controller').innerHTML = '&#8594;';
+    document.getElementById('left_panel_showing_controller').className = 'left_panel_show_controller';
+    localStorage.setItem('left_panel_visibility', false);
 }
 
 /* SAVING SITE STATE*/

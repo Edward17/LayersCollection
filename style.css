@@ -4,6 +4,23 @@ BODY {
 
 
 
+.left_panel_hide_controller, .left_panel_show_controller {
+    position: absolute;
+    top: 70px;
+    width: 35px;
+    height: 35px;
+    background: #FFFFFF;
+    font: bold 18px serif;
+}
+
+.left_panel_hide_controller {
+    left: 325px;
+}
+
+.left_panel_show_controller {
+    z-index: 1;
+}
+
 #functions_container {
     border-bottom: 2px solid;
 }
