@@ -474,20 +474,12 @@ function initializeLeftPanelVisibility() {
     }
 }
 
-function onLeftPanelVisibilityChanged() {    
-    if (document.getElementById('left_container').style.display == 'none') {
-        showLeftPanel();
-    } else {
-        hideLeftPanel();
-    }
-}
-
 function showLeftPanel() {
     document.getElementById('left_container').style.display = 'block';
     map.invalidateSize();
 
-    document.getElementById('left_panel_showing_controller').innerHTML = '&#8592;';
-    document.getElementById('left_panel_showing_controller').className = 'left_panel_hide_controller';
+    document.getElementById('left_panel_hide_controller').style.display = 'block';
+    document.getElementById('left_panel_show_controller').style.display = 'none';
     localStorage.setItem('left_panel_visibility', true);
 }
 
@@ -495,8 +487,8 @@ function hideLeftPanel() {
     document.getElementById('left_container').style.display = 'none';
     map.invalidateSize();
 
-    document.getElementById('left_panel_showing_controller').innerHTML = '&#8594;';
-    document.getElementById('left_panel_showing_controller').className = 'left_panel_show_controller';
+    document.getElementById('left_panel_hide_controller').style.display = 'none';
+    document.getElementById('left_panel_show_controller').style.display = 'block';
     localStorage.setItem('left_panel_visibility', false);
 }
 

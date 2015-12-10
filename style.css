@@ -4,7 +4,7 @@ BODY {
 
 
 
-.left_panel_hide_controller, .left_panel_show_controller {
+#left_panel_hide_controller, #left_panel_show_controller {
     position: absolute;
     top: 70px;
     width: 35px;
@@ -13,12 +13,13 @@ BODY {
     font: bold 18px serif;
 }
 
-.left_panel_hide_controller {
+#left_panel_hide_controller {
     left: 325px;
 }
 
-.left_panel_show_controller {
+#left_panel_show_controller {
     z-index: 1;
+    display: none;
 }
 
 #functions_container {

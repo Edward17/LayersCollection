@@ -10,7 +10,8 @@
 		<script type="text/javascript" src="functions.js"></script>
 	</head>
 	<body onload="loaded()">
-		<button type="button" class="left_panel_hide_controller" id="left_panel_showing_controller" onclick="onLeftPanelVisibilityChanged()">&#8592;</button>
+		<button type="button" id="left_panel_hide_controller" onclick="hideLeftPanel()" title="Hide left panel">&#8592;</button>
+		<button type="button" id="left_panel_show_controller" onclick="showLeftPanel()" title="Show left panel">&#8594;</button>
 		<div id="left_container">
 			<div id="functions_container">
 				<div>
