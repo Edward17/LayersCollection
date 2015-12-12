@@ -43,7 +43,7 @@ BODY {
 #left {
     position: absolute;
     bottom: 0px;
-    top: 160px;
+    top: 180px;
     width: 360px;
     overflow-y: scroll;
 }
@@ -75,13 +75,13 @@ BODY {
 
 
 
-.old_hidden, .ua_hidden, .blackwhite_hidden, .nolabels_hidden, .retina_hidden, .language_hidden, .header_hidden  {
+.old_hidden, .ua_hidden, .blackwhite_hidden, .nolabels_hidden, .retina_hidden, .threed_hidden, .language_hidden, .header_hidden  {
     display: none;
 }
 
 
 
-.old, .ua, .blackwhite, .nolabels, .retina, .lg { 
+.old, .ua, .blackwhite, .nolabels, .retina, .threed, .lg { 
     float: right;
     margin-right: 4px;
     padding-right: 2px;
@@ -107,6 +107,10 @@ BODY {
 
 .retina {
     background-color: #FF6A00;
+}
+
+.threed {
+    background-color: #B200FF;
 }
 
 .lg {

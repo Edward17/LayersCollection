@@ -99,6 +99,11 @@ function initializeFilters() {
         onRetinaCheckboxChanged();
     }
 
+    document.getElementById('threed_selector').checked = (localStorage.getItem('threed_selector') == 'true');
+    if (localStorage.getItem('threed_selector') == 'true') {
+        onHidingFilterChanged('threed');
+    }
+
     if (localStorage.getItem('language_selector')) {
         document.getElementById('language_selector').value = localStorage.getItem('language_selector');
         if (localStorage.getItem('language_selector') != 'any') {
@@ -175,6 +180,9 @@ function createAdditionalInformation(data) {
     }
     if (data.retina) {
         additional_information = additional_information + '<span title="Retina layer" class="retina">rtn</span>';
+    }
+    if (data.threed) {
+        additional_information = additional_information + '<span title="3D-buildings (in high zooms) layer" class="threed">3D</span>';
     }
     if (data.ua) {
         additional_information = additional_information + '<span title="Ukraine-only layer" class="ua">ua</span>';

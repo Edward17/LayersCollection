@@ -80,7 +80,8 @@ var layers_data = [
         'address': 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
         'maxZoom': 19,
         'attribution': openstreetmap_unihd_attribution,
-        'id': '1003'
+        'id': '1003',
+        'threed': 'true'
     },
     {
         'name': 'MapSurfer.NET gray',
@@ -204,6 +205,7 @@ var layers_data = [
         'maxZoom': 20,
         'attribution': attribution + '<a href="http://osmapa.pl/" target="_blank">Osmapa.pl</a>',
         'id': '1017',
+        'threed': 'true',
         'language': 'pl'
     },
     {
@@ -239,6 +241,7 @@ var layers_data = [
         'maxZoom': 19,
         'attribution': sputnik_attribution,
         'id': '1021',
+        'threed': 'true',
         'language': 'ru'
     },
     {
@@ -247,6 +250,7 @@ var layers_data = [
         'maxZoom': 19,
         'attribution': sputnik_attribution,
         'id': '1022',
+        'threed': 'true',
         'language': 'ru',
         'retina': true
     },
