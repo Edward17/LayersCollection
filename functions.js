@@ -69,7 +69,7 @@ function initializeFilters() {
     if (localStorage.getItem('old_selector') != null) {
         document.getElementById('old_selector').checked = (localStorage.getItem('old_selector') == 'true');
         if (localStorage.getItem('old_selector') == 'false') {
-            onOldCheckboxChanged();
+            onShowingFilterChanged('old');
         }
     } else {
         document.getElementById('old_selector').checked = true;
@@ -78,7 +78,7 @@ function initializeFilters() {
     if (localStorage.getItem('ua_selector') != null) {
         document.getElementById('ua_selector').checked = (localStorage.getItem('ua_selector') == 'true');
         if (localStorage.getItem('ua_selector') == 'false') {
-            onUACheckboxChanged();
+            onShowingFilterChanged('ua');
         }
     } else {
         document.getElementById('ua_selector').checked = true;
@@ -86,22 +86,22 @@ function initializeFilters() {
 
     document.getElementById('blackwhite_selector').checked = (localStorage.getItem('blackwhite_selector') == 'true');
     if (localStorage.getItem('blackwhite_selector') == 'true') {
-        onBWCheckboxChanged();
-    }
-
-    document.getElementById('nolabels_selector').checked = (localStorage.getItem('nolabels_selector') == 'true');
-    if (localStorage.getItem('nolabels_selector') == 'true') {
-        onNLCheckboxChanged();
-    }
-
-    document.getElementById('retina_selector').checked = (localStorage.getItem('retina_selector') == 'true');
-    if (localStorage.getItem('nolabels_selector') == 'true') {
-        onRetinaCheckboxChanged();
+        onHidingFilterChanged('blackwhite');
     }
 
     document.getElementById('threed_selector').checked = (localStorage.getItem('threed_selector') == 'true');
     if (localStorage.getItem('threed_selector') == 'true') {
         onHidingFilterChanged('threed');
+    }
+
+    document.getElementById('retina_selector').checked = (localStorage.getItem('retina_selector') == 'true');
+    if (localStorage.getItem('retina_selector') == 'true') {
+        onHidingFilterChanged('retina');
+    }
+
+    document.getElementById('nolabels_selector').checked = (localStorage.getItem('nolabels_selector') == 'true');
+    if (localStorage.getItem('nolabels_selector') == 'true') {
+        onHidingFilterChanged('nolabels');
     }
 
     if (localStorage.getItem('language_selector')) {
@@ -178,17 +178,17 @@ function createAdditionalInformation(data) {
     if (data.old) {
         additional_information = additional_information + '<span title="outdated layer" class="old">old</span>';
     }
-    if (data.retina) {
-        additional_information = additional_information + '<span title="Retina layer" class="retina">rtn</span>';
-    }
-    if (data.threed) {
-        additional_information = additional_information + '<span title="3D-buildings (in high zooms) layer" class="threed">3D</span>';
-    }
     if (data.ua) {
         additional_information = additional_information + '<span title="Ukraine-only layer" class="ua">ua</span>';
     }
     if (data.blackwhite) {
         additional_information = additional_information + '<span title="black/white layer" class="blackwhite">b/w</span>';
+    }
+    if (data.threed) {
+        additional_information = additional_information + '<span title="3D-buildings (in high zooms) layer" class="threed">3D</span>';
+    }
+    if (data.retina) {
+        additional_information = additional_information + '<span title="Retina layer" class="retina">rtn</span>';
     }
     if (data.nolabels) {
         additional_information = additional_information + '<span title="no-labels layer" class="nolabels">nl</span>';
@@ -408,7 +408,7 @@ function decreaseHidingFiltersCount() {
 /* CUSTOM LAYER */
 
 function showCustomLayerForm() {
-    left.style.top = '308px';
+    left.style.top = '328px';
     document.getElementById('custom_layer_form_opening').style.display = 'none';
     document.getElementById('custom_layer_container').style.display = 'block';
 }
@@ -416,7 +416,7 @@ function showCustomLayerForm() {
 function hideCustomLayerForm() {
     document.getElementById('custom_layer_container').style.display = 'none';
     document.getElementById('custom_layer_form_opening').style.display = 'inline';
-    left.style.top = '160px';
+    left.style.top = '180px';
 }
 
 function showCustomLayerAsBaselayer() {
