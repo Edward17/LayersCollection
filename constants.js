@@ -190,7 +190,7 @@ var layers_data = [
         'maxZoom': 19,
         'attribution': openstreetmap_alberding_attribution,
         'id': '1015',
-        'language': 'wen'
+        'language': 'hsb'
     },
     {
         'name': '4UMaps',
