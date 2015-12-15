@@ -66,6 +66,10 @@ function initializeOverlays() {
 }
 
 function initializeFilters() {
+    if (localStorage.getItem('filters_visibility') == 'true') {
+        showFilters();
+    }
+
     if (localStorage.getItem('old_selector') != null) {
         document.getElementById('old_selector').checked = (localStorage.getItem('old_selector') == 'true');
         if (localStorage.getItem('old_selector') == 'false') {
@@ -297,6 +301,20 @@ function getOverlayIndexByID(id) {
 
 /* FILTERS */
 
+function showFilters() {
+    document.getElementById('filters_container').style.display = 'block';
+    document.getElementById('filters_showing').style.display = 'none';
+    onLayersListPaddingChanged();
+    localStorage.setItem('filters_visibility', 'true');
+}
+
+function hideFilters() {
+    document.getElementById('filters_container').style.display = 'none';
+    document.getElementById('filters_showing').style.display = 'inline';
+    onLayersListPaddingChanged();
+    localStorage.setItem('filters_visibility', 'false');
+}
+
 function onShowingFilterChanged(id) {
     localStorage.setItem(id + '_selector', document.getElementById(id + '_selector').checked);
 
@@ -408,15 +426,15 @@ function decreaseHidingFiltersCount() {
 /* CUSTOM LAYER */
 
 function showCustomLayerForm() {
-    left.style.top = '328px';
-    document.getElementById('custom_layer_form_opening').style.display = 'none';
     document.getElementById('custom_layer_container').style.display = 'block';
+    document.getElementById('custom_layer_form_opening').style.display = 'none';
+    onLayersListPaddingChanged();
 }
 
 function hideCustomLayerForm() {
     document.getElementById('custom_layer_container').style.display = 'none';
     document.getElementById('custom_layer_form_opening').style.display = 'inline';
-    left.style.top = '180px';
+    onLayersListPaddingChanged();
 }
 
 function showCustomLayerAsBaselayer() {
@@ -472,6 +490,19 @@ function createCustomLayer() {
     }
 
     custom_layer = createLeafletLayer(custom_layer_data);
+}
+
+/* LAYERS LIST TOP PADDING */
+
+function onLayersListPaddingChanged() {
+    var new_padding = 60;
+    if (document.getElementById('filters_container').style.display != 'none') {
+        new_padding = new_padding + 120;
+    }
+    if (document.getElementById('custom_layer_container').style.display != 'none') {
+        new_padding = new_padding + 148;
+    }
+    left.style.top = new_padding + 'px';
 }
 
 /* LEFT PANEL VISIBILITY CONTROL */

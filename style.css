@@ -7,6 +7,7 @@ BODY {
 #left_panel_hide_controller, #left_panel_show_controller {
     position: absolute;
     top: 70px;
+    z-index: 1;
     width: 35px;
     height: 35px;
     background: #FFFFFF;
@@ -14,20 +15,19 @@ BODY {
 }
 
 #left_panel_hide_controller {
-    left: 325px;
+    left: 360px;
 }
 
 #left_panel_show_controller {
-    z-index: 1;
     display: none;
 }
 
-#functions_container {
-    border-bottom: 2px solid;
+.bordered_container {
+    border-top: 2px solid;
 }
 
-#custom_layer_container {
-    border-bottom: 2px solid;
+.closing_button {
+    float: right;
 }
 
 .custom_layer_field {
@@ -43,7 +43,7 @@ BODY {
 #left {
     position: absolute;
     bottom: 0px;
-    top: 180px;
+    top: 60px;
     width: 360px;
     overflow-y: scroll;
 }
