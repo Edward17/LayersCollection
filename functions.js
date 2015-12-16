@@ -1,6 +1,7 @@
 var map;
 var left;
 var language_selector;
+var overlays_removing_button;
 
 var layers = [];
 var current_layer_id = '';
@@ -28,7 +29,9 @@ function loaded() {
 
     left.innerHTML = left.innerHTML + '<h2 class="header_big">Overlays</h2>';
     initializeOverlays();
-    left.innerHTML = left.innerHTML + '<div class="padding_text"><button type=button onclick="removeAllOverlays()">Remove all overlays</button></div>';
+    
+    left.innerHTML = left.innerHTML + '<div class="padding_text"><button type=button id="overlays_removing_button" onclick="removeAllOverlays()" disabled>Remove all overlays</button></div>';
+    overlays_removing_button = document.getElementById('overlays_removing_button');
 
     registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showSavedLayers);
     map.on('move', saveMapPosition);
@@ -252,6 +255,8 @@ function onOverlayChanged(id) {
             for (var i = 0; i < current_overlays_ids.length; i++) {
                 overlays_data[getOverlayIndexByID(current_overlays_ids[i])].index_shown = i;
             }
+        } else {
+            overlays_removing_button.setAttribute('disabled', '');
         }
     }
 
@@ -261,6 +266,7 @@ function onOverlayChanged(id) {
 function showOverlay(id) {
     map.addLayer(overlays[getOverlayDataByID(id).index]);
     overlays_data[getOverlayIndexByID(id)].index_shown = current_overlays_ids.push(id) - 1;
+    overlays_removing_button.removeAttribute('disabled');
 }
 
 function removeAllOverlays() {
@@ -270,6 +276,7 @@ function removeAllOverlays() {
             document.getElementById(current_overlays_ids[i]).checked = false;
         }
         current_overlays_ids = [];
+        overlays_removing_button.setAttribute('disabled', '');
         
         saveLayers();
     }
