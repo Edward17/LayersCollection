@@ -5,6 +5,7 @@ var overlays_removing_button;
 
 var layers = [];
 var current_layer_id = '';
+var previous_baselayer_id = '';
 
 var overlays = [];
 var current_overlays_ids = [];
@@ -218,6 +219,11 @@ function createHeader(id, name) {
 function showLayer(id) {
     if (current_layer_id != id) {
         if (current_layer_id.length > 0) {
+            if (current_layer_id != '-102') {
+                previous_baselayer_id = current_layer_id;
+                document.getElementById('previous_baselayer_showing').removeAttribute('disabled');
+            }
+
             if (current_layer_id.search('-') == -1) {
                 map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
             } else if (current_layer_id == '-102') {
@@ -267,6 +273,10 @@ function showOverlay(id) {
     map.addLayer(overlays[getOverlayDataByID(id).index]);
     overlays_data[getOverlayIndexByID(id)].index_shown = current_overlays_ids.push(id) - 1;
     overlays_removing_button.removeAttribute('disabled');
+}
+
+function showPreviousBaselayer() {
+    showLayer(previous_baselayer_id);
 }
 
 function removeAllOverlays() {
@@ -502,7 +512,7 @@ function createCustomLayer() {
 /* LAYERS LIST TOP PADDING */
 
 function onLayersListPaddingChanged() {
-    var new_padding = 60;
+    var new_padding = 81;
     if (document.getElementById('filters_container').style.display != 'none') {
         new_padding = new_padding + 120;
     }
