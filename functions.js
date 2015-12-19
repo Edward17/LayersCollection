@@ -18,6 +18,8 @@ var headers_count = 0;
 
 var custom_layer;
 
+var show_layer_link_on_dbclick;
+
 /* INITIALIZATION */
 
 function loaded() {
@@ -53,7 +55,7 @@ function initializeLayers() {
             createHeader(layers_data[i].id, layers_data[i].name);
         } else {
             layers_data[i].index = layers.push(createLeafletLayer(layers_data[i])) - 1;
-            left.innerHTML = left.innerHTML + '<div class="layer" id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + layers_data[i].name + createAdditionalInformation(layers_data[i]) + '</div>';
+            left.innerHTML = left.innerHTML + '<div class="layer" id="' + layers_data[i].id + '" onclick="showLayer(' + layers_data[i].id + ')"> ' + '<span ondblclick="showBaselayerLink(' + layers_data[i].id + ')">' + layers_data[i].name + '</span>' + createAdditionalInformation(layers_data[i]) + '</div>';
         }
     }
 }
@@ -64,7 +66,7 @@ function initializeOverlays() {
             createHeader(overlays_data[i].id, overlays_data[i].name);
         } else {
             overlays_data[i].index = overlays.push(createLeafletLayer(overlays_data[i])) - 1;
-            left.innerHTML = left.innerHTML + '<div><input id="' + overlays_data[i].id + '" type="checkbox" onchange="onOverlayChanged(' + overlays_data[i].id + ')"> ' + overlays_data[i].name + createAdditionalInformation(overlays_data[i]) + '</div>';
+            left.innerHTML = left.innerHTML + '<div><input id="' + overlays_data[i].id + '" type="checkbox" onchange="onOverlayChanged(' + overlays_data[i].id + ')"> ' + '<span ondblclick="showOverlayLink(' + overlays_data[i].id + ')">' + overlays_data[i].name + '</span>' + createAdditionalInformation(overlays_data[i]) + '</div>';
         }
     }
 }
@@ -509,10 +511,59 @@ function createCustomLayer() {
     custom_layer = createLeafletLayer(custom_layer_data);
 }
 
+/* LAYER LINK SHOWING */
+
+function onLayerLinkShowingChanged() {
+    show_layer_link_on_dbclick = document.getElementById('layer_data_showing').checked;
+}
+
+function showBaselayerLink(id) {
+    if (show_layer_link_on_dbclick) {
+        showLayerLink(getLayerDataByID(id));
+    }
+}
+
+function showOverlayLink(id) {
+    if (show_layer_link_on_dbclick) {
+        showLayerLink(getOverlayDataByID(id));
+    }
+}
+
+function showLayerLink(data) {
+    var text;
+    if (data.bing) {
+        text = 'Unable to create link, use https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js instead';
+    } else if (data.wms) {
+        text = 'Unable to create link because this is WMS layer. This possibility will be added soon';
+    } else {
+        text = 'Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution;
+
+        if (data.tms) {
+            text = text + '<br>TMS: true';
+        }
+        if (data.subdomains) {
+            text = text + '<br>Subdomains: ' + data.subdomains.join('');
+        }
+        if (data.minZoom) {
+            text = text + '<br>Minimum Zoom: ' + data.minZoom;
+        }
+    }
+
+    var layer_link_container = document.createElement('div');
+    layer_link_container.setAttribute('id', 'layer_link_container');
+    layer_link_container.innerHTML = '<button type=button class="closing_button" onclick="hideLayerLink()">Close</button><br>' + text;
+    
+    document.getElementsByTagName('body')[0].appendChild(layer_link_container);
+}
+
+function hideLayerLink() {
+    document.getElementsByTagName('body')[0].removeChild(document.getElementById('layer_link_container'));
+}
+
 /* LAYERS LIST TOP PADDING */
 
 function onLayersListPaddingChanged() {
-    var new_padding = 81;
+    var new_padding = 100;
     if (document.getElementById('filters_container').style.display != 'none') {
         new_padding = new_padding + 120;
     }

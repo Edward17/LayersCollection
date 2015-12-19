@@ -34,6 +34,16 @@ BODY {
     width: 360px;
 }
 
+#layer_link_container {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    background: #FFFFFF;
+    width: 360px;
+    z-index: 1;
+}
+
 #left_container {
     height: 100%;
     width: 360px;
@@ -43,7 +53,7 @@ BODY {
 #left {
     position: absolute;
     bottom: 0px;
-    top: 81px;
+    top: 100px;
     width: 360px;
     overflow-y: scroll;
 }
