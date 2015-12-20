@@ -534,7 +534,20 @@ function showLayerLink(data) {
     if (data.bing) {
         text = 'Unable to create link, use https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js instead';
     } else if (data.wms) {
-        text = 'Unable to create link because this is WMS layer. This possibility will be added soon';
+        text = 'Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution + '<br>Layers: [\'' + data.layers.join('\',\'') + '\']';
+        
+        if (data.minZoom) {
+            text = text + '<br>Minimum Zoom: ' + data.minZoom;
+        }
+        if (data.format) {
+            text = text + '<br>Format: ' + data.format;
+        }
+        if (data.transparent) {
+            text = text + '<br>Transparent: ' + data.transparent;
+        }
+        if (data.opacity) {
+            text = text + '<br>Opacity: ' + data.opacity;
+        }
     } else {
         text = 'Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution;
 
