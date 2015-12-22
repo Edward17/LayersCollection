@@ -266,15 +266,17 @@ function onOverlayChanged(id) {
         } else {
             overlays_removing_button.setAttribute('disabled', '');
         }
-    }
 
-    saveLayers();
+        saveLayers();
+    }
 }
 
 function showOverlay(id) {
     map.addLayer(overlays[getOverlayDataByID(id).index]);
     overlays_data[getOverlayIndexByID(id)].index_shown = current_overlays_ids.push(id) - 1;
     overlays_removing_button.removeAttribute('disabled');
+
+    saveLayers();
 }
 
 function showPreviousBaselayer() {
