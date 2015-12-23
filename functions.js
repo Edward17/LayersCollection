@@ -534,9 +534,10 @@ function showOverlayLink(id) {
 function showLayerLink(data) {
     var text;
     if (data.bing) {
-        text = 'Unable to create link, use https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js instead';
+        text = '<h2>For Leaflet</h2>Unable to export link, use <a href="https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js">https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js</a> instead';
+        text = text + '<h2>For iD Editor</h2>Unable to export link, but Bing Imagery layer is already built in iD Editor';
     } else if (data.wms) {
-        text = 'WMS Layer<br>Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution + '<br>Layers: [\'' + data.layers.join('\',\'') + '\']';
+        text = '<h2>For Leaflet</h2>WMS Layer<br>Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution + '<br>Layers: [\'' + data.layers.join('\',\'') + '\']';
         
         if (data.minZoom) {
             text = text + '<br>Minimum Zoom: ' + data.minZoom;
@@ -550,8 +551,10 @@ function showLayerLink(data) {
         if (data.opacity) {
             text = text + '<br>Opacity: ' + data.opacity;
         }
+
+        text = text + '<h2>For iD Editor</h2>Unable to export link because this is WMS layer and iD Editor don\'t supports WMS layers';
     } else {
-        text = 'Tile Layer<br>Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution;
+        text = '<h2>For Leaflet</h2>Tile Layer<br>Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution;
 
         if (data.tms) {
             text = text + '<br>TMS: true';
@@ -561,6 +564,17 @@ function showLayerLink(data) {
         }
         if (data.minZoom) {
             text = text + '<br>Minimum Zoom: ' + data.minZoom;
+        }
+
+        text = text + '<h2>For iD Editor</h2>Address: ';
+        if (data.address.search('{s}') != -1) {
+            if (data.subdomains) {
+                text = text + data.address.replace('{s}', data.subdomains[0]);
+            } else {
+                text = text + data.address.replace('{s}', 'a');
+            }
+        } else {
+            text = text + data.address;
         }
     }
 
