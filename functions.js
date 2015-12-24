@@ -536,9 +536,9 @@ function showLayerLink(data) {
     if (data.bing) {
         text = '<h2>For Leaflet</h2>Unable to export link, use <a href="https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js">https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js</a> instead';
         text = text + '<h2>For iD Editor</h2>Unable to export link, but Bing Imagery layer is already built in iD Editor';
+        text = text + '<h2>For JOSM Editor</h2>Unable to export link, but Bing Imagery layer is already built in JOSM Editor';
     } else if (data.wms) {
         text = '<h2>For Leaflet</h2>WMS Layer<br>Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution + '<br>Layers: [\'' + data.layers.join('\',\'') + '\']';
-        
         if (data.minZoom) {
             text = text + '<br>Minimum Zoom: ' + data.minZoom;
         }
@@ -553,9 +553,13 @@ function showLayerLink(data) {
         }
 
         text = text + '<h2>For iD Editor</h2>Unable to export link because this is WMS layer and iD Editor don\'t supports WMS layers';
+
+        text = text + '<h2>For JOSM Editor</h2>Address: ' + data.address + '<br>Layers: ' + data.layers.join(', ');
+        if (data.format) {
+            text = text + '<br>Format: ' + data.format;
+        }
     } else {
         text = '<h2>For Leaflet</h2>Tile Layer<br>Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution;
-
         if (data.tms) {
             text = text + '<br>TMS: true';
         }
@@ -576,6 +580,22 @@ function showLayerLink(data) {
         } else {
             text = text + data.address;
         }
+
+        text = text + '<h2>For JOSM Editor</h2>Address: ';
+        address_for_josm = data.address.replace('{z}', '{zoom}');
+        if (data.tms) {
+            address_for_josm = address_for_josm.replace('{y}', '{-y}');
+        }
+        if (address_for_josm.search('{s}') != -1) {
+            if (data.subdomains) {
+                text = text + address_for_josm.replace('{s}', '{switch:' + data.subdomains.join(',') + '}');
+            } else {
+                text = text + address_for_josm.replace('{s}', '{switch:a,b,c}');
+            }
+        } else {
+            text = text + address_for_josm;
+        }
+        text = text + '<br>Maximum Zoom: ' + data.maxZoom;
     }
 
     var layer_link_container = document.createElement('div');
