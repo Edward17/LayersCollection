@@ -538,37 +538,50 @@ function showLayerLink(data) {
         text = text + '<h2>For iD Editor</h2>Unable to export link, but Bing Imagery layer is already built in iD Editor';
         text = text + '<h2>For JOSM Editor</h2>Unable to export link, but Bing Imagery layer is already built in JOSM Editor';
     } else if (data.wms) {
-        text = '<h2>For Leaflet</h2>WMS Layer<br>Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution + '<br>Layers: [\'' + data.layers.join('\',\'') + '\']';
+        text = '<h2>For Leaflet</h2><pre>var layer = L.tileLayer.wms(<br>';
+        text = text + '    \'' + data.address + '\',<br>';
+        text = text + '    {<br>';
+        text = text + '        maxZoom: ' + data.maxZoom + ',<br>';
+        text = text + '        attribution: \'' + data.attribution + '\',<br>';
+        text = text + '        layers: [\'' + data.layers.join('\', \'') + '\']';
         if (data.minZoom) {
-            text = text + '<br>Minimum Zoom: ' + data.minZoom;
+            text = text + ',<br>        minZoom: ' + data.minZoom;
         }
         if (data.format) {
-            text = text + '<br>Format: ' + data.format;
+            text = text + ',<br>        format: ' + data.format;
         }
         if (data.transparent) {
-            text = text + '<br>Transparent: ' + data.transparent;
+            text = text + ',<br>        transparent: ' + data.transparent;
         }
         if (data.opacity) {
-            text = text + '<br>Opacity: ' + data.opacity;
+            text = text + ',<br>        opacity: ' + data.opacity;
         }
+        text = text + '<br>    }<br>';
+        text = text + ');</pre>';
 
         text = text + '<h2>For iD Editor</h2>Unable to export link because this is WMS layer and iD Editor don\'t supports WMS layers';
 
-        text = text + '<h2>For JOSM Editor</h2>Address: ' + data.address + '<br>Layers: ' + data.layers.join(', ');
+        text = text + '<h2>For JOSM Editor</h2>WMS Layer<br>Address: ' + data.address + '<br>Layers: ' + data.layers.join(', ');
         if (data.format) {
             text = text + '<br>Format: ' + data.format;
         }
     } else {
-        text = '<h2>For Leaflet</h2>Tile Layer<br>Address: ' + data.address + '<br>Maximum Zoom: ' + data.maxZoom + '<br>Attribution: ' + data.attribution;
+        text = '<h2>For Leaflet</h2><pre>var layer = L.tileLayer(<br>';
+        text = text + '    \'' + data.address + '\',<br>';
+        text = text + '    {<br>';
+        text = text + '        maxZoom: ' + data.maxZoom + ',<br>';
+        text = text + '        attribution: \'' + data.attribution + '\'';
         if (data.tms) {
-            text = text + '<br>TMS: true';
+            text = text + ',<br>        tms: true';
         }
         if (data.subdomains) {
-            text = text + '<br>Subdomains: ' + data.subdomains.join('');
+            text = text + ',<br>        subdomains: \'' + data.subdomains.join('') + '\'';
         }
         if (data.minZoom) {
-            text = text + '<br>Minimum Zoom: ' + data.minZoom;
+            text = text + ',<br>        minZoom: ' + data.minZoom;
         }
+        text = text + '<br>    }<br>';
+        text = text + ');</pre>';
 
         text = text + '<h2>For iD Editor</h2>Address: ';
         if (data.address.search('{s}') != -1) {
@@ -581,7 +594,7 @@ function showLayerLink(data) {
             text = text + data.address;
         }
 
-        text = text + '<h2>For JOSM Editor</h2>Address: ';
+        text = text + '<h2>For JOSM Editor</h2>TMS Layer<br>Address: ';
         address_for_josm = data.address.replace('{z}', '{zoom}');
         if (data.tms) {
             address_for_josm = address_for_josm.replace('{y}', '{-y}');
