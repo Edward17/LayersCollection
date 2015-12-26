@@ -32,9 +32,6 @@ function loaded() {
 
     left.innerHTML = left.innerHTML + '<h2 class="header_big">Overlays</h2>';
     initializeOverlays();
-    
-    left.innerHTML = left.innerHTML + '<div class="padding_text"><button type=button id="overlays_removing_button" onclick="removeAllOverlays()" disabled>Remove all overlays</button></div>';
-    overlays_removing_button = document.getElementById('overlays_removing_button');
 
     registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showSavedLayers);
     map.on('move', saveMapPosition);
@@ -47,6 +44,7 @@ function initializeElements() {
     map = L.map('map');
     left = document.getElementById('left');
     language_selector = document.getElementById('language_selector');
+    overlays_removing_button = document.getElementById('overlays_removing_button');
 }
 
 function initializeLayers() {
@@ -412,12 +410,18 @@ function onHeaderChanged(id) {
         while (current_element.className.search('padding_text') == -1) {
             removeFromClassName(current_element, ' header_hidden');
             current_element = current_element.nextElementSibling;
+            if (current_element == null) {
+                break;
+            }
         }
     } else {
         var current_element = document.getElementById(id).parentNode.nextElementSibling;
         while (current_element.className.search('padding_text') == -1) {
             addToClassName(current_element, ' header_hidden');
             current_element = current_element.nextElementSibling;
+            if (current_element == null) {
+                break;
+            }
         }
     }
 }
@@ -625,7 +629,7 @@ function hideLayerLink() {
 /* LAYERS LIST TOP PADDING */
 
 function onLayersListPaddingChanged() {
-    var new_padding = 100;
+    var new_padding = 121;
     if (document.getElementById('filters_container').style.display != 'none') {
         new_padding = new_padding + 120;
     }
