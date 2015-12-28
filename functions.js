@@ -704,6 +704,14 @@ function showSavedLayers(ids) {
     if (ids) {
         if (ids.length == 4) {
             showLayer(ids);
+        } else if (ids == 'C') {
+            showLayer('1062');
+        } else if (ids == 'T') {
+            showLayer('1057');
+        } else if (ids == 'Q') {
+            showLayer('1002');
+        } else if (ids == 'H') {
+            showLayer('1001');
         } else {
             showLayer(ids.substring(0, 4));
 
