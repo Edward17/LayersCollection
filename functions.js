@@ -404,7 +404,6 @@ function onLanguageChanged() {
 }
 
 function onHeaderChanged(id) {
-    localStorage.setItem('header_' + id, document.getElementById(id).checked);
     if (document.getElementById(id).checked) {
         var current_element = document.getElementById(id).parentNode.nextElementSibling;
         while (current_element.className.search('padding_text') == -1) {
@@ -414,6 +413,8 @@ function onHeaderChanged(id) {
                 break;
             }
         }
+
+        localStorage.removeItem('header_' + id);
     } else {
         var current_element = document.getElementById(id).parentNode.nextElementSibling;
         while (current_element.className.search('padding_text') == -1) {
@@ -423,6 +424,8 @@ function onHeaderChanged(id) {
                 break;
             }
         }
+
+        localStorage.setItem('header_' + id, 'false');
     }
 }
 
