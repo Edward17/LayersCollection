@@ -841,7 +841,7 @@ var layers_data = [
     }
 ];
 
-// max overlay id = 2077
+// max overlay id = 2078
 var overlays_data = [
     {
         'header': 'true',
@@ -1311,6 +1311,15 @@ var overlays_data = [
         'maxZoom': 11,
         'attribution': traces_attribution + ' | ' + tiles_attribution + zverikgps_attribution,
         'id': '2051',
+        'old': 'true'
+    },
+    {
+        'name': 'GPS Grid, 1.04.2012',
+        'address': 'http://maps.neis-one.org/tiles/1.0.0/osmgps/{z}/{x}/{y}.png',
+        'maxZoom': 8,
+        'attribution': traces_attribution + ' | ' + tiles_attribution + '<a href="http://resultmaps.neis-one.org/osmgps.html" target="_blank">Pascal Neis</a>',
+        'id': '2078',
+        'tms': 'true',
         'old': 'true'
     },
     {
