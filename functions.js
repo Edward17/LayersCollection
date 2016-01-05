@@ -219,15 +219,11 @@ function createHeader(id, name) {
 function showLayer(id) {
     if (current_layer_id != id) {
         if (current_layer_id.length > 0) {
-            if (current_layer_id != '-102') {
-                previous_baselayer_id = current_layer_id;
-                document.getElementById('previous_baselayer_showing').removeAttribute('disabled');
-            }
+            previous_baselayer_id = current_layer_id;
+            document.getElementById('previous_baselayer_showing').removeAttribute('disabled');
 
             if (current_layer_id.search('-') == -1) {
                 map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
-            } else if (current_layer_id == '-102') {
-                map.removeLayer(custom_layer);
             }
             replaceInClassName(document.getElementById(current_layer_id), 'selected_layer', 'layer');
         }
@@ -465,37 +461,19 @@ function hideCustomLayerForm() {
     onLayersListPaddingChanged();
 }
 
-function showCustomLayerAsBaselayer() {
-    createCustomLayer();
-    
-    if (current_layer_id.length > 0) {
-        if (current_layer_id.search('-') == -1) {
-            map.removeLayer(layers[getLayerDataByID(current_layer_id).index]);
-        }
-        replaceInClassName(document.getElementById(current_layer_id), 'selected_layer', 'layer');
-    }
-
-    map.addLayer(custom_layer);
-    if (current_overlays_ids.length > 0) {
-        custom_layer.bringToBack();
-    }
-
-    current_layer_id = '-102';
-}
-
-function showCustomLayerAsOverlay() {
+function showCustomLayer() {
     createCustomLayer();
     map.addLayer(custom_layer);
 
-    document.getElementById('custom_overlay_showing').style.display = 'none';
-    document.getElementById('custom_overlay_hiding').style.display = 'inline';
+    document.getElementById('custom_layer_showing').style.display = 'none';
+    document.getElementById('custom_layer_hiding').style.display = 'inline';
 }
 
-function hideCustomLayerOverlay() {
+function hideCustomLayer() {
     map.removeLayer(custom_layer);
 
-    document.getElementById('custom_overlay_hiding').style.display = 'none';
-    document.getElementById('custom_overlay_showing').style.display = 'inline';
+    document.getElementById('custom_layer_hiding').style.display = 'none';
+    document.getElementById('custom_layer_showing').style.display = 'inline';
 }
 
 function createCustomLayer() {

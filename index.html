@@ -46,9 +46,8 @@
 				<input type="text" class="custom_layer_field" id="custom_layer_maxzoom" pattern="[0-9]{1,2}" placeholder="Maximum Zoom (only number) *"><br>
 				<input type="text" class="custom_layer_field" id="custom_layer_minzoom" pattern="[0-9]{1,2}" placeholder="Minimum Zoom (only number)"><br>
 				<input type="checkbox" id="custom_layer_tms">TMS?<br>
-				<button type=button id="-102" onclick="showCustomLayerAsBaselayer()">Show as baselayer</button>
-				<button type=button id="custom_overlay_showing" onclick="showCustomLayerAsOverlay()">Show as overlay</button>
-				<button type=button id="custom_overlay_hiding" onclick="hideCustomLayerOverlay()" style="display: none;">Hide this overlay</button>
+				<button type=button id="custom_layer_showing" onclick="showCustomLayer()">Show this layer</button>
+				<button type=button id="custom_layer_hiding" onclick="hideCustomLayer()" style="display: none;">Hide this layer</button>
 			</div>
 			<div id="left" class="bordered_container"></div>
 		</div>
