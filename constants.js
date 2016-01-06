@@ -39,6 +39,7 @@ var nadoloni_attribution = '<a href="http://nadoloni.com/" target="_blank">nadol
 var pooleqa = '<a href="http://qa.poole.ch/" target="_blank">Simon Poole</a>';
 var zverikgps_attribution = '<a href="http://zverik.osm.rambler.ru/gps/" target="_blank">Ilya Zverev</a>';
 var strava_attribution = 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/" target="_blank">Strava</a>';
+var strava_2014_attribution = 'Traces & Tiles: &copy; <a href="http://labs.strava.com/heatmap/2014-2015.html" target="_blank">Strava</a>';
 var astergdem_attribution = 'ASTER GDEM is a product of <a href="http://www.meti.go.jp/english/press/data/20090626_03.html" target="_blank">METI</a> and <a href="https://lpdaac.usgs.gov/products/aster_policies" target="_blank">NASA</a>';
 
 var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlczI3diJ9.eghwjbaS0bJ80bj2Vzd6Ew'; // This is my personal access token. Please don't use it, just register on MapBox for free: https://www.mapbox.com/signup/?plan=starter
@@ -841,7 +842,7 @@ var layers_data = [
     }
 ];
 
-// max overlay id = 2078
+// max overlay id = 2086
 var overlays_data = [
     {
         'header': 'true',
@@ -1468,6 +1469,87 @@ var overlays_data = [
         'maxZoom': 17,
         'attribution': strava_attribution,
         'id': '2072'
+    },
+    {
+        'name': 'Strava Heatmap 2014 cycling color1',
+        'address': 'http://{s}-yearheat.strava.com/tiles/cycling/color1/{z}/{x}/{y}.png?y=2014&v=5',
+        'maxZoom': 16,
+        'attribution': strava_2014_attribution,
+        'id': '2079',
+        'subdomains': ['a', 'b'], // can be false
+        'old': 'true'
+    },
+    {
+        'name': 'Strava Heatmap 2014 cycling color7',
+        'address': 'http://{s}-yearheat.strava.com/tiles/cycling/color7/{z}/{x}/{y}.png?y=2014&v=5',
+        'maxZoom': 16,
+        'attribution': strava_2014_attribution,
+        'id': '2080',
+        'subdomains': ['a', 'b'], // can be false
+        'old': 'true'
+    },
+    {
+        'name': 'Strava Heatmap 2014 cycling color8',
+        'address': 'http://{s}-yearheat.strava.com/tiles/cycling/color8/{z}/{x}/{y}.png?y=2014&v=5',
+        'maxZoom': 16,
+        'attribution': strava_2014_attribution,
+        'id': '2081',
+        'subdomains': ['a', 'b'], // can be false
+        'old': 'true'
+    },
+    {
+        'name': 'Strava Heatmap 2014 running color1',
+        'address': 'http://{s}-yearheat.strava.com/tiles/running/color1/{z}/{x}/{y}.png?y=2014&v=5',
+        'maxZoom': 16,
+        'attribution': strava_2014_attribution,
+        'id': '2082',
+        'subdomains': ['a', 'b'], // can be false
+        'old': 'true'
+    },
+    {
+        'name': 'Strava Heatmap 2014 running color7',
+        'address': 'http://{s}-yearheat.strava.com/tiles/running/color7/{z}/{x}/{y}.png?y=2014&v=5',
+        'maxZoom': 16,
+        'attribution': strava_2014_attribution,
+        'id': '2083',
+        'subdomains': ['a', 'b'], // can be false
+        'old': 'true'
+    },
+    {
+        'name': 'Strava Heatmap 2014 running color8',
+        'address': 'http://{s}-yearheat.strava.com/tiles/running/color8/{z}/{x}/{y}.png?y=2014&v=5',
+        'maxZoom': 16,
+        'attribution': strava_2014_attribution,
+        'id': '2079',
+        'subdomains': ['a', 'b'], // can be false
+        'old': 'true'
+    },
+    {
+        'name': 'Strava Heatmap 2014 both color1',
+        'address': 'http://{s}-yearheat.strava.com/tiles/both/color1/{z}/{x}/{y}.png?y=2014&v=5',
+        'maxZoom': 16,
+        'attribution': strava_2014_attribution,
+        'id': '2084',
+        'subdomains': ['a', 'b'], // can be false
+        'old': 'true'
+    },
+    {
+        'name': 'Strava Heatmap 2014 both color7',
+        'address': 'http://{s}-yearheat.strava.com/tiles/both/color7/{z}/{x}/{y}.png?y=2014&v=5',
+        'maxZoom': 16,
+        'attribution': strava_2014_attribution,
+        'id': '2085',
+        'subdomains': ['a', 'b'], // can be false
+        'old': 'true'
+    },
+    {
+        'name': 'Strava Heatmap 2014 both color8',
+        'address': 'http://{s}-yearheat.strava.com/tiles/both/color8/{z}/{x}/{y}.png?y=2014&v=5',
+        'maxZoom': 16,
+        'attribution': strava_2014_attribution,
+        'id': '2086',
+        'subdomains': ['a', 'b'], // can be false
+        'old': 'true'
     },
     {
         'header': 'true',
