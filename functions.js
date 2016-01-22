@@ -610,7 +610,7 @@ function hideLayerLink() {
 /* LAYERS LIST TOP PADDING */
 
 function onLayersListPaddingChanged() {
-    var new_padding = 121;
+    var new_padding = 142;
     if (document.getElementById('filters_container').style.display != 'none') {
         new_padding = new_padding + 120;
     }
