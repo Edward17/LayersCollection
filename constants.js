@@ -179,13 +179,6 @@ var layers_data = [
         'blackwhite': 'true'
     },
     {
-        'name': 'Alberding',
-        'address': 'http://map.dgpsonline.eu/default/{z}/{x}/{y}.png',
-        'maxZoom': 19,
-        'attribution': openstreetmap_alberding_attribution,
-        'id': '1014'
-    },
-    {
         'name': 'Alberding (sorbian)',
         'address': 'http://map.dgpsonline.eu/osmsb/{z}/{x}/{y}.png',
         'maxZoom': 19,
