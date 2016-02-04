@@ -47,7 +47,7 @@ var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlc
 
 // max header id = 3013
 
-// max layer id = 1088
+// max layer id = 1089
 var layers_data = [
     {
         'header': 'true',
@@ -658,6 +658,13 @@ var layers_data = [
         'maxZoom': 15,
         'attribution': attribution + '<a href="http://opentopomap.org/" target="_blank">OpenTopoMap</a>',
         'id': '1067'
+    },
+    {
+        'name': 'OpenTopoMap 2.0',
+        'address': 'http://dev.opentopomap.org/{z}/{x}/{y}.png',
+        'maxZoom': 17,
+        'attribution': attribution + '<a href="http://dev.opentopomap.org/" target="_blank">OpenTopoMap</a>, under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>',
+        'id': '1089'
     },
     {
         'name': 'Komoot',
