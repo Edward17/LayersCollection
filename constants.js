@@ -202,6 +202,8 @@ var layers_data = [
         'threed': 'true',
         'language': 'pl'
     },
+
+/* don't works: http://osb-blog.plepe.at/node/46
     {
         'name': 'OpenStreetBrowser',
         'address': 'http://tiles-base.openstreetbrowser.org/tiles/basemap_base/{z}/{x}/{y}.png',
@@ -209,6 +211,7 @@ var layers_data = [
         'attribution': attribution + '<a href="http://www.openstreetbrowser.org/" target="_blank">OpenStreetBrowser</a>',
         'id': '1018'
     },
+*/
 
 /*
 // don't works with websites (GitHub Pages also), only with localhost: http://www.gossamer-threads.com/lists/wiki/mediawiki-cvs/625066
@@ -556,6 +559,8 @@ var layers_data = [
         'subdomains': ['1', '2', '3'],
         'id': '1055'
     },
+
+/*
     {
         'name': 'Nachtlebenkarte',
         'address': 'http://sanday.geofabrik.de/test_night/{z}/{x}/{y}.png',
@@ -563,6 +568,8 @@ var layers_data = [
         'attribution': attribution + '<a href="http://blog.geofabrik.de/?p=332" target="_blank">Lisa Stolz, Geofabrik</a>',
         'id': '1085'
     },
+*/
+
     {
         'name': 'OpenHistoricalMap',
         'address': 'http://www.openhistoricalmap.org/ohm_tiles/{z}/{x}/{y}.png',
