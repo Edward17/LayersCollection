@@ -47,7 +47,7 @@ var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlc
 
 // max header id = 3013
 
-// max layer id = 1089
+// max layer id = 1090
 var layers_data = [
     {
         'header': 'true',
@@ -75,6 +75,14 @@ var layers_data = [
         'attribution': openstreetmap_mapquest_attribution,
         'subdomains': ['1', '2', '3', '4'],
         'id': '1002'
+    },
+    {
+        'name': 'RRZE Standart HD',
+        'address': 'http://{s}.osm.rrze.fau.de/osmhd/{z}/{x}/{y}.png',
+        'maxZoom': 19,
+        'attribution': attribution + '<a href="https://osm.rrze.fau.de/testhd.html" target="_blank">RRZE</a>',
+        'id': '1090',
+        'retina': true
     },
     {
         'name': 'MapSurfer.NET',
