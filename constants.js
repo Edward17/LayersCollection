@@ -857,7 +857,7 @@ var layers_data = [
     }
 ];
 
-// max overlay id = 2086
+// max overlay id = 2087
 var overlays_data = [
     {
         'header': 'true',
@@ -1216,6 +1216,19 @@ var overlays_data = [
         'maxZoom': 22,
         'attribution': sly_attribution,
         'id': '2032'
+    },
+    {
+        'wms': 'true',
+        'name': 'Кадастровий поділ',
+        'address': 'http://212.26.144.110/geowebcache/service/wms',
+        'maxZoom': 16,
+        'attribution': tiles_attribution + '<a href="http://map.land.gov.ua/kadastrova-karta">ЦДЗК</a>',
+        'id': '2087',
+        'layers': ['kadastr'],
+        'format': 'image/png',
+        'transparent': true,
+        'opacity': 1,
+        'ua': true
     },
     {
         'header': 'true',
