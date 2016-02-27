@@ -659,7 +659,7 @@ function saveMapPosition() {
             layers_for_export = layers_for_export + ',' + current_overlays_ids[i];
         }
     }
-    document.getElementById('frame_export').setAttribute('href', 'http://edward17.github.io/LayersCollection/iframe_export.html#map=' + map.getZoom() + '/' + map.getCenter().lat.toFixed(5) + '/' + map.getCenter().lng.toFixed(5) + '&layers=' + layers_for_export);
+    document.getElementById('frame_export').setAttribute('href', 'http://edward17.github.io/LayersCollection/frame_export.html#map=' + map.getZoom() + '/' + map.getCenter().lat.toFixed(5) + '/' + map.getCenter().lng.toFixed(5) + '&layers=' + layers_for_export);
 }
 
 function saveLayers() {
