@@ -610,7 +610,7 @@ function hideLayerLink() {
 /* LAYERS LIST TOP PADDING */
 
 function onLayersListPaddingChanged() {
-    var new_padding = 142;
+    var new_padding = 159;
     if (document.getElementById('filters_container').style.display != 'none') {
         new_padding = new_padding + 120;
     }
@@ -652,22 +652,29 @@ function saveMapPosition() {
     localStorage.setItem('zoom', map.getZoom());
     localStorage.setItem('lat', map.getCenter().lat);
     localStorage.setItem('lng', map.getCenter().lng);
+
+    var layers_for_export = current_layer_id.toString();
+    if (current_overlays_ids.length > 0) {
+        for (var i = 0; i < current_overlays_ids.length; i++) {
+            layers_for_export = layers_for_export + ',' + current_overlays_ids[i];
+        }
+    }
+    document.getElementById('frame_export').setAttribute('href', 'http://edward17.github.io/LayersCollection/iframe_export.html#map=' + map.getZoom() + '/' + map.getCenter().lat.toFixed(5) + '/' + map.getCenter().lng.toFixed(5) + '&layers=' + layers_for_export);
 }
 
 function saveLayers() {
+    var layers_txt = current_layer_id;
     if (current_overlays_ids.length > 0) {
-        var layers_txt = current_layer_id;
-
         for (var i = 0; i < current_overlays_ids.length; i++) {
             layers_txt = layers_txt + ',' + current_overlays_ids[i];
         }
-        
-        onLayersUpdate(layers_txt);
-        localStorage.setItem('layers', layers_txt);
-    } else {
-        onLayersUpdate(current_layer_id);
-        localStorage.setItem('layers', current_layer_id);
     }
+        
+    onLayersUpdate(layers_txt);
+    localStorage.setItem('layers', layers_txt);
+
+    var export_link = document.getElementById('frame_export').getAttribute('href');
+    document.getElementById('frame_export').setAttribute('href', export_link.split('&layers=')[0] + '&layers=' + layers_txt);
 }
 
 function setDefaultMap() {
