@@ -12,6 +12,7 @@ function data_export_loaded() {
 }
 
 function showLayerData(data) {
+    layer_address = data.address.replace(mapbox_token, ' /*here your MapBox public token. If you haven\'t one, just <a href="https://www.mapbox.com/signup/?plan=starter">register</a> on MapBox for free*/');
     var text;
     if (data.bing) {
         text = '<h2>For Leaflet</h2>Unable to export link, use <a href="https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js">https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js</a> instead';
@@ -19,7 +20,7 @@ function showLayerData(data) {
         text = text + '<h2>For JOSM Editor</h2>Unable to export link, but Bing Imagery layer is already built in JOSM Editor';
     } else if (data.wms) {
         text = '<h2>For Leaflet</h2><pre>var layer = L.tileLayer.wms(<br>';
-        text = text + '    \'' + data.address + '\',<br>';
+        text = text + '    \'' + layer_address + '\',<br>';
         text = text + '    {<br>';
         text = text + '        maxZoom: ' + data.maxZoom + ',<br>';
         text = text + '        attribution: \'' + data.attribution + '\',<br>';
@@ -41,13 +42,13 @@ function showLayerData(data) {
 
         text = text + '<h2>For iD Editor</h2>Unable to export link because this is WMS layer and iD Editor don\'t supports WMS layers';
 
-        text = text + '<h2>For JOSM Editor</h2>WMS Layer<br>Address: ' + data.address + '<br>Layers: ' + data.layers.join(', ');
+        text = text + '<h2>For JOSM Editor</h2>WMS Layer<br>Address: ' + layer_address + '<br>Layers: ' + data.layers.join(', ');
         if (data.format) {
             text = text + '<br>Format: ' + data.format;
         }
     } else {
         text = '<h2>For Leaflet</h2><pre>var layer = L.tileLayer(<br>';
-        text = text + '    \'' + data.address + '\',<br>';
+        text = text + '    \'' + layer_address + '\',<br>';
         text = text + '    {<br>';
         text = text + '        maxZoom: ' + data.maxZoom + ',<br>';
         text = text + '        attribution: \'' + data.attribution + '\'';
@@ -64,18 +65,18 @@ function showLayerData(data) {
         text = text + ');</pre>';
 
         text = text + '<h2>For iD Editor</h2>Address: ';
-        if (data.address.search('{s}') != -1) {
+        if (layer_address.search('{s}') != -1) {
             if (data.subdomains) {
-                text = text + data.address.replace('{s}', data.subdomains[0]);
+                text = text + layer_address.replace('{s}', data.subdomains[0]);
             } else {
-                text = text + data.address.replace('{s}', 'a');
+                text = text + layer_address.replace('{s}', 'a');
             }
         } else {
-            text = text + data.address;
+            text = text + layer_address;
         }
 
         text = text + '<h2>For JOSM Editor</h2>TMS Layer<br>Address: ';
-        address_for_josm = data.address.replace('{z}', '{zoom}');
+        var address_for_josm = layer_address.replace('{z}', '{zoom}');
         if (data.tms) {
             address_for_josm = address_for_josm.replace('{y}', '{-y}');
         }
