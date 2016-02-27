@@ -99,21 +99,3 @@ function shortenAttribution(attribution) {
     short_attribution = short_attribution.replace(stamen_attribution, 'Tiles &copy; <a href="http://stamen.com">Stamen Design</a>');
     return short_attribution;
 }
-
-function getLayerDataByID(id) {
-    for (i = 0; i < layers_data.length; i++) {
-        if (layers_data[i].id == id) {
-            return layers_data[i];
-        }
-    }
-    return null;
-}
-
-function getOverlayDataByID(id) {
-    for (i = 0; i < overlays_data.length; i++) {
-        if (overlays_data[i].id == id) {
-            return overlays_data[i];
-        }
-    }
-    return null;
-}

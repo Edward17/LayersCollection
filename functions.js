@@ -290,26 +290,6 @@ function removeAllOverlays() {
     }
 }
 
-/* LAYERS - UTILS */
-
-function getLayerDataByID(id) {
-    for (i = 0; i < layers_data.length; i++) {
-        if (layers_data[i].id == id) {
-            return layers_data[i];
-        }
-    }
-    return null;
-}
-
-function getOverlayDataByID(id) {
-    for (i = 0; i < overlays_data.length; i++) {
-        if (overlays_data[i].id == id) {
-            return overlays_data[i];
-        }
-    }
-    return null;
-}
-
 function getOverlayIndexByID(id) {
     return overlays_data.indexOf(getOverlayDataByID(id));
 }
