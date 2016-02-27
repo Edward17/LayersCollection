@@ -33,8 +33,8 @@ function loaded() {
     left.innerHTML = left.innerHTML + '<h2 class="header_big">Overlays</h2>';
     initializeOverlays();
 
-    registerPermalinkButton(map, document.getElementById('permalink'), 'http://edward17.github.io/LayersCollection/', setDefaultMap, showSavedLayers);
     map.on('move', saveMapPosition);
+    registerPermalinkButton(map, 'permalink', 'http://edward17.github.io/LayersCollection/', setDefaultMap, showSavedLayers);
     
     initializeLeftPanelVisibility();
     initializeFilters();
