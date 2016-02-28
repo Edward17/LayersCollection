@@ -26,6 +26,7 @@ var sputnik_attribution = attribution + '<a href="http://maps.sputnik.ru/" targe
 var thunderforest_attribution = attribution + '<a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>';
 
 var openstreetmap_osmde_attribution = attribution + '<a href="http://openstreetmap.de/germanstyle.html" target="_blank">OpenStreetMap - Deutschland</a>';
+var openstreetmap_osmse_attribution = attribution + '<a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a>';
 var openstreetmap_alberding_attribution = attribution + '<a href="http://www.alberding.eu/" target="_blank">Alberding GmbH</a>, CC-BY-SA';
 var openstreetmap_chepetsk_attribution = attribution + '<a href="http://чепецк.net/" target="_blank">ST-GIS</a>, <a href="http://www.openstreetmap.org/user/Max%20Vasilev" target="_blank">Max Vasilev</a>';
 var openstreetmap_skobbler_attribution = attribution + '<a href="http://www.skobbler.com/">Skobbler</a>';
@@ -47,7 +48,7 @@ var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlc
 
 // max header id = 3013
 
-// max layer id = 1090
+// max layer id = 1091
 var layers_data = [
     {
         'header': 'true',
@@ -160,8 +161,18 @@ var layers_data = [
         'name': 'OpenStreetMap.se',
         'address': 'http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',
         'maxZoom': 18,
-        'attribution': attribution + '<a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a>',
-        'id': '1010'
+        'attribution': openstreetmap_osmse_attribution,
+        'id': '1010',
+        'subdomains': ['a', 'b', 'c', 'd', 'e', 'f']
+    },
+    {
+        'name': 'OpenStreetMap.se Base',
+        'address': 'http://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': openstreetmap_osmse_attribution,
+        'id': '1091',
+        'subdomains': ['a', 'b', 'c', 'd', 'e', 'f'],
+        'nolabels': 'true'
     },
     {
         'name': 'wmflabs standart',
@@ -857,7 +868,7 @@ var layers_data = [
     }
 ];
 
-// max overlay id = 2087
+// max overlay id = 2088
 var overlays_data = [
     {
         'header': 'true',
@@ -878,6 +889,14 @@ var overlays_data = [
         'attribution': mapquest_attribution,
         'subdomains': ['1', '2', '3', '4'],
         'id': '2007'
+    },
+    {
+        'name': 'OpenStreetMap.se Roads and Labels',
+        'address': 'http://{s}.tile.openstreetmap.se/hydda/roads_and_labels/{z}/{x}/{y}.png',
+        'maxZoom': 18,
+        'attribution': openstreetmap_osmse_attribution,
+        'id': '2088',
+        'subdomains': ['a', 'b', 'c', 'd', 'e', 'f']
     },
     {
         'name': 'Космоснимки Гибрид',
