@@ -41,7 +41,9 @@
 				<input type="checkbox" id="retina_selector" onchange="onHidingFilterChanged('retina')">Show only Retina layers<br>
 				<input type="checkbox" id="nolabels_selector" onchange="onHidingFilterChanged('nolabels')">Show only no-labels layers
 			</div>
-			<button type=button id="custom_layer_form_opening" onclick="showCustomLayerForm()">Add custom layer</button>
+			<div id="custom_layer_form_opening">
+				<button type="button" onclick="showCustomLayerForm()">Add custom Tile layer</button>
+			</div>
 			<div id="custom_layer_container" class="bordered_container" style="display: none;">
 				<span>* - required fields</span><button type=button id="custom_layer_form_closing" class="closing_button" onclick="hideCustomLayerForm()">Close</button>
 				<input type="text" class="custom_layer_field" id="custom_layer_address" placeholder="Tiles address (e.g. 'http://{s}.tile.site.com/{z}/{x}/{y}.png') *"><br>
@@ -52,6 +54,26 @@
 				<input type="checkbox" id="custom_layer_tms">TMS?<br>
 				<button type=button id="custom_layer_showing" onclick="showCustomLayer()">Show this layer</button>
 				<button type=button id="custom_layer_hiding" onclick="hideCustomLayer()" style="display: none;">Hide this layer</button>
+			</div>
+			<div id="custom_WMS_layer_form_opening">
+				<button type="button" onclick="showCustomWMSLayerForm()">Add custom WMS layer</button>
+			</div>
+			<div id="custom_WMS_layer_container" class="bordered_container" style="display: none;">
+				<span>* - required fields</span><button type=button id="custom_WMS_layer_form_closing" class="closing_button" onclick="hideCustomWMSLayerForm()">Close</button>
+				<input type="text" class="custom_layer_field" id="custom_WMS_layer_address" placeholder="Tiles address (e.g. 'http://.site.com/map') *"><br>
+				<input type="text" class="custom_layer_field" id="custom_WMS_layer_attribution" placeholder="Attribution (HTML works) *"><br>
+				<input type="text" class="custom_layer_field" id="custom_WMS_layer_maxzoom" pattern="[0-9]{1,2}" placeholder="Maximum Zoom (only number) *"><br>
+				<input type="text" class="custom_layer_field" id="custom_WMS_layer_minzoom" pattern="[0-9]{1,2}" placeholder="Minimum Zoom (only number)"><br>
+				<input type="text" class="custom_layer_field" id="custom_WMS_layer_layers" placeholder="Layers (e.g. 'base,advanced,tested') *"><br>
+				<input type="text" class="custom_layer_field" id="custom_WMS_layer_format" placeholder="Format (e.g. 'image/png') *" list="custom_WMS_layer_formats_list"><br>
+				<datalist id="custom_WMS_layer_formats_list">
+ 					<option value="image/png">
+ 					<option value="image/jpg">
+				</datalist>
+				<input type="text" class="custom_layer_field" id="custom_WMS_layer_opacity" placeholder="Opacity (only number)"><br>
+				<input type="checkbox" id="custom_WMS_layer_transparent">Transparent?<br>
+				<button type=button id="custom_WMS_layer_showing" onclick="showCustomWMSLayer()">Show this WMS layer</button>
+				<button type=button id="custom_WMS_layer_hiding" onclick="hideCustomWMSLayer()" style="display: none;">Hide this WMS layer</button>
 			</div>
 			<div id="left" class="bordered_container"></div>
 		</div>

@@ -17,6 +17,7 @@ var hiding_filters_count = 0;
 var headers_count = 0;
 
 var custom_layer;
+var cuatom_WMS_layer;
 
 var show_layer_link_on_dbclick;
 
@@ -437,7 +438,7 @@ function showCustomLayerForm() {
 
 function hideCustomLayerForm() {
     document.getElementById('custom_layer_container').style.display = 'none';
-    document.getElementById('custom_layer_form_opening').style.display = 'inline';
+    document.getElementById('custom_layer_form_opening').style.display = 'block';
     onLayersListPaddingChanged();
 }
 
@@ -478,6 +479,59 @@ function createCustomLayer() {
     custom_layer = createLeafletLayer(custom_layer_data);
 }
 
+/* CUSTOM WMS LAYER */
+
+function showCustomWMSLayerForm() {
+    document.getElementById('custom_WMS_layer_container').style.display = 'block';
+    document.getElementById('custom_WMS_layer_form_opening').style.display = 'none';
+    onLayersListPaddingChanged();
+}
+
+function hideCustomWMSLayerForm() {
+    document.getElementById('custom_WMS_layer_container').style.display = 'none';
+    document.getElementById('custom_WMS_layer_form_opening').style.display = 'block';
+    onLayersListPaddingChanged();
+}
+
+function showCustomWMSLayer() {
+    createCustomWMSLayer();
+    map.addLayer(custom_WMS_layer);
+
+    document.getElementById('custom_WMS_layer_showing').style.display = 'none';
+    document.getElementById('custom_WMS_layer_hiding').style.display = 'inline';
+}
+
+function hideCustomWMSLayer() {
+    map.removeLayer(custom_WMS_layer);
+
+    document.getElementById('custom_WMS_layer_hiding').style.display = 'none';
+    document.getElementById('custom_WMS_layer_showing').style.display = 'inline';
+}
+
+function createCustomWMSLayer() {
+    var custom_WMS_layer_data = {
+        'wms': 'true'
+    };
+
+    custom_WMS_layer_data.address = document.getElementById('custom_WMS_layer_address').value;
+    custom_WMS_layer_data.attribution = document.getElementById('custom_WMS_layer_attribution').value;
+    custom_WMS_layer_data.maxZoom = document.getElementById('custom_WMS_layer_maxzoom').value;
+    custom_WMS_layer_data.layers = document.getElementById('custom_WMS_layer_layers').value.split(',');
+    custom_WMS_layer_data.format = document.getElementById('custom_WMS_layer_format').value;
+
+    if (document.getElementById('custom_WMS_layer_minzoom').value.length > 0) {
+        custom_WMS_layer_data.minZoom = document.getElementById('custom_WMS_layer_minzoom').value;
+    }
+    if (document.getElementById('custom_WMS_layer_opacity').value.length > 0) {
+        custom_WMS_layer_data.opacity = document.getElementById('custom_WMS_layer_opacity').value;
+    }
+    if (document.getElementById('custom_WMS_layer_transparent').checked) {
+        custom_WMS_layer_data.transparent = 'true';
+    }
+
+    custom_WMS_layer = createLeafletLayer(custom_WMS_layer_data);
+}
+
 /* LAYER DATA SHOWING */
 
 function onLayerLinkShowingChanged() {
@@ -491,12 +545,15 @@ function showLayerData(id) {
 /* LAYERS LIST TOP PADDING */
 
 function onLayersListPaddingChanged() {
-    var new_padding = 159;
+    var new_padding = 180;
     if (document.getElementById('filters_container').style.display != 'none') {
         new_padding = new_padding + 120;
     }
     if (document.getElementById('custom_layer_container').style.display != 'none') {
         new_padding = new_padding + 148;
+    }
+    if (document.getElementById('custom_WMS_layer_container').style.display != 'none') {
+        new_padding = new_padding + 191;
     }
     left.style.top = new_padding + 'px';
 }
