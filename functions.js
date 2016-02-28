@@ -25,12 +25,12 @@ var show_layer_link_on_dbclick;
 function loaded() {
     initializeElements();
 
-    left.innerHTML = left.innerHTML + '<h2 class="header_big">Baselayers</h2>';
+    left.innerHTML = left.innerHTML + '<div class="header_big"><b>Baselayers</b></div>';
     initializeLayers();
     left.innerHTML = left.innerHTML + '<div class="padding_text" id="-100"><button type=button onclick="showLayer(-100)">Set gray background</button></div>';
     left.innerHTML = left.innerHTML + '<div class="padding_text" id="-101"><button type=button onclick="showLayer(-101)">Set black background</button></div>';
 
-    left.innerHTML = left.innerHTML + '<h2 class="header_big">Overlays</h2>';
+    left.innerHTML = left.innerHTML + '<div class="header_big"><b>Overlays</b></div>';
     initializeOverlays();
 
     map.on('move', saveMapPosition);

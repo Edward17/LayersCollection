@@ -69,7 +69,8 @@ BODY {
 }
 
 .header_big {
-    margin: 0px;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .layer {
