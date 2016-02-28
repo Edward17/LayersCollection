@@ -88,14 +88,16 @@ Jeder Filter hat auch seine eingene "Etikette" (in der Liste oben sind sie in Kl
 
 ## Eigener Layer
 
-Es besteht die Möglichkeit, seinen eigenen Tilelayer zu zeigen. Dafür drucken Sie "Add custom layer" Taste und füllen die Felder im offenen Form. Notwendige Felder sind mit `*` gekennzeichnet. Danach drucken Sie die "Show this layer" Taste.
+Es besteht die Möglichkeit, seinen eigenen Tilelayer oder WMS-Layer zu zeigen. Dafür drucken Sie "Add custom layer" (oder "Add custom WMS layer") Taste und füllen die Felder im offenen Form. Notwendige Felder sind mit `*` gekennzeichnet. Danach drucken Sie die "Show this layer" (oder "Show this WMS layer") Taste.
 
 Eigener Layer wird über dem jetzt gewählten Layer gezeigt. Wenn seiner eigener Layer transparenten Hintergrund hat, aber Sie wollen ihn ohne Baselayer sehen, drucken Sie die "Set gray background" Taste.
+
+Gleichzeitige Darstellung von Tile- sowie WMS-Layer ist möglich.
 
 Bemerken Sie:
 
 1. Daten von diesem Layer (Adresse, Autor, maximal Zoom) werden nicht gespeichert und werden bei der Auffrischung von Seite verloren
-2. Mithilfe von diesem Instrument kann man *nicht* den Autor (mich) bitten, einen neuen Layer in Versammlung einzufügen. Dafür muss man mir schreiben, siehe [Kontakten](https://github.com/Edward17/LayersCollection/blob/gh-pages/README.DE.md#Kontakten) Abschnitt
+2. Mithilfe von diesem Instrument kann man nicht den Autor (mich) bitten, einen neuen Layer in Versammlung einzufügen. Dafür muss man mir schreiben, siehe [Kontakten](https://github.com/Edward17/LayersCollection/blob/gh-pages/README.DE.md#Kontakten) Abschnitt
 
 ## Export von Layerdaten
 
@@ -104,12 +106,22 @@ Es besteht die Möglichkeit, Daten von Layer (Adresse, maximal Zoom) zu exportie
 * [Leaflet](http://leafletjs.com/) Bibliothek - dafür wird die komplete JavaScript-Code gezeigt, die nur in die Code von Webseite eingefügt werden muss
 * iD Editor - dafür wird die Adresse, die man bei Wahl von eigenen Layer angeben muss, gezeigt
 * JOSM Editor - dafür wird die Adresse und maximal Zoom (für TMS layer) oder die Adresse, Layersliste und Format (für WMS layer) gezeigt
+* SAS.Planet - dafür wird das Text von drei Files gezeigt, die in Separatfolder in Direktory `SAS.Planet/Maps/.../` ähnlich der anderen Layers erstellt werden müssen (nur Tilelayers sind unterstützt)
 
 Um Layerdaten zu exportieren, muss man folgendes machen:
 
 1. Den Checkbox "Show layer data by doubleclick on layer name" einschalten
 2. Zweimal das Layer**name** clicken
-3. Nun kann man den Ergebnis kopieren
+3. Neues Tab wird geöffnet, dort kann man den Ergebnis kopieren
+
+## Einbau der Mini-Karte in Website
+
+Es besteht die Möglichkeit, in eigene Webseite eine Mini-Karte mit gewählten Layers (Baselayer und beliebig viele Overlays) und bestimmter Startposition mithilfe des `<iframe>`. Dafür muss man:
+
+1. Benötigte Platz an der Karte öffnen
+2. Benötigte Layers in benötigter Reihenfolge einschalten
+3. Den Link "Frame export" klicken
+4. Code kopieren und in HTML-Code von eigener Webseite einsetzen
 
 ## Speicherung von Sitezustand
 
@@ -119,8 +131,8 @@ Folgende Einstellungen werden nur im Browser gespeichert:
 
 * Ob das linke Panel gezeigt wird? (Dort sind Filters, Layersliste und alles andere)
 * Ob die Filter gezeigt werden?
-* Jeder Filter
-* Zeigung von jeder Kategorie
+* Ob jeder Filter aktiviert ist?
+* Ob jede Kategorie gezeigt wird?
 
 Nächste Einstellungen werden sowohl im Browser als such im Link gespeichert:
 

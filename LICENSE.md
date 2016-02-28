@@ -1,6 +1,18 @@
-Files `index.html`, `style.css`, `functions.js` and `lib/PermalinkButton.js` are provided under the [MIT License](https://en.wikipedia.org/wiki/MIT_License):
+Files `lib/leaflet.js` and `lib/leaflet.css` are from [Leaflet](http://leafletjs.com/) and are provided under [this](https://github.com/Leaflet/Leaflet/blob/master/LICENSE) license.
 
-The MIT License (MIT)
+---
+
+File `lib/Bing.js` is [from here](https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js) and is provided under [this](https://github.com/shramov/leaflet-plugins/blob/master/LICENSE) license.
+
+---
+
+File `constants.js` is created by me, but data contained in this file is from many sources like code of websites, GitHub-repositories or just maps on webpages. So I don't know under which license I should provide this file.
+
+I’d like to publish this file also under MIT License, as described below. But do I may?
+
+---
+
+All other files are provided under the [MIT License](https://en.wikipedia.org/wiki/MIT_License):
 
 Copyright (c) 2016 Eduard \<edward17\>
 
@@ -24,14 +36,4 @@ SOFTWARE.
 
 ---
 
-Files `lib/leaflet.js` and `lib/leaflet.css` are from [Leaflet](http://leafletjs.com/) and are provided under [this](https://github.com/Leaflet/Leaflet/blob/master/LICENSE) license.
-
----
-
-File `lib/Bing.js` is [from here](https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js) and is provided under [this](https://github.com/shramov/leaflet-plugins/blob/master/LICENSE) license.
-
----
-
-File `constants.js` is created by me, but data contained in this file is from many sources like code of websites, GitHub-repositories or just maps on webpages. So I don't know under which license I should provide this file.
-
-I’d like to publish this file also under MIT License, as described above. But do I may?
+For generation of GUID by exporting of layer data for SAS.Planet [this](http://guid.setgetgo.com/) API is used.

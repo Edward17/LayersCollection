@@ -45,7 +45,7 @@ Category can be hidden in order to make layers list shorter and scrolling time -
 
 ## Link for coordinates and layers
 
-You can create a link to a place on the map and selected layer (or layers when more then one overlays are shown). For that, you should click "Permalink" link in left upper corner an copy address from browser address. You can also just copy address of link. Coordinates and selected layers are updated automatically when they are changed.
+You can create a link to a place on the map and selected layer (or layers when at least one overlay is shown). For that, you should click "Permalink" link in left upper corner and copy address from browser address. You can also just copy address of link. Coordinates and selected layers are updated automatically when they are changed.
 
 Information about coordinates and layer (layers) is stored in hash. This is part of URL after `#` symbol.
 
@@ -88,14 +88,16 @@ Additionally each filters has certain "tag" (in list above they are described in
 
 ## Custom layer
 
-You can show your own custom tile layer. For that press the "Add custom layer" button and fill fields in opened form. Required fields are with `*`. Whereupon press the "Show this layer" button.
+You can show your own custom tile or WMS layer. For that press the "Add custom layer" (or "Add custom WMS layer") button and fill fields in opened form. Required fields are with `*`. Whereupon press the "Show this layer" (or "Show this WMS layer") button.
 
 Custom layer is added over selected baselayer. If your layer has transparent background but you want to see it without baselayer press the "Set gray background" button in layers list.
+
+Showing of both custom tile and WMS layer at the same time is supported.
 
 Note:
 
 1. Custom layer data (tile address, copyrights, maximum zoom etc.) are not saved and will be lost by page refreshing
-2. With this instrument you **cannot** ask an author (me) to add this layer in collection. For that, you should contact with me. Information about this is in [Contacts](https://github.com/Edward17/LayersCollection/blob/gh-pages/README.RU.md#Contacts) chapter
+2. With this instrument you cannot ask an author (me) to add this layer in collection. For that, you should contact with me. Information about this is in [Contacts](https://github.com/Edward17/LayersCollection/blob/gh-pages/README.RU.md#Contacts) chapter
 
 ## Layer data export
 
@@ -104,23 +106,33 @@ You can export layers data (tile address, maximum zoom etc.) in order to use lay
 * [Leaflet](http://leafletjs.com/) library - for it is returned complete JavaScript-code, you should only add this code in website code
 * iD editor - for it is returned address which can be pasted by adding of custom layer
 * JOSM editor - for it is returned address and maximum zoom (for TMS layer) or address, layers list and format (for WMS layer)
+* SAS.Planet - for it is returned text of three files that must be created in separate folder in `SAS.Planet/Maps/.../` directory by analogy with other layers (only tile layers are supported)
 
 In order to export layer data you should do next steps:
 
 1. Enable "Show layer data by doubleclick on layer name" checkbox
 2. Twice click of layer **name**
-3. Now you can copy the result
+3. New tab is opened, there you can copy the result
+
+## Building minimap into website
+
+You can build into your own website minimap with selected layers (baselayer and unlimited count of overlays) and specified start position using `<iframe>`. For that:
+
+1. Open necessary place on the map
+2. Select layers in necessary order
+3. Click the "Frame export" link
+4. Copy the code and build into HTML code of your website
 
 ## Site state saving
 
-Interface of this website can be modified. Some preferences are stored only in browser. Some preferences are stored in browser and link. But for all that preferences in link have always bigger priority than preferences stored in browser.
+Interface of this website can be modified. Some preferences are stored only in browser. Some preferences are stored in browser and link. However, all the preferences in link always have bigger priority than preferences stored in browser.
 
 Next preferences are stored only in browser:
 
 * Is left panel showed? (This is where filters, layers list and many others are placed)
 * Are filters showed?
-* Each filter
-* Showing of each category
+* Is each filter active?
+* Is each category showed?
 
 Next preferences are stored in browser and in link:
 
@@ -135,4 +147,4 @@ See [LICENSE.md](https://github.com/Edward17/LayersCollection/blob/gh-pages/LICE
 
 You have questions or suggestions? Write to me in [private message on OSM](https://www.openstreetmap.org/message/new/edward17) or on e-mail: edward17 [at] mail [dot] ua.
 
-P. S. English is not my native language, so if you found a grammatical mistake don't hesitate to contact me!
+P. S. English is not my native language, so if you found a grammatical mistake do not hesitate to contact me!
