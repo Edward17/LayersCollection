@@ -1,9 +1,9 @@
 function data_export_loaded() {
-    var layer_id = parseInt(window.location.hash.replace('#', ''));
+    var layer_id = window.location.hash.replace('#', '');
     var layer_data;
-    if (layer_id >= 1000 && layer_id < 2000) {
+    if (layer_id.substring(0,1) == '1') {
         layer_data = getLayerDataByID(layer_id)
-    } else if (layer_id >= 2000 & layer_id < 3000) {
+    } else if (layer_id.substring(0,1) == '2') {
         layer_data = getOverlayDataByID(layer_id);
     }
 
@@ -13,6 +13,7 @@ function data_export_loaded() {
 
 function showLayerData(data) {
     layer_address = data.address.replace(mapbox_token, ' /*here your MapBox public token. If you haven\'t one, just <a href="https://www.mapbox.com/signup/?plan=starter">register</a> on MapBox for free*/');
+    layer_attribution = data.attribution.replace(/</g, '&lt;').replace(/'>/g, '&gt;');
     var text;
     if (data.bing) {
         text = '<h2>For Leaflet</h2>Unable to export link, use <a href="https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js">https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Bing.js</a> instead';
@@ -24,7 +25,7 @@ function showLayerData(data) {
         text = text + '    \'' + layer_address + '\',<br>';
         text = text + '    {<br>';
         text = text + '        maxZoom: ' + data.maxZoom + ',<br>';
-        text = text + '        attribution: \'' + data.attribution + '\',<br>';
+        text = text + '        attribution: \'' + layer_attribution + '\',<br>';
         text = text + '        layers: [\'' + data.layers.join('\', \'') + '\']';
         if (data.minZoom) {
             text = text + ',<br>        minZoom: ' + data.minZoom;
@@ -52,7 +53,7 @@ function showLayerData(data) {
         text = text + '    \'' + layer_address + '\',<br>';
         text = text + '    {<br>';
         text = text + '        maxZoom: ' + data.maxZoom + ',<br>';
-        text = text + '        attribution: \'' + data.attribution + '\'';
+        text = text + '        attribution: \'' + layer_attribution + '\'';
         if (data.tms) {
             text = text + ',<br>        tms: true';
         }
