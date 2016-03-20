@@ -75,43 +75,13 @@ function initializeFilters() {
         showFilters();
     }
 
-    if (localStorage.getItem('old_selector') != null) {
-        document.getElementById('old_selector').checked = (localStorage.getItem('old_selector') == 'true');
-        if (localStorage.getItem('old_selector') == 'false') {
-            onShowingFilterChanged('old');
-        }
-    } else {
-        document.getElementById('old_selector').checked = true;
-    }
-
-    if (localStorage.getItem('ua_selector') != null) {
-        document.getElementById('ua_selector').checked = (localStorage.getItem('ua_selector') == 'true');
-        if (localStorage.getItem('ua_selector') == 'false') {
-            onShowingFilterChanged('ua');
-        }
-    } else {
-        document.getElementById('ua_selector').checked = true;
-    }
-
-    document.getElementById('blackwhite_selector').checked = (localStorage.getItem('blackwhite_selector') == 'true');
-    if (localStorage.getItem('blackwhite_selector') == 'true') {
-        onHidingFilterChanged('blackwhite');
-    }
-
-    document.getElementById('threed_selector').checked = (localStorage.getItem('threed_selector') == 'true');
-    if (localStorage.getItem('threed_selector') == 'true') {
-        onHidingFilterChanged('threed');
-    }
-
-    document.getElementById('retina_selector').checked = (localStorage.getItem('retina_selector') == 'true');
-    if (localStorage.getItem('retina_selector') == 'true') {
-        onHidingFilterChanged('retina');
-    }
-
-    document.getElementById('nolabels_selector').checked = (localStorage.getItem('nolabels_selector') == 'true');
-    if (localStorage.getItem('nolabels_selector') == 'true') {
-        onHidingFilterChanged('nolabels');
-    }
+    initializeShowingFilter('old');
+    initializeShowingFilter('ua');
+    
+    initializeHidingFilter('blackwhite');
+    initializeHidingFilter('threed');
+    initializeHidingFilter('retina');
+    initializeHidingFilter('nolabels');
 
     if (localStorage.getItem('language_selector')) {
         document.getElementById('language_selector').value = localStorage.getItem('language_selector');
@@ -128,6 +98,24 @@ function initializeFilters() {
                 onHeaderChanged(header_id);
             }
         }
+    }
+}
+
+function initializeShowingFilter(filter) {
+    if (localStorage.getItem(filter + '_selector') != null) {
+        document.getElementById(filter + '_selector').checked = (localStorage.getItem(filter + '_selector') == 'true');
+        if (localStorage.getItem(filter + '_selector') == 'false') {
+            onShowingFilterChanged(filter);
+        }
+    } else {
+        document.getElementById(filter + '_selector').checked = true;
+    }
+}
+
+function initializeHidingFilter(filter) {
+    document.getElementById(filter + '_selector').checked = (localStorage.getItem(filter + '_selector') == 'true');
+    if (localStorage.getItem(filter + '_selector') == 'true') {
+        onHidingFilterChanged(filter);
     }
 }
 
