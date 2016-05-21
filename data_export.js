@@ -115,7 +115,7 @@ function showLayerData(data) {
         } else if (z_index < x_index && z_index < y_index) {
             first_variable = '{z}';
         }
-        
+
         text = text + '<h2>For SAS.Planet</h2><h4>GetUrlScript.txt</h4><pre>begin<br>' + getGetURLBaseString(layer_address, data.subdomains) + getResultURLString(address_for_sas_planet, first_variable) + '<br>end.</pre>';
         text = text + '<h4>info.txt</h4><pre>' + data.attribution + '</pre>';
         text = text + '<h4>params.txt</h4><pre>[PARAMS]<br>pnum=0<br>GUID=';
@@ -155,7 +155,7 @@ function showLayerData(data) {
             }
         };
     }
-    
+
     document.getElementById('layer_data').innerHTML = text;
 }
 
@@ -173,12 +173,12 @@ function getGetURLBaseString(address, subdomains) {
         var count;
         if (subdomains) {
             letter = subdomains[0];
-            count = subdomains.length();
+            count = subdomains.length;
         } else {
             letter = 'a';
             count = 3;
         }
-        
+
         var geturlbase_string = '  GetURLBase[' + subdomain_index + ']:=chr(ord(\''+ letter + '\')+random(' + count + '));<br>';
         return geturlbase_string;
     } else {

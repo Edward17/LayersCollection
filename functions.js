@@ -36,7 +36,7 @@ function loaded() {
 
     map.on('move', saveMapPosition);
     registerPermalinkButton(map, 'permalink', 'http://edward17.github.io/LayersCollection/', setDefaultMap, showSavedLayers);
-    
+
     initializeLeftPanelVisibility();
     initializeFilters();
 }
@@ -77,7 +77,7 @@ function initializeFilters() {
 
     initializeShowingFilter('old');
     initializeShowingFilter('ua');
-    
+
     initializeHidingFilter('blackwhite');
     initializeHidingFilter('threed');
     initializeHidingFilter('retina');
@@ -148,7 +148,7 @@ function createLeafletLayer(data) {
         if (data.opacity) {
             new_layer_options.opacity = data.opacity;
         }
-        
+
         new_layer = L.tileLayer.wms(data.address, new_layer_options);
     } else {
         new_layer_options = {
@@ -192,7 +192,7 @@ function createAdditionalInformation(data) {
     }
     if (data.language) {
         additional_information = additional_information + '<span title="labels language: ' + data.language + '" class="lg">' + data.language + '</span>';
-        
+
         if (language_selector.innerHTML.search('<option>' + data.language +'</option>') == -1) {
             language_selector.innerHTML = language_selector.innerHTML + '<option>' + data.language +'</option>';
         }
@@ -227,7 +227,7 @@ function showLayer(id) {
         } else if (id == '-101') {
             document.getElementById('map').style.backgroundColor = 'rgb(0,0,0)';
         }
-        
+
         replaceInClassName(document.getElementById(id), 'layer', 'selected_layer');
         current_layer_id = id + '';
     }
@@ -241,7 +241,7 @@ function onOverlayChanged(id) {
     } else {
         map.removeLayer(overlays[getOverlayDataByID(id).index]);
         current_overlays_ids.splice(getOverlayDataByID(id).index_shown, 1);
-        
+
         if (current_overlays_ids.length > 0) {
             for (var i = 0; i < current_overlays_ids.length; i++) {
                 overlays_data[getOverlayIndexByID(current_overlays_ids[i])].index_shown = i;
@@ -274,7 +274,7 @@ function removeAllOverlays() {
         }
         current_overlays_ids = [];
         overlays_removing_button.setAttribute('disabled', '');
-        
+
         saveLayers();
     }
 }
@@ -324,7 +324,7 @@ function onHidingFilterChanged(id) {
     var left_layers = left.childNodes;
     if (document.getElementById(id + '_selector').checked) {
         increaseHidingFiltersCount();
-        
+
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="'+ id + '"') == -1 && left_layers[i].tagName != 'H2') {
                 addToClassName(left_layers[i], ' ' + id + '_hidden');
@@ -332,7 +332,7 @@ function onHidingFilterChanged(id) {
         }
     } else {
         decreaseHidingFiltersCount();
-        
+
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].innerHTML.search('class="'+ id + '"') == -1 && left_layers[i].tagName != 'H2') {
                 removeFromClassName(left_layers[i], ' ' + id + '_hidden');
@@ -349,13 +349,13 @@ function onLanguageChanged() {
     var left_layers = left.childNodes;
     if (language == 'any') {
         decreaseHidingFiltersCount();
-        
+
         for (var i = 0; i < left_layers.length; i++) {
              removeFromClassName(left_layers[i], ' language_hidden');
         }
     } else {
         increaseHidingFiltersCount();
-        
+
         for (var i = 0; i < left_layers.length; i++) {
             if (left_layers[i].className != 'header_big' && left_layers[i].innerHTML.search('>' + language + '<') == -1) {
                 if (left_layers[i].className.search('language_hidden') == -1) {
@@ -527,7 +527,9 @@ function onLayerLinkShowingChanged() {
 }
 
 function showLayerData(id) {
-    window.open('http://edward17.github.io/LayersCollection/data_export.html#' + id);
+    if (show_layer_link_on_dbclick) {
+        window.open('http://edward17.github.io/LayersCollection/data_export.html#' + id);
+    }
 }
 
 /* LAYERS LIST TOP PADDING */
@@ -595,7 +597,7 @@ function saveLayers() {
             layers_txt = layers_txt + ',' + current_overlays_ids[i];
         }
     }
-        
+
     onLayersUpdate(layers_txt);
     localStorage.setItem('layers', layers_txt);
 
