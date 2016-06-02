@@ -829,14 +829,14 @@ var layers_data = [
     {
         'name': 'MapBox.streets-satellite',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-        'maxZoom': 18,
+        'maxZoom': 22,
         'attribution': openstreetmap_mapbox_attribution,
         'id': '1078'
     },
     {
         'name': 'MapBox.satellite',
         'address': 'https://{s}.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=' + mapbox_token,
-        'maxZoom': 18,
+        'maxZoom': 22,
         'attribution': tiles_attribution + mapbox_attribution,
         'id': '1079'
     },
