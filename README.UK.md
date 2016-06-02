@@ -1,6 +1,6 @@
 # Опис
 
-[LayersCollection](http://edward17.github.io/LayersCollection/) - збірник растрових шарів, заснованих на даних OpenStreetMap, і шарів, які дозволено використовувати для редагування OSM. До останніх належать супутникові знімки та GPS-треки
+[LayersCollection](http://edward17.github.io/LayersCollection/) - збірник растрових шарів, заснованих на даних [OpenStreetMap](https://www.openstreetmap.org/), і шарів, які дозволено використовувати для редагування OSM. До останніх належать супутникові знімки та GPS-треки
 
 Також наявні шари з рельєфом та мапа покриття панорам [Mapillary](http://www.mapillary.com/).
 

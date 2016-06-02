@@ -1,6 +1,6 @@
 # Beschreibung
 
-[LayersCollection](http://edward17.github.io/LayersCollection/) ist eine Versammlung von raster OpenStreetMap-basierenden Layers und Layers, die man zur Editierung von OSM benutzen darf. Dazu gehören Luftbilder und GPS Tracks.
+[LayersCollection](http://edward17.github.io/LayersCollection/) ist eine Versammlung von raster [OpenStreetMap](https://www.openstreetmap.org/)-basierenden Layers und Layers, die man zur Editierung von OSM benutzen darf. Dazu gehören Luftbilder und GPS Tracks.
 
 Es gibt auch Layers, die den Relief darstellen, und Karte von [Mapillary](http://www.mapillary.com/) Panoramen.
 
@@ -147,4 +147,4 @@ Siehe [LICENSE.md](https://github.com/Edward17/LayersCollection/blob/gh-pages/LI
 
 Sie haben Fragen, Vorschläge oder Wünsche? Schreiben Sie mir im [privaten Nachricht am OSM](https://www.openstreetmap.org/message/new/edward17) oder per e-mail: edward17 [at] mail [dot] ua.
 
-P. S. Deutsch ist nicht meine Muttersprache. Deshalb, wenn Sie einen grammatischen gefunden haben, können Sie mir gerne darüber schreiben!
+P. S. Deutsch ist nicht meine Muttersprache. Deshalb, wenn Sie einen grammatischen Fehler gefunden haben, können Sie mir gerne darüber schreiben!

@@ -1,6 +1,6 @@
 # Description
 
-[LayersCollection](http://edward17.github.io/LayersCollection/) is a collection of raster layers based on OpenStreetMap data and layers that can be used for editing OSM. Among these are satellite imagery and GPS traces.
+[LayersCollection](http://edward17.github.io/LayersCollection/) is a collection of raster layers based on [OpenStreetMap](https://www.openstreetmap.org/) data and layers that can be used for editing OSM. Among these are satellite imagery and GPS traces.
 
 There are also relief layers and map of [Mapillary](http://www.mapillary.com/) panoramas coverage.
 

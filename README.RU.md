@@ -1,6 +1,6 @@
 # Описание
 
-[LayersCollection](http://edward17.github.io/LayersCollection/) - сборник растровых слоёв, основанных на данных OpenStreetMap, и слоёв, которые могут использоваться для редактирования OSM. К последним относятся спутниковые снимки и GPS-треки.
+[LayersCollection](http://edward17.github.io/LayersCollection/) - сборник растровых слоёв, основанных на данных [OpenStreetMap](https://www.openstreetmap.org/), и слоёв, которые могут использоваться для редактирования OSM. К последним относятся спутниковые снимки и GPS-треки.
 
 Также присутствуют слои рельефа и карта покрытия панорам [Mapillary](http://www.mapillary.com/).
 
