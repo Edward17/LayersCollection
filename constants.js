@@ -48,7 +48,7 @@ var mapbox_token = 'pk.eyJ1IjoiZWR3YXJkMTciLCJhIjoiY2llaWR4endiMDAycXRibThvZ3dlc
 
 // max header id = 3013
 
-// max layer id = 1091
+// max layer id = 1093
 var layers_data = [
     {
         'header': 'true',
@@ -405,6 +405,20 @@ var layers_data = [
         'language': 'en'
     },
     {
+        'name': 'Thunderforest Mobile Atlas',
+        'address': 'http://{s}.tile.thunderforest.com/mobile-atlas/{z}/{x}/{y}.png',
+        'maxZoom': 22,
+        'attribution': thunderforest_attribution,
+        'id': '1092'
+    },
+    {
+        'name': 'Thunderforest Neighbourhood',
+        'address': 'http://{s}.tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png',
+        'maxZoom': 22,
+        'attribution': thunderforest_attribution,
+        'id': '1093'
+    },
+    {
         'name': 'CartoDB Positron',
         'address': 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
         'maxZoom': 22, // can be more
@@ -604,14 +618,14 @@ var layers_data = [
     {
         'name': 'Thunderforest Transport',
         'address': 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
-        'maxZoom': 19,
+        'maxZoom': 22,
         'attribution': thunderforest_attribution,
         'id': '1057'
     },
     {
         'name': 'Thunderforest Transport Dark',
         'address': 'http://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png',
-        'maxZoom': 19,
+        'maxZoom': 22,
         'attribution': thunderforest_attribution,
         'id': '1058'
     },
@@ -628,23 +642,23 @@ var layers_data = [
         'id': '3002'
     },
     {
-        'name': 'Thunderforest Landskape',
+        'name': 'Thunderforest Landscape',
         'address': 'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
-        'maxZoom': 18,
+        'maxZoom': 22,
         'attribution': thunderforest_attribution,
         'id': '1060'
     },
     {
         'name': 'Thunderforest Outdoors',
         'address': 'http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
-        'maxZoom': 18,
+        'maxZoom': 22,
         'attribution': thunderforest_attribution,
         'id': '1061'
     },
     {
         'name': 'Thunderforest OpenCycleMap',
         'address': 'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
-        'maxZoom': 18,
+        'maxZoom': 22,
         'attribution': thunderforest_attribution,
         'id': '1062'
     },
