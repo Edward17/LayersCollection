@@ -69,6 +69,8 @@ var layers_data = [
         'attribution': attribution + '<a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>',
         'id': '1001'
     },
+
+/* don't works: http://devblog.mapquest.com/2016/06/15/modernization-of-mapquest-results-in-changes-to-open-tile-access/
     {
         'name': 'MapQuest Open',
         'address': 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
@@ -77,6 +79,8 @@ var layers_data = [
         'subdomains': ['1', '2', '3', '4'],
         'id': '1002'
     },
+*/
+
     {
         'name': 'RRZE Standart HD',
         'address': 'http://{s}.osm.rrze.fau.de/osmhd/{z}/{x}/{y}.png',
@@ -871,7 +875,9 @@ var layers_data = [
         'subdomains': ['a', 'b'],
         'minZoom': 7,
         'id': '1081'
-    },
+    }
+
+/* don't works: http://devblog.mapquest.com/2016/06/15/modernization-of-mapquest-results-in-changes-to-open-tile-access/
     {
         'name': 'MapQuest Aerial',
         'address': 'http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
@@ -880,6 +886,8 @@ var layers_data = [
         'subdomains': ['1', '2', '3', '4'],
         'id': '1083'
     }
+*/
+
 ];
 
 // max overlay id = 2088
@@ -896,6 +904,8 @@ var overlays_data = [
         'attribution': unihd_attribution,
         'id': '2006'
     },
+
+/* don't works: http://devblog.mapquest.com/2016/06/15/modernization-of-mapquest-results-in-changes-to-open-tile-access/
     {
         'name': 'MapQuest Hybrid',
         'address': 'http://ttiles0{s}.mqcdn.com/tiles/1.0.0/vy/hyb/{z}/{x}/{y}.png',
@@ -904,6 +914,8 @@ var overlays_data = [
         'subdomains': ['1', '2', '3', '4'],
         'id': '2007'
     },
+*/
+
     {
         'name': 'OpenStreetMap.se Roads and Labels',
         'address': 'http://{s}.tile.openstreetmap.se/hydda/roads_and_labels/{z}/{x}/{y}.png',
